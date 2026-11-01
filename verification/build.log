@@ -1,0 +1,113 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project CamCard.xcodeproj -scheme CamCard -destination "platform=iOS Simulator,id=0984D61E-4372-429E-A653-9819870261FF" build
+
+2026-11-01 10:35:03.854 xcodebuild[17134:170559] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'CamCard' in project 'CamCard' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCard/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: 7ca822d6ae6bdf856057ffc869da16a9
+Build description path: /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/XCBuildData/7ca822d6ae6bdf856057ffc869da16a9.xcbuilddata
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk /Users/chaotze/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.0-23A339-26257891a6c027eb51374368541b8346.sdkstatcache
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard/CamCard.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk -o /Users/chaotze/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.0-23A339-26257891a6c027eb51374368541b8346.sdkstatcache
+
+ProcessProductPackaging "" /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent (in target 'CamCard' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    
+    Entitlements:
+    
+    {
+    "application-identifier" = "TongjiNIC.cn.chaotze.CamCard";
+}
+    
+    builtin-productPackagingUtility -entitlements -format xml -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent
+
+ProcessProductPackagingDER /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent.der (in target 'CamCard' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    /usr/bin/derq query -f xml -i /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent.der --raw
+
+ProcessInfoPlistFile /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Info.plist /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/empty-CamCard.plist (in target 'CamCard' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    builtin-infoPlistUtility /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/empty-CamCard.plist -producttype com.apple.product-type.application -genpkginfo /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/assetcatalog_generated_info.plist -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Info.plist
+
+Ld /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib normal (in target 'CamCard' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target x86_64-apple-ios26.0-simulator -dynamiclib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk -O0 -L/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -F/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -filelist /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard.LinkFileList -install_name @rpath/CamCard.debug.dylib -Xlinker -rpath -Xlinker @executable_path/Frameworks -dead_strip -Xlinker -object_path_lto -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -debug_variant -Xlinker -dependency_info -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard_dependency_info.dat -fobjc-link-runtime -fprofile-instr-generate -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard.swiftmodule @/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard-linker-args.resp -Xlinker -alias -Xlinker _main -Xlinker ___debug_main_executable_dylib_entry_point -Xlinker -no_adhoc_codesign -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib
+
+ConstructStubExecutorLinkFileList /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard-ExecutorLinkFileList-normal-x86_64.txt (in target 'CamCard' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    construct-stub-executor-link-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor_no_swift_entry_point.a /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor.a --output /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard-ExecutorLinkFileList-normal-x86_64.txt
+note: Using stub executor library with Swift entry point. (in target 'CamCard' from project 'CamCard')
+
+Ld /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard normal (in target 'CamCard' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target x86_64-apple-ios26.0-simulator -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk -O0 -L/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -F/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -Xlinker -rpath -Xlinker @executable_path -Xlinker -rpath -Xlinker @executable_path/Frameworks -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -debug_variant -e ___debug_blank_executor_main -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_dylib -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard-DebugDylibPath-normal-x86_64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_instlnm -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard-DebugDylibInstallName-normal-x86_64.txt -Xlinker -filelist -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard-ExecutorLinkFileList-normal-x86_64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __entitlements -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __ents_der -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent.der /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib -Xlinker -no_adhoc_codesign -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard
+
+CopySwiftLibs /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app (in target 'CamCard' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    builtin-swiftStdLibTool --copy --verbose --sign - --scan-executable /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/SystemExtensions --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Extensions --platform iphonesimulator --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+
+ExtractAppIntentsMetadata (in target 'CamCard' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name CamCard --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk --xcode-version 17A324 --platform-family iOS --deployment-target 26.0 --bundle-identifier cn.chaotze.CamCard --output /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app --target-triple x86_64-apple-ios26.0-simulator --binary-file /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard --dependency-file /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard_dependency_info.dat --stringsdata-file /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard.SwiftFileList --metadata-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.DependencyMetadataFileList --static-metadata-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.DependencyStaticMetadataFileList --swift-const-vals-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2026-11-01 10:35:15.845 appintentsmetadataprocessor[17223:170991] Starting appintentsmetadataprocessor export
+2026-11-01 10:35:15.855 appintentsmetadataprocessor[17223:170991] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+
+CodeSign /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib (in target 'CamCard' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib
+
+CodeSign /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/__preview.dylib (in target 'CamCard' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/__preview.dylib
+/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/__preview.dylib: replacing existing signature
+
+CodeSign /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app (in target 'CamCard' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app
+
+Validate /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app (in target 'CamCard' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    builtin-validationUtility /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app -shallow-bundle -infoplist-subpath Info.plist
+
+note: Removed stale file '/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks'
+
+note: Removed stale file '/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns'
+
+** BUILD SUCCEEDED **
+
