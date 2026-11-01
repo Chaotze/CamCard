@@ -15,6 +15,11 @@
 - **WHEN** 用户输入姓名的一部分
 - **THEN** 姓名包含该片段的名片出现在结果中，与片段大小写无关
 
+#### Scenario: Match by company substring
+
+- **WHEN** 用户输入公司名的一部分
+- **THEN** 公司包含该片段的名片出现在结果中，与片段大小写无关
+
 #### Scenario: Match by phone digits
 
 - **WHEN** 用户输入电话号码中的连续数字片段

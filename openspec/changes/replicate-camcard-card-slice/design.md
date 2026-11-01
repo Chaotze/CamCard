@@ -210,6 +210,9 @@ protocol ImageStore {
 - `AccuracyHarness` 读取 `CamCardTests/Fixtures/cards/` 图像与 `ground-truth.json`，跑真实检测→OCR→FieldParser，输出 `accuracy-report.json`：逐字段 exact-match（电话按数字比较、Email 忽略大小写、文本去首尾空白）、检测成功率、单张耗时与环境信息（iOS 版本、设备、构建号）。
 - 报告按字段列出，不用平均准确率掩盖任一字段的 0 分；与参考 App 的对照结果单独记录。
 - OCR 不硬编码期望文本，只断言结构不变量（行数、坐标范围、source）。
+- 每个 fixture 的原始输出 SHALL 落盘并随报告可追溯：检测四角、OCR 逐行文本/置信度/归一化坐标、处理图与原始图引用、解析十二字段；写入 `accuracy-report.json` 内嵌或引用 `CamCardTests/Fixtures/reports/` 下受版本控制的产物。
+- 默认通过线（课程未给出门槛时使用，评审可调整）：检测成功率 ≥ 95%；八个必填字段逐字段 ≥ 90%；四个可选字段逐字段 ≥ 80%；任一字段准确率为 0 即判不通过。课程提供明确门槛时以课程为准。
+- 概率性验收禁止使用"看起来合理"或与 CamCard 逐字符相等作为判据，只以固定测试集 Ground Truth 的字段级比对结果判定。
 
 ### D12. 工程配置
 

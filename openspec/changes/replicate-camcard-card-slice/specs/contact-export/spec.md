@@ -135,7 +135,7 @@
 
 ### Requirement: Round-trip fidelity
 
-导出文件 SHALL 可被 vCard 解析器重新读取，并还原出与名片最终值一致的姓名、公司、部门、职位、Mobile/Office/Fax 号码、全部 Email、网站、地址、邮编、标签与备注。
+导出文件 SHALL 可被 vCard 解析器重新读取，并还原出与名片最终值一致的姓名、公司、部门、职位、Mobile/Office/Fax 号码、全部 Email、网站、地址、邮编、标签与备注。字段映射的验收 SHALL 以导出文件属性与最终值逐项比对、以及往返解析为依据；本能力不读取也不写入系统通讯录。
 
 #### Scenario: Re-parse exported file
 
@@ -146,6 +146,11 @@
 
 - **WHEN** 名片含两个 Email 与三个不同类别的电话
 - **THEN** 重新解析后仍得到两个 Email 与三个带类别的号码
+
+#### Scenario: Mapping verified without contacts access
+
+- **WHEN** 验收导出字段映射
+- **THEN** 以导出 vCard 的属性值与名片最终值逐项比对并完成往返解析，且全过程不读取或写入系统通讯录
 
 ### Requirement: Export failure handling
 

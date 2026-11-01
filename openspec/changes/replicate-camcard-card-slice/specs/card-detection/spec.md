@@ -8,12 +8,17 @@
 
 ### Requirement: Card region detection
 
-对每一张采集图像，系统 SHALL 执行名片区域检测，并给出检测结果：成功时返回名片四角坐标，失败时返回明确的失败状态而不是空区域。
+对每一张采集图像，系统 SHALL 执行名片区域检测，并给出检测结果：成功时返回名片四角坐标，失败时返回明确的失败状态而不是空区域。检测成功后，处理界面 SHALL 在原图上展示检测到的四角区域，供用户确认检测是否正确。
 
 #### Scenario: Single card detected
 
 - **WHEN** 采集图像中只包含一张占比足够、边界完整的名片
 - **THEN** 检测成功，返回四个角点，且四角围成的区域覆盖名片本体
+
+#### Scenario: Detected region is shown
+
+- **WHEN** 检测成功并进入处理界面
+- **THEN** 处理界面在原图上显示由四个角点围成的名片区域，用户可据此判断检测结果是否正确
 
 #### Scenario: No card found
 

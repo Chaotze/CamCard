@@ -97,8 +97,8 @@
 ## 11. 概率性测试集评价
 
 - [ ] 11.1 导入课程 30～50 张测试名片与 Ground Truth 到 `CamCardTests/Fixtures/cards/`，定义 `ground-truth.json` 映射；验证：fixture 数量与课程提供一致，JSON 可被 `JSONDecoder` 读取（缺失素材时保持未勾选）
-- [ ] 11.2 实现 `AccuracyHarness`：跑真实检测→OCR→FieldParser，逐字段 exact-match（电话按数字、Email 忽略大小写、文本去首尾空白）；验证：`-only-testing:CamCardTests/AccuracyTests` 产出 `accuracy-report.json`
-- [ ] 11.3 报告记录检测成功率、逐字段准确率、单张耗时与环境（iOS 版本、设备、构建号）；验证：报告字段齐全且不含平均分掩盖（每字段单独列出）
+- [ ] 11.2 实现 `AccuracyHarness`：跑真实检测→OCR→FieldParser，逐字段 exact-match（电话按数字、Email 忽略大小写、文本去首尾空白），并逐 fixture 落盘检测四角、OCR 行、图像引用与解析结果；验证：`-only-testing:CamCardTests/AccuracyTests` 产出 `accuracy-report.json`，每个 fixture 的原始输出可在报告中追溯
+- [ ] 11.3 报告记录检测成功率、逐字段准确率、单张耗时与环境（iOS 版本、设备、构建号），并按默认通过线（检测成功率 ≥ 95%、必填字段逐字段 ≥ 90%、可选字段逐字段 ≥ 80%、任一字段为 0 即不通过）给出达标判定；验证：报告字段齐全、不含平均分掩盖、每条通过线均有明确结论，课程门槛确认后以课程为准
 - [ ] 11.4 记录参考 CamCard 对照结果与版本号；验证：对照表含版本、设备、逐字段差异，未确认版本标 TBD
 - [ ] 11.5 用人工校正后的最终值验证六段链路差异可导出（Structured vs Final）；验证：报告包含每张卡的差异条目，人工修改字段可定位
 

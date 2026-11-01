@@ -56,7 +56,7 @@
 
 ### Modified Capabilities
 
-- `app-shell`: Home screen 由 "Hello, world!" 骨架占位改为空名片夹首页，保留 `Welcome content` 场景标题并把预期更新为名片夹首页；导航容器与启动行为随之明确。
+- `app-shell`: Home screen 由 "Hello, world!" 骨架占位改为空名片夹首页，保留 `Cold launch`、`Relaunch`、`Welcome content`、`Navigation affordances`、`Rotation keeps content visible` 原场景标题并把预期更新为名片夹首页；`App shell navigation scope` 同步收紧为仅名片切片可达，`Supported orientations` 扩展为采集、校正、详情页均保持可用。
 
 ## Impact
 
