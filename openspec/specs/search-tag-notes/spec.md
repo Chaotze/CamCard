@@ -1,10 +1,10 @@
-# Spec Delta
+# search-tag-notes Specification
 
 ## Purpose
 
-在名片夹内提供搜索、标签、备注与排序能力，让用户能够在积累多张名片后快速定位与组织联系人。
+在名片夹内提供搜索、标签、备注与排序能力，让用户能够在积累多张名片后快速定位与组织联系人，并支持搜索与标签筛选组合使用。
 
-## ADDED Requirements
+## Requirements
 
 ### Requirement: Search across contact fields
 

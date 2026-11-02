@@ -117,3 +117,20 @@
 - 全部 R01～R20 与概率性报告齐备后运行 `/opsx-archive`，把 `app-shell` MODIFIED 与十个 ADDED 能力写入主规格。
 - 归档后复查 `openspec/specs/app-shell/spec.md` 的 `Welcome content` 场景预期已变为名片夹首页，且新增能力主规格的 Purpose 与 Requirements 完整。
 - 若归档校验因未验证任务失败，保持 change 为活动状态，补齐证据后再归档。
+
+## Deferred / Skipped Verification (manual or external dependency)
+
+Per user instruction, the following checks were not executed and remain unchecked. They are recorded here so the archive is not mistaken for full completion.
+
+| Task | Reason |
+| --- | --- |
+| 4.1, 4.2 | Requires the course fixed card fixtures to assert corner order, candidate selection, and failure hash. |
+| 5.5 | Re-run OCR append flow is not implemented; no two-record assertion. |
+| 6.5, 6.10 | Layout-coordinate assertions and Locale switching require manual/golden fixtures. |
+| 7.2, 7.4 | Draft-ID assertion and display-model unit assertion were not written; behavior is covered indirectly by UI/VM tests. |
+| 8.4, 8.5, 8.7, 8.8 | Detection-failure/unrecognizable UI, full review-form UI, share-sheet success, and full navigation loop need manual or additional UI execution. |
+| 10.1-10.4, 12.3 | Full R01-R20 UI suite and evidence aggregation were not completed; only 12 UI scenarios were executed. |
+| 11.1-11.5 | Course 30-50 card fixtures and ground-truth.json are absent; no accuracy-report.json or field-level accuracy is claimed. |
+| 12.5, 12.6 | Sandbox image-removal relaunch and independent VCF script checks were not executed. |
+
+Recorded at archive time: 2026-11-02.

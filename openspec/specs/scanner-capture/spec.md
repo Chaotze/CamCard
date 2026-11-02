@@ -1,10 +1,10 @@
-# Spec Delta
+# scanner-capture Specification
 
 ## Purpose
 
-采集名片图像，来源为相机实时拍摄或系统相册导入，并为权限拒绝、取消与采集失败提供明确的处理路径。
+采集名片图像，来源为相机实时拍摄或系统相册导入，并为权限拒绝、取消与采集失败提供明确的处理路径。该能力保证草稿在保存前不进入名片夹。
 
-## ADDED Requirements
+## Requirements
 
 ### Requirement: Camera capture entry
 
