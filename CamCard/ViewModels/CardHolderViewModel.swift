@@ -42,8 +42,10 @@ final class CardHolderViewModel: ObservableObject {
         }
         didBootstrap = true
         if environment.launchOptions.isUITest {
-            try? await environment.repository.reset()
-            try? await environment.imageStore.reset()
+            if environment.launchOptions.resetStore || environment.launchOptions.seedFixture != nil {
+                try? await environment.repository.reset()
+                try? await environment.imageStore.reset()
+            }
             await SeedData.installIfNeeded(environment: environment)
         }
         await reload()

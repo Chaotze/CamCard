@@ -1,0 +1,71 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -project CamCard.xcodeproj -scheme CamCard -destination "platform=iOS Simulator,id=0984D61E-4372-429E-A653-9819870261FF" "-only-testing:CamCardUITests/CamCardUITests/testKillRelaunchKeepsImagesFieldsTagsAndNotes" -parallel-testing-enabled NO
+
+2026-11-02 13:50:32.361 xcodebuild[28304:654878] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-11-02 13:52:18.413253+0800 CamCardUITests-Runner[28912:660134] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-11-02 13:52:35.679.
+Test Suite 'CamCardUITests.xctest' started at 2026-11-02 13:52:35.681.
+Test Suite 'CamCardUITests' started at 2026-11-02 13:52:35.682.
+Test Case '-[CamCardUITests.CamCardUITests testKillRelaunchKeepsImagesFieldsTagsAndNotes]' started.
+    t =     0.01s Start Test at 2026-11-02 13:52:35.690
+    t =     1.79s Set Up
+    t =     1.82s Open cn.chaotze.CamCard
+    t =     1.83s     Launch cn.chaotze.CamCard
+    t =     9.56s         Setting up automation session
+    t =    14.88s         Wait for cn.chaotze.CamCard to idle
+    t =    19.08s Waiting 10.0s for "张三" StaticText to exist
+    t =    20.10s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
+    t =    20.10s         Checking existence of `"张三" StaticText`
+    t =    20.57s Tap "张三" StaticText
+    t =    20.57s     Wait for cn.chaotze.CamCard to idle
+    t =    20.82s     Find the "张三" StaticText
+    t =    21.03s     Check for interrupting elements affecting "张三" StaticText
+    t =    21.22s     Synthesize event
+    t =    21.68s     Wait for cn.chaotze.CamCard to idle
+    t =    22.20s Waiting 10.0s for "张三" NavigationBar to exist
+    t =    23.25s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" NavigationBar`
+    t =    23.25s         Checking existence of `"张三" NavigationBar`
+    t =    24.22s Checking existence of `"重点客户" StaticText`
+    t =    24.77s Checking existence of `"客户" StaticText`
+    t =    25.09s Checking existence of `"13800138000" StaticText`
+    t =    25.62s Checking existence of `"处理后图像" Button`
+    t =    25.88s Terminate cn.chaotze.CamCard:29008
+    t =    26.98s Open cn.chaotze.CamCard
+    t =    26.98s     Launch cn.chaotze.CamCard
+    t =    27.65s         Setting up automation session
+    t =    31.66s         Wait for cn.chaotze.CamCard to idle
+    t =    35.71s Waiting 10.0s for "张三" StaticText to exist
+    t =    36.73s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
+    t =    36.74s         Checking existence of `"张三" StaticText`
+    t =    37.15s Tap "张三" StaticText
+    t =    37.15s     Wait for cn.chaotze.CamCard to idle
+    t =    37.16s     Find the "张三" StaticText
+    t =    37.38s     Check for interrupting elements affecting "张三" StaticText
+    t =    37.60s     Synthesize event
+    t =    37.96s     Wait for cn.chaotze.CamCard to idle
+    t =    38.75s Waiting 10.0s for "张三" NavigationBar to exist
+    t =    39.79s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" NavigationBar`
+    t =    39.79s         Checking existence of `"张三" NavigationBar`
+    t =    40.47s Checking existence of `"重点客户" StaticText`
+    t =    40.75s Checking existence of `"客户" StaticText`
+    t =    41.02s Checking existence of `"13800138000" StaticText`
+    t =    41.26s Checking existence of `"处理后图像" Button`
+    t =    41.49s Tear Down
+Test Case '-[CamCardUITests.CamCardUITests testKillRelaunchKeepsImagesFieldsTagsAndNotes]' passed (41.822 seconds).
+Test Suite 'CamCardUITests' passed at 2026-11-02 13:53:17.510.
+	 Executed 1 test, with 0 failures (0 unexpected) in 41.822 (41.828) seconds
+Test Suite 'CamCardUITests.xctest' passed at 2026-11-02 13:53:17.512.
+	 Executed 1 test, with 0 failures (0 unexpected) in 41.822 (41.831) seconds
+Test Suite 'Selected tests' passed at 2026-11-02 13:53:17.514.
+	 Executed 1 test, with 0 failures (0 unexpected) in 41.822 (41.835) seconds
+2026-11-02 13:53:17.918 xcodebuild[28304:654878] [MT] IDETestOperationsObserverDebug: 163.199 elapsed -- Testing started completed.
+2026-11-02 13:53:17.918 xcodebuild[28304:654878] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-11-02 13:53:17.918 xcodebuild[28304:654878] [MT] IDETestOperationsObserverDebug: 163.199 sec, +163.199 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Logs/Test/Test-CamCard-2026.11.02_13-50-32-+0800.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

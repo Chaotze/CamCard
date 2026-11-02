@@ -76,6 +76,7 @@ struct ReviewView: View {
                 }
                 HStack {
                     TextField("添加标签", text: $viewModel.newTag)
+                        .accessibilityLabel("新标签")
                         .accessibilityIdentifier("reviewNewTagField")
                     Button("添加") {
                         viewModel.addTag()
@@ -169,15 +170,18 @@ struct ReviewView: View {
                         viewModel.restore(field)
                     }
                     .font(.caption)
+                    .accessibilityLabel("恢复\(field.displayName)的解析原值")
                     .accessibilityIdentifier("restore-\(field.rawValue)")
                 }
             }
             if multiline {
                 TextEditor(text: textBinding(for: field))
                     .frame(minHeight: 70)
+                    .accessibilityLabel(field.displayName)
                     .accessibilityIdentifier("reviewField-\(field.rawValue)")
             } else {
                 TextField("未识别", text: textBinding(for: field))
+                    .accessibilityLabel(field.displayName)
                     .accessibilityIdentifier("reviewField-\(field.rawValue)")
             }
         }
@@ -192,6 +196,7 @@ struct ReviewView: View {
                         get: { viewModel.value(field, at: index) },
                         set: { viewModel.setValue(field, at: index, value: $0) }
                     ))
+                    .accessibilityLabel("\(title) \(index + 1)")
                     Menu {
                         ForEach([ContactField.mobile, .officePhone, .fax].filter { $0 != field }, id: \.self) { destination in
                             Button(destination.displayName) {
@@ -230,6 +235,7 @@ struct ReviewView: View {
                         get: { viewModel.value(.email, at: index) },
                         set: { viewModel.setValue(.email, at: index, value: $0) }
                     ))
+                    .accessibilityLabel(index == 0 ? "Email 主地址" : "Email \(index + 1)")
                     if index == 0 {
                         Text("主")
                             .font(.caption2)

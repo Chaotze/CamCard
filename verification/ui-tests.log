@@ -1,624 +1,488 @@
 Command line invocation:
-    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test -project CamCard.xcodeproj -scheme CamCard -destination "platform=iOS Simulator,id=0984D61E-4372-429E-A653-9819870261FF" "-only-testing:CamCardUITests/CamCardUITests" -parallel-testing-enabled NO
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -project CamCard.xcodeproj -scheme CamCard -destination "platform=iOS Simulator,id=0984D61E-4372-429E-A653-9819870261FF" "-only-testing:CamCardUITests/CamCardUITests" -parallel-testing-enabled NO
 
-2026-11-01 10:25:13.008 xcodebuild[16026:156287] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
-ComputePackagePrebuildTargetDependencyGraph
-
-Prepare packages
-
-CreateBuildRequest
-
-SendProjectDescription
-
-CreateBuildOperation
-
-ComputeTargetDependencyGraph
-note: Building targets in dependency order
-note: Target dependency graph (3 targets)
-    Target 'CamCardTests' in project 'CamCard'
-        ➜ Explicit dependency on target 'CamCard' in project 'CamCard'
-    Target 'CamCardUITests' in project 'CamCard'
-        ➜ Explicit dependency on target 'CamCard' in project 'CamCard'
-    Target 'CamCard' in project 'CamCard' (no dependencies)
-
-GatherProvisioningInputs
-
-CreateBuildDescription
-
-ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk -x c -c /dev/null
-
-ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
-
-ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCard/Assets.xcassets
-
-ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
-
-ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
-
-Build description signature: 005ad7035d44fa7d44ca7f3b9fd3cd0d
-Build description path: /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/XCBuildData/005ad7035d44fa7d44ca7f3b9fd3cd0d.xcbuilddata
-ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk /Users/chaotze/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.0-23A339-26257891a6c027eb51374368541b8346.sdkstatcache
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard/CamCard.xcodeproj
-    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk -o /Users/chaotze/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.0-23A339-26257891a6c027eb51374368541b8346.sdkstatcache
-
-ProcessProductPackaging "" /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    
-    Entitlements:
-    
-    {
-    "application-identifier" = "TongjiNIC.cn.chaotze.CamCard";
-}
-    
-    builtin-productPackagingUtility -entitlements -format xml -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent
-
-ProcessProductPackagingDER /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent.der (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /usr/bin/derq query -f xml -i /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent.der --raw
-
-Ld /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib normal (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target x86_64-apple-ios26.0-simulator -dynamiclib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk -O0 -L/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -F/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -filelist /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard.LinkFileList -install_name @rpath/CamCard.debug.dylib -Xlinker -rpath -Xlinker @executable_path/Frameworks -dead_strip -Xlinker -object_path_lto -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -debug_variant -Xlinker -dependency_info -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard_dependency_info.dat -fobjc-link-runtime -fprofile-instr-generate -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard.swiftmodule @/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard-linker-args.resp -Xlinker -alias -Xlinker _main -Xlinker ___debug_main_executable_dylib_entry_point -Xlinker -no_adhoc_codesign -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib
-
-ConstructStubExecutorLinkFileList /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard-ExecutorLinkFileList-normal-x86_64.txt (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    construct-stub-executor-link-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor_no_swift_entry_point.a /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor.a --output /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard-ExecutorLinkFileList-normal-x86_64.txt
-note: Using stub executor library with Swift entry point. (in target 'CamCard' from project 'CamCard')
-
-CompileAssetCatalogVariant thinned /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard/CamCard/Assets.xcassets (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /Applications/Xcode.app/Contents/Developer/usr/bin/actool /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard/CamCard/Assets.xcassets --compile /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/assetcatalog_output/thinned --output-format human-readable-text --notices --warnings --export-dependency-info /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/assetcatalog_dependencies_thinned --output-partial-info-plist /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/assetcatalog_generated_info.plist_thinned --app-icon AppIcon --accent-color AccentColor --compress-pngs --enable-on-demand-resources YES --filter-for-thinning-device-configuration iPhone18,3 --filter-for-device-os-version 26.0.1 --development-region en --target-device iphone --target-device ipad --minimum-deployment-target 26.0 --platform iphonesimulator
-/* com.apple.actool.compilation-results */
-/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/assetcatalog_generated_info.plist_thinned
-
-
-Ld /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard normal (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target x86_64-apple-ios26.0-simulator -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk -O0 -L/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -F/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -Xlinker -rpath -Xlinker @executable_path -Xlinker -rpath -Xlinker @executable_path/Frameworks -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -debug_variant -e ___debug_blank_executor_main -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_dylib -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard-DebugDylibPath-normal-x86_64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_instlnm -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard-DebugDylibInstallName-normal-x86_64.txt -Xlinker -filelist -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard-ExecutorLinkFileList-normal-x86_64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __entitlements -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __ents_der -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent.der /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib -Xlinker -no_adhoc_codesign -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard
-
-ExtractAppIntentsMetadata (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name CamCard --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk --xcode-version 17A324 --platform-family iOS --deployment-target 26.0 --bundle-identifier cn.chaotze.CamCard --output /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app --target-triple x86_64-apple-ios26.0-simulator --binary-file /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard --dependency-file /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard_dependency_info.dat --stringsdata-file /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard.SwiftFileList --metadata-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.DependencyMetadataFileList --static-metadata-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.DependencyStaticMetadataFileList --swift-const-vals-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
-2026-11-01 10:25:42.029 appintentsmetadataprocessor[16111:157536] Starting appintentsmetadataprocessor export
-2026-11-01 10:25:42.037 appintentsmetadataprocessor[16111:157536] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
-
-ProcessInfoPlistFile /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Info.plist /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/empty-CamCard.plist (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    builtin-infoPlistUtility /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/empty-CamCard.plist -producttype com.apple.product-type.application -genpkginfo /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/assetcatalog_generated_info.plist -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Info.plist
-
-CopySwiftLibs /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    builtin-swiftStdLibTool --copy --verbose --sign - --scan-executable /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/SystemExtensions --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Extensions --platform iphonesimulator --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
-
-Ld /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest/CamCardTests normal (in target 'CamCardTests' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target x86_64-apple-ios26.0-simulator -bundle -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk -O0 -L/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -L/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk/Developer/Library/Frameworks -filelist /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests.LinkFileList -Xlinker -rpath -Xlinker @loader_path/Frameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -dead_strip -bundle_loader /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard -Xlinker -object_path_lto -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -debug_variant -Xlinker -dependency_info -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests_dependency_info.dat -fobjc-link-runtime -fprofile-instr-generate -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests.swiftmodule @/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests-linker-args.resp -Xlinker -needed_framework -Xlinker XCTest -framework XCTest -Xlinker -needed-lXCTestSwiftSupport -lXCTestSwiftSupport /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib -Xlinker -no_adhoc_codesign -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest/CamCardTests
-
-ExtractAppIntentsMetadata (in target 'CamCardTests' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name CamCardTests --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk --xcode-version 17A324 --platform-family iOS --deployment-target 26.0 --bundle-identifier cn.chaotze.CamCardTests --output /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest --target-triple x86_64-apple-ios26.0-simulator --binary-file /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest/CamCardTests --dependency-file /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests_dependency_info.dat --stringsdata-file /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests.SwiftFileList --metadata-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/CamCardTests.DependencyMetadataFileList --static-metadata-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/CamCardTests.DependencyStaticMetadataFileList --swift-const-vals-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
-2026-11-01 10:25:43.638 appintentsmetadataprocessor[16116:157649] Starting appintentsmetadataprocessor export
-2026-11-01 10:25:43.646 appintentsmetadataprocessor[16116:157649] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
-
-CopySwiftLibs /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest (in target 'CamCardTests' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    builtin-swiftStdLibTool --copy --verbose --sign - --scan-executable /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest/CamCardTests --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest/Frameworks --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest/PlugIns --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest/SystemExtensions --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest/Extensions --platform iphonesimulator --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
-
-ProcessProductPackaging "" /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/CamCardUITests.xctest-Simulated.xcent (in target 'CamCardUITests' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    
-    Entitlements:
-    
-    {
-    "application-identifier" = "TongjiNIC.cn.chaotze.CamCardUITests.xctrunner";
-    "keychain-access-groups" =     (
-        "TongjiNIC.cn.chaotze.CamCardUITests.xctrunner"
-    );
-}
-    
-    builtin-productPackagingUtility -entitlements -format xml -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/CamCardUITests.xctest-Simulated.xcent
-
-ProcessInfoPlistFile /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest/Info.plist /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/empty-CamCardTests.plist (in target 'CamCardTests' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    builtin-infoPlistUtility /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/empty-CamCardTests.plist -producttype com.apple.product-type.bundle.unit-test -expandbuildsettings -format binary -platform iphonesimulator -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest/Info.plist
-
-ProcessProductPackagingDER /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/CamCardUITests.xctest-Simulated.xcent /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/CamCardUITests.xctest-Simulated.xcent.der (in target 'CamCardUITests' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /usr/bin/derq query -f xml -i /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/CamCardUITests.xctest-Simulated.xcent -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/CamCardUITests.xctest-Simulated.xcent.der --raw
-
-CodeSign /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest (in target 'CamCardTests' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    
-    Signing Identity:     "Sign to Run Locally"
-    
-    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest
-
-CodeSign /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    
-    Signing Identity:     "Sign to Run Locally"
-    
-    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib
-
-CodeSign /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/__preview.dylib (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    
-    Signing Identity:     "Sign to Run Locally"
-    
-    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/__preview.dylib
-/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/__preview.dylib: replacing existing signature
-
-CodeSign /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    
-    Signing Identity:     "Sign to Run Locally"
-    
-    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app
-
-Validate /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    builtin-validationUtility /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app -shallow-bundle -infoplist-subpath Info.plist
-
-ProcessInfoPlistFile /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/Info.plist /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/empty-CamCardUITests.plist (in target 'CamCardUITests' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    builtin-infoPlistUtility /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/empty-CamCardUITests.plist -producttype com.apple.product-type.bundle.ui-testing -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/ProductTypeInfoPlistAdditions.plist -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/Info.plist
-
-Ld /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/CamCardUITests normal (in target 'CamCardUITests' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target x86_64-apple-ios26.0-simulator -bundle -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk -O0 -L/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -L/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk/Developer/Library/Frameworks -filelist /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/Objects-normal/x86_64/CamCardUITests.LinkFileList -Xlinker -rpath -Xlinker @loader_path/Frameworks -dead_strip -Xlinker -object_path_lto -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/Objects-normal/x86_64/CamCardUITests_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -debug_variant -Xlinker -dependency_info -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/Objects-normal/x86_64/CamCardUITests_dependency_info.dat -fobjc-link-runtime -fprofile-instr-generate -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/Objects-normal/x86_64/CamCardUITests.swiftmodule @/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/Objects-normal/x86_64/CamCardUITests-linker-args.resp -Xlinker -needed_framework -Xlinker XCTest -framework XCTest -Xlinker -needed-lXCTestSwiftSupport -lXCTestSwiftSupport -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __entitlements -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/CamCardUITests.xctest-Simulated.xcent -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __ents_der -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/CamCardUITests.xctest-Simulated.xcent.der -Xlinker -no_adhoc_codesign -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/CamCardUITests
-
-CopySwiftLibs /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest (in target 'CamCardUITests' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    builtin-swiftStdLibTool --copy --verbose --sign - --scan-executable /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/CamCardUITests --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/Frameworks --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/PlugIns --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/SystemExtensions --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/Extensions --platform iphonesimulator --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
-
-ExtractAppIntentsMetadata (in target 'CamCardUITests' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name CamCardUITests --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk --xcode-version 17A324 --platform-family iOS --deployment-target 26.0 --bundle-identifier cn.chaotze.CamCardUITests --output /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest --target-triple x86_64-apple-ios26.0-simulator --binary-file /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/CamCardUITests --dependency-file /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/Objects-normal/x86_64/CamCardUITests_dependency_info.dat --stringsdata-file /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/Objects-normal/x86_64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/Objects-normal/x86_64/CamCardUITests.SwiftFileList --metadata-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/CamCardUITests.DependencyMetadataFileList --static-metadata-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/CamCardUITests.DependencyStaticMetadataFileList --swift-const-vals-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/Objects-normal/x86_64/CamCardUITests.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
-2026-11-01 10:25:45.429 appintentsmetadataprocessor[16125:157780] Starting appintentsmetadataprocessor export
-2026-11-01 10:25:45.435 appintentsmetadataprocessor[16125:157780] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
-
-CodeSign /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest (in target 'CamCardUITests' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    
-    Signing Identity:     "Sign to Run Locally"
-    
-    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest
-
-2026-11-01 10:26:29.139095+0800 CamCardUITests-Runner[16189:158925] [Default] Running tests...
-Test Suite 'Selected tests' started at 2026-11-01 10:27:38.158.
-Test Suite 'CamCardUITests.xctest' started at 2026-11-01 10:27:38.161.
-Test Suite 'CamCardUITests' started at 2026-11-01 10:27:38.162.
+2026-11-02 13:56:37.108 xcodebuild[29926:671247] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-11-02 13:57:44.521440+0800 CamCardUITests-Runner[30340:674677] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-11-02 13:57:56.669.
+Test Suite 'CamCardUITests.xctest' started at 2026-11-02 13:57:56.671.
+Test Suite 'CamCardUITests' started at 2026-11-02 13:57:56.672.
+Test Case '-[CamCardUITests.CamCardUITests testKillRelaunchKeepsImagesFieldsTagsAndNotes]' started.
+    t =     0.00s Start Test at 2026-11-02 13:57:56.676
+    t =     0.83s Set Up
+    t =     0.85s Open cn.chaotze.CamCard
+    t =     0.86s     Launch cn.chaotze.CamCard
+    t =     6.05s         Setting up automation session
+    t =    10.17s         Wait for cn.chaotze.CamCard to idle
+    t =    14.38s Waiting 10.0s for "张三" StaticText to exist
+    t =    15.40s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
+    t =    15.40s         Checking existence of `"张三" StaticText`
+    t =    15.87s Tap "张三" StaticText
+    t =    15.87s     Wait for cn.chaotze.CamCard to idle
+    t =    15.88s     Find the "张三" StaticText
+    t =    16.07s     Check for interrupting elements affecting "张三" StaticText
+    t =    16.24s     Synthesize event
+    t =    16.68s     Wait for cn.chaotze.CamCard to idle
+    t =    17.18s Waiting 10.0s for "张三" NavigationBar to exist
+    t =    18.19s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" NavigationBar`
+    t =    18.20s         Checking existence of `"张三" NavigationBar`
+    t =    18.89s Checking existence of `"重点客户" StaticText`
+    t =    19.36s Checking existence of `"客户" StaticText`
+    t =    19.62s Checking existence of `"13800138000" StaticText`
+    t =    19.87s Checking existence of `"处理后图像" Button`
+    t =    20.09s Terminate cn.chaotze.CamCard:30414
+    t =    21.18s Open cn.chaotze.CamCard
+    t =    21.19s     Launch cn.chaotze.CamCard
+    t =    21.82s         Setting up automation session
+    t =    25.32s         Wait for cn.chaotze.CamCard to idle
+    t =    29.68s Waiting 10.0s for "张三" StaticText to exist
+    t =    30.69s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
+    t =    30.69s         Checking existence of `"张三" StaticText`
+    t =    31.03s Tap "张三" StaticText
+    t =    31.04s     Wait for cn.chaotze.CamCard to idle
+    t =    31.05s     Find the "张三" StaticText
+    t =    31.21s     Check for interrupting elements affecting "张三" StaticText
+    t =    31.36s     Synthesize event
+    t =    31.70s     Wait for cn.chaotze.CamCard to idle
+    t =    32.17s Waiting 10.0s for "张三" NavigationBar to exist
+    t =    33.19s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" NavigationBar`
+    t =    33.19s         Checking existence of `"张三" NavigationBar`
+    t =    33.75s Checking existence of `"重点客户" StaticText`
+    t =    34.07s Checking existence of `"客户" StaticText`
+    t =    34.36s Checking existence of `"13800138000" StaticText`
+    t =    34.59s Checking existence of `"处理后图像" Button`
+    t =    34.82s Tear Down
+Test Case '-[CamCardUITests.CamCardUITests testKillRelaunchKeepsImagesFieldsTagsAndNotes]' passed (35.125 seconds).
 Test Case '-[CamCardUITests.CamCardUITests testR01ColdLaunchShowsEmptyCardHolder]' started.
-    t =     0.01s Start Test at 2026-11-01 10:27:38.172
-    t =     4.61s Set Up
-    t =     4.64s Open cn.chaotze.CamCard
-    t =     4.64s     Launch cn.chaotze.CamCard
-    t =    15.05s         Setting up automation session
-    t =    26.99s         Wait for cn.chaotze.CamCard to idle
-    t =    48.82s Waiting 10.0s for "还没有名片" StaticText to exist
-    t =    49.84s     Checking `Expect predicate `existsNoRetry == 1` for object "还没有名片" StaticText`
-    t =    49.85s         Checking existence of `"还没有名片" StaticText`
-    t =    51.75s Checking existence of `"拍摄名片" Button`
-    t =    51.95s Checking existence of `"从相册导入" Button`
-    t =    52.15s Tear Down
-Test Case '-[CamCardUITests.CamCardUITests testR01ColdLaunchShowsEmptyCardHolder]' passed (52.485 seconds).
+    t =     0.00s Start Test at 2026-11-02 13:58:31.801
+    t =     0.23s Set Up
+    t =     0.23s Open cn.chaotze.CamCard
+    t =     0.23s     Launch cn.chaotze.CamCard
+    t =     0.24s         Terminate cn.chaotze.CamCard:30449
+    t =     1.74s         Setting up automation session
+    t =     4.61s         Wait for cn.chaotze.CamCard to idle
+    t =     7.34s Waiting 10.0s for "还没有名片" StaticText to exist
+    t =     8.35s     Checking `Expect predicate `existsNoRetry == 1` for object "还没有名片" StaticText`
+    t =     8.35s         Checking existence of `"还没有名片" StaticText`
+    t =     8.49s Checking existence of `"拍摄名片" Button`
+    t =     8.56s Checking existence of `"从相册导入" Button`
+    t =     8.62s Tear Down
+Test Case '-[CamCardUITests.CamCardUITests testR01ColdLaunchShowsEmptyCardHolder]' passed (8.872 seconds).
 Test Case '-[CamCardUITests.CamCardUITests testR03CameraPermissionDeniedKeepsPhotoImportAvailable]' started.
-    t =     0.00s Start Test at 2026-11-01 10:28:30.657
-    t =     0.61s Set Up
-    t =     0.62s Open cn.chaotze.CamCard
-    t =     0.62s     Launch cn.chaotze.CamCard
-    t =     0.62s         Terminate cn.chaotze.CamCard:16519
-    t =     3.73s         Setting up automation session
-    t =    12.04s         Wait for cn.chaotze.CamCard to idle
-    t =    17.33s Waiting 10.0s for "还没有名片" StaticText to exist
-    t =    18.35s     Checking `Expect predicate `existsNoRetry == 1` for object "还没有名片" StaticText`
-    t =    18.35s         Checking existence of `"还没有名片" StaticText`
-    t =    19.19s Tap "拍摄名片" Button
-    t =    19.20s     Wait for cn.chaotze.CamCard to idle
-    t =    19.24s     Find the "拍摄名片" Button
-    t =    19.46s     Check for interrupting elements affecting "cardHolderRoot" Button
-    t =    19.72s     Synthesize event
-    t =    20.30s     Wait for cn.chaotze.CamCard to idle
-    t =    20.41s Waiting 10.0s for "需要相机权限" Alert to exist
-    t =    21.44s     Checking `Expect predicate `existsNoRetry == 1` for object "需要相机权限" Alert`
-    t =    21.44s         Checking existence of `"需要相机权限" Alert`
-    t =    22.63s         Capturing element debug description
-    t =    23.46s     Checking `Expect predicate `existsNoRetry == 1` for object "需要相机权限" Alert`
-    t =    23.46s         Checking existence of `"需要相机权限" Alert`
-    t =    26.23s Checking existence of `"从相册导入" Button`
-    t =    27.26s Checking existence of `"打开设置" Button`
-    t =    28.02s Tear Down
-Test Case '-[CamCardUITests.CamCardUITests testR03CameraPermissionDeniedKeepsPhotoImportAvailable]' passed (28.420 seconds).
+    t =     0.00s Start Test at 2026-11-02 13:58:40.674
+    t =     0.16s Set Up
+    t =     0.17s Open cn.chaotze.CamCard
+    t =     0.17s     Launch cn.chaotze.CamCard
+    t =     0.17s         Terminate cn.chaotze.CamCard:30487
+    t =     1.65s         Setting up automation session
+    t =     3.97s         Wait for cn.chaotze.CamCard to idle
+    t =     7.42s Waiting 10.0s for "还没有名片" StaticText to exist
+    t =     8.44s     Checking `Expect predicate `existsNoRetry == 1` for object "还没有名片" StaticText`
+    t =     8.44s         Checking existence of `"还没有名片" StaticText`
+    t =     8.61s Tap "拍摄名片" Button
+    t =     8.61s     Wait for cn.chaotze.CamCard to idle
+    t =     8.62s     Find the "拍摄名片" Button
+    t =     8.69s     Check for interrupting elements affecting "cardHolderRoot" Button
+    t =     8.79s     Synthesize event
+    t =     9.13s     Wait for cn.chaotze.CamCard to idle
+    t =    12.27s Waiting 10.0s for "需要相机权限" Alert to exist
+    t =    13.29s     Checking `Expect predicate `existsNoRetry == 1` for object "需要相机权限" Alert`
+    t =    13.29s         Checking existence of `"需要相机权限" Alert`
+    t =    13.67s Checking existence of `"从相册导入" Button`
+    t =    13.86s Checking existence of `"打开设置" Button`
+    t =    14.04s Tear Down
+Test Case '-[CamCardUITests.CamCardUITests testR03CameraPermissionDeniedKeepsPhotoImportAvailable]' passed (14.323 seconds).
 Test Case '-[CamCardUITests.CamCardUITests testR04CancelCaptureReturnsToEmptyHolder]' started.
-    t =     0.00s Start Test at 2026-11-01 10:28:59.081
-    t =     0.48s Set Up
-    t =     0.49s Open cn.chaotze.CamCard
-    t =     0.50s     Launch cn.chaotze.CamCard
-    t =     0.51s         Terminate cn.chaotze.CamCard:16588
-    t =     2.83s         Setting up automation session
-    t =     9.04s         Wait for cn.chaotze.CamCard to idle
-    t =    14.99s Waiting 10.0s for "还没有名片" StaticText to exist
-    t =    16.00s     Checking `Expect predicate `existsNoRetry == 1` for object "还没有名片" StaticText`
-    t =    16.00s         Checking existence of `"还没有名片" StaticText`
-    t =    16.81s Tap "拍摄名片" Button
-    t =    16.82s     Wait for cn.chaotze.CamCard to idle
-    t =    16.91s     Find the "拍摄名片" Button
-    t =    17.13s     Check for interrupting elements affecting "cardHolderRoot" Button
-    t =    17.34s         Wait for com.apple.springboard to idle
-    t =    17.93s     Synthesize event
-    t =    18.31s     Wait for cn.chaotze.CamCard to idle
-    t =    23.24s Waiting 10.0s for "需要相机权限" Alert to exist
-    t =    24.28s     Checking `Expect predicate `existsNoRetry == 1` for object "需要相机权限" Alert`
-    t =    24.28s         Checking existence of `"需要相机权限" Alert`
-    t =    24.77s Tap "取消" Button
-    t =    24.77s     Wait for cn.chaotze.CamCard to idle
-    t =    24.80s     Find the "取消" Button
-    t =    25.14s     Check for interrupting elements affecting "取消" Button
-    t =    25.53s     Synthesize event
-    t =    25.98s     Wait for cn.chaotze.CamCard to idle
-    t =    26.56s Waiting 10.0s for "还没有名片" StaticText to exist
-    t =    27.59s     Checking `Expect predicate `existsNoRetry == 1` for object "还没有名片" StaticText`
-    t =    27.59s         Checking existence of `"还没有名片" StaticText`
-    t =    28.86s Tear Down
-Test Case '-[CamCardUITests.CamCardUITests testR04CancelCaptureReturnsToEmptyHolder]' passed (29.343 seconds).
-Test Case '-[CamCardUITests.CamCardUITests testR08ToR13DetailShowsOnlyFinalValues]' started.
-    t =     0.01s Start Test at 2026-11-01 10:29:28.431
-    t =     0.56s Set Up
-    t =     0.59s Open cn.chaotze.CamCard
-    t =     0.60s     Launch cn.chaotze.CamCard
-    t =     0.61s         Terminate cn.chaotze.CamCard:16624
-    t =     3.34s         Setting up automation session
-    t =    10.91s         Wait for cn.chaotze.CamCard to idle
-    t =    18.48s Waiting 10.0s for "张三" StaticText to exist
-    t =    19.49s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
-    t =    19.50s         Checking existence of `"张三" StaticText`
-    t =    20.11s Tap "张三" StaticText
-    t =    20.11s     Wait for cn.chaotze.CamCard to idle
-    t =    20.14s     Find the "张三" StaticText
-    t =    20.47s     Check for interrupting elements affecting "张三" StaticText
-    t =    20.78s     Synthesize event
-    t =    21.17s     Wait for cn.chaotze.CamCard to idle
-    t =    24.60s Waiting 10.0s for "张三" NavigationBar to exist
-    t =    25.64s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" NavigationBar`
-    t =    25.65s         Checking existence of `"张三" NavigationBar`
-    t =    26.77s Checking existence of `"张三" StaticText`
-    t =    27.33s Checking existence of `"星河科技有限公司" StaticText`
-    t =    27.76s Checking existence of `"13800138000" StaticText`
-    t =    28.14s Checking existence of `"010-88886666" StaticText`
-    t =    28.56s Checking existence of `"010-88887777" StaticText`
-    t =    28.94s Checking existence of `StaticText (First Match)`
-    t =    29.29s Checking existence of `"www.xinghe.com" StaticText`
-    t =    29.65s Checking existence of `"北京市朝阳区建国路88号" StaticText`
-    t =    30.00s Checking existence of `"100022" StaticText`
-    t =    30.35s Checking existence of `"重点客户" StaticText`
-    t =    30.72s Checking existence of `"客户" StaticText`
-    t =    31.10s Tap Button (First Match)
-    t =    31.10s     Wait for cn.chaotze.CamCard to idle
-    t =    31.12s     Find the Button (First Match)
-    t =    31.33s     Check for interrupting elements affecting "BackButton" Button
-    t =    31.69s     Synthesize event
-    t =    32.27s     Wait for cn.chaotze.CamCard to idle
-    t =    33.70s Waiting 10.0s for "王五" StaticText to exist
-    t =    34.76s     Checking `Expect predicate `existsNoRetry == 1` for object "王五" StaticText`
-    t =    34.76s         Checking existence of `"王五" StaticText`
-    t =    35.13s Tap "王五" StaticText
-    t =    35.14s     Wait for cn.chaotze.CamCard to idle
-    t =    35.16s     Find the "王五" StaticText
-    t =    35.47s     Check for interrupting elements affecting "王五" StaticText
-    t =    35.76s     Synthesize event
-    t =    36.15s     Wait for cn.chaotze.CamCard to idle
-    t =    37.63s Waiting 10.0s for "王五" NavigationBar to exist
-    t =    38.66s     Checking `Expect predicate `existsNoRetry == 1` for object "王五" NavigationBar`
-    t =    38.66s         Checking existence of `"王五" NavigationBar`
-    t =    38.98s Checking existence of `StaticText (First Match)`
-    t =    39.25s Checking existence of `"网站" StaticText`
-    t =    39.50s Checking existence of `"地址" StaticText`
-    t =    39.75s Checking existence of `"备注" StaticText`
-    t =    40.00s Tear Down
-Test Case '-[CamCardUITests.CamCardUITests testR08ToR13DetailShowsOnlyFinalValues]' passed (40.323 seconds).
-Test Case '-[CamCardUITests.CamCardUITests testR14EditingUpdatesCardWithoutAddingAnother]' started.
-    t =     0.00s Start Test at 2026-11-01 10:30:08.753
-    t =     0.39s Set Up
-    t =     0.40s Open cn.chaotze.CamCard
-    t =     0.41s     Launch cn.chaotze.CamCard
-    t =     0.41s         Terminate cn.chaotze.CamCard:16662
-    t =     2.76s         Setting up automation session
-    t =     9.07s         Wait for cn.chaotze.CamCard to idle
-    t =    15.17s Waiting 10.0s for "张三" StaticText to exist
-    t =    16.19s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
-    t =    16.19s         Checking existence of `"张三" StaticText`
-    t =    17.13s Tap "张三" StaticText
-    t =    17.13s     Wait for cn.chaotze.CamCard to idle
-    t =    17.15s     Find the "张三" StaticText
-    t =    17.47s     Check for interrupting elements affecting "张三" StaticText
-    t =    17.79s     Synthesize event
-    t =    18.17s     Wait for cn.chaotze.CamCard to idle
-    t =    20.77s Waiting 10.0s for "编辑" Button to exist
-    t =    21.80s     Checking `Expect predicate `existsNoRetry == 1` for object "编辑" Button`
-    t =    21.80s         Checking existence of `"编辑" Button`
-    t =    22.34s Tap "编辑" Button
-    t =    22.34s     Wait for cn.chaotze.CamCard to idle
-    t =    22.36s     Find the "编辑" Button
-    t =    22.72s     Check for interrupting elements affecting "detailEditButton" Button
-    t =    23.09s     Synthesize event
-    t =    23.57s     Wait for cn.chaotze.CamCard to idle
-    t =    27.45s Waiting 10.0s for "reviewField-name" TextField to exist
-    t =    28.50s     Checking `Expect predicate `existsNoRetry == 1` for object "reviewField-name" TextField`
-    t =    28.51s         Checking existence of `"reviewField-name" TextField`
-    t =    29.74s Tap "reviewField-name" TextField
-    t =    29.74s     Wait for cn.chaotze.CamCard to idle
-    t =    29.77s     Find the "reviewField-name" TextField
-    t =    30.34s     Check for interrupting elements affecting "reviewField-name" TextField
-    t =    30.81s     Synthesize event
-    t =    31.18s     Wait for cn.chaotze.CamCard to idle
-    t =    36.80s Type '' into "reviewField-name" TextField
-    t =    36.80s     Wait for cn.chaotze.CamCard to idle
-    t =    37.01s     Find the "reviewField-name" TextField
-    t =    38.01s     Check for interrupting elements affecting "reviewField-name" TextField
-    t =    38.66s     Synthesize event
-    t =    39.04s     Wait for cn.chaotze.CamCard to idle
-    t =    40.90s Type '张三丰' into "reviewField-name" TextField
-    t =    40.90s     Wait for cn.chaotze.CamCard to idle
-    t =    40.94s     Find the "reviewField-name" TextField
-    t =    41.99s     Check for interrupting elements affecting "reviewField-name" TextField
-    t =    42.63s     Synthesize event
-    t =    42.93s     Wait for cn.chaotze.CamCard to idle
-    t =    43.18s Tap "reviewSaveButton" Button
-    t =    43.18s     Wait for cn.chaotze.CamCard to idle
-    t =    43.22s     Find the "reviewSaveButton" Button
-    t =    43.94s     Check for interrupting elements affecting "reviewSaveButton" Button
-    t =    44.56s     Synthesize event
-    t =    45.11s     Wait for cn.chaotze.CamCard to idle
-    t =    48.88s Waiting 10.0s for "张三丰" NavigationBar to exist
-    t =    49.92s     Checking `Expect predicate `existsNoRetry == 1` for object "张三丰" NavigationBar`
-    t =    49.93s         Checking existence of `"张三丰" NavigationBar`
-    t =    50.30s Checking existence of `"张三丰" StaticText`
-    t =    50.68s Tap Button (First Match)
-    t =    50.69s     Wait for cn.chaotze.CamCard to idle
-    t =    50.71s     Find the Button (First Match)
-    t =    50.93s     Check for interrupting elements affecting "BackButton" Button
-    t =    51.32s     Synthesize event
-    t =    51.79s     Wait for cn.chaotze.CamCard to idle
-    t =    53.57s Waiting 10.0s for "张三丰" StaticText to exist
-    t =    54.63s     Checking `Expect predicate `existsNoRetry == 1` for object "张三丰" StaticText`
-    t =    54.63s         Checking existence of `"张三丰" StaticText`
-    t =    55.09s Get number of matches for: Elements matching predicate 'label == "张三丰"'
-    t =    55.40s Tear Down
-Test Case '-[CamCardUITests.CamCardUITests testR14EditingUpdatesCardWithoutAddingAnother]' passed (55.745 seconds).
-Test Case '-[CamCardUITests.CamCardUITests testR15DeleteRequiresConfirmationAndRemovesCard]' started.
-    t =     0.00s Start Test at 2026-11-01 10:31:04.501
-    t =     0.42s Set Up
-    t =     0.43s Open cn.chaotze.CamCard
-    t =     0.44s     Launch cn.chaotze.CamCard
-    t =     0.44s         Terminate cn.chaotze.CamCard:16716
-    t =     2.58s         Setting up automation session
-    t =     9.07s         Wait for cn.chaotze.CamCard to idle
-    t =    15.81s Waiting 10.0s for "李四" StaticText to exist
-    t =    16.82s     Checking `Expect predicate `existsNoRetry == 1` for object "李四" StaticText`
-    t =    16.82s         Checking existence of `"李四" StaticText`
-    t =    17.42s Tap "李四" StaticText
-    t =    17.42s     Wait for cn.chaotze.CamCard to idle
-    t =    17.44s     Find the "李四" StaticText
-    t =    17.73s     Check for interrupting elements affecting "李四" StaticText
-    t =    18.04s     Synthesize event
-    t =    18.43s     Wait for cn.chaotze.CamCard to idle
-    t =    21.16s Waiting 10.0s for "删除名片" Button to exist
-    t =    22.19s     Checking `Expect predicate `existsNoRetry == 1` for object "删除名片" Button`
-    t =    22.20s         Checking existence of `"删除名片" Button`
-    t =    22.74s Tap "删除名片" Button
-    t =    22.74s     Wait for cn.chaotze.CamCard to idle
-    t =    22.77s     Find the "删除名片" Button
-    t =    23.17s     Check for interrupting elements affecting "detailDeleteButton" Button
-    t =    23.53s     Synthesize event
-    t =    23.60s         Scroll element to visible
-    t =    23.61s         Find the "detailDeleteButton" Button
-    t =    24.16s         Computed hit point {201, 806.5} after scrolling to visible
-    t =    24.49s     Wait for cn.chaotze.CamCard to idle
-    t =    28.02s Waiting 10.0s for "删除" Button to exist
-    t =    29.06s     Checking `Expect predicate `existsNoRetry == 1` for object "删除" Button`
-    t =    29.06s         Checking existence of `"删除" Button`
-    t =    29.54s Tap "删除" Button
-    t =    29.55s     Wait for cn.chaotze.CamCard to idle
-    t =    29.57s     Find the "删除" Button
-    t =    29.98s     Check for interrupting elements affecting "删除" Button
-    t =    30.42s     Synthesize event
-    t =    30.78s     Wait for cn.chaotze.CamCard to idle
-    t =    31.37s Waiting 10.0s for "张三" StaticText to exist
-    t =    32.39s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
-    t =    32.39s         Checking existence of `"张三" StaticText`
-    t =    34.82s Checking `Expect predicate `exists == 0` for object "李四" StaticText`
-    t =    34.82s     Checking existence of `"李四" StaticText`
-    t =    35.34s Tear Down
-Test Case '-[CamCardUITests.CamCardUITests testR15DeleteRequiresConfirmationAndRemovesCard]' passed (35.711 seconds).
-Test Case '-[CamCardUITests.CamCardUITests testR16bTagFilter]' started.
-    t =     0.00s Start Test at 2026-11-01 10:31:40.216
-    t =     0.45s Set Up
-    t =     0.47s Open cn.chaotze.CamCard
-    t =     0.49s     Launch cn.chaotze.CamCard
-    t =     0.50s         Terminate cn.chaotze.CamCard:16789
-    t =     2.66s         Setting up automation session
-    t =     9.11s         Wait for cn.chaotze.CamCard to idle
-    t =    15.71s Waiting 10.0s for "张三" StaticText to exist
-    t =    16.72s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
-    t =    16.73s         Checking existence of `"张三" StaticText`
-    t =    17.57s Tap "标签筛选" Button
-    t =    17.57s     Wait for cn.chaotze.CamCard to idle
-    t =    17.59s     Find the "标签筛选" Button
-    t =    17.92s     Check for interrupting elements affecting "tagFilterButton" Button
-    t =    18.21s     Synthesize event
-    t =    18.65s     Wait for cn.chaotze.CamCard to idle
-    t =    20.65s Waiting 10.0s for Button (First Match) to exist
-    t =    21.68s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
-    t =    21.69s         Checking existence of `Button (First Match)`
-    t =    21.93s Tap Button (First Match)
-    t =    21.93s     Wait for cn.chaotze.CamCard to idle
-    t =    21.95s     Find the Button (First Match)
-    t =    22.18s     Check for interrupting elements affecting "客户" Button
-    t =    22.52s     Synthesize event
-    t =    22.89s     Wait for cn.chaotze.CamCard to idle
-    t =    24.23s Waiting 10.0s for "张三" StaticText to exist
-    t =    25.27s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
-    t =    25.27s         Checking existence of `"张三" StaticText`
-    t =    25.54s Checking existence of `"王五" StaticText`
-    t =    25.77s Checking existence of `"李四" StaticText`
-    t =    26.01s Tear Down
-Test Case '-[CamCardUITests.CamCardUITests testR16bTagFilter]' passed (26.329 seconds).
-Test Case '-[CamCardUITests.CamCardUITests testR16SearchAndTagFilter]' started.
-    t =     0.00s Start Test at 2026-11-01 10:32:06.549
-    t =     0.42s Set Up
-    t =     0.43s Open cn.chaotze.CamCard
-    t =     0.43s     Launch cn.chaotze.CamCard
-    t =     0.44s         Terminate cn.chaotze.CamCard:16841
-    t =     2.80s         Setting up automation session
-    t =     9.85s         Wait for cn.chaotze.CamCard to idle
-    t =    18.08s Waiting 10.0s for "张三" StaticText to exist
-    t =    19.11s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
-    t =    19.11s         Checking existence of `"张三" StaticText`
-    t =    19.72s Waiting 10.0s for SearchField (First Match) to exist
-    t =    20.75s     Checking `Expect predicate `existsNoRetry == 1` for object SearchField (First Match)`
-    t =    20.75s         Checking existence of `SearchField (First Match)`
-    t =    21.11s Tap SearchField (First Match)
-    t =    21.11s     Wait for cn.chaotze.CamCard to idle
-    t =    21.13s     Find the SearchField (First Match)
-    t =    21.53s     Check for interrupting elements affecting "搜索姓名、公司、电话或标签" SearchField
-    t =    21.78s     Synthesize event
-    t =    22.27s     Wait for cn.chaotze.CamCard to idle
-    t =    25.45s Type '云' into "搜索姓名、公司、电话或标签" SearchField
-    t =    25.46s     Wait for cn.chaotze.CamCard to idle
-    t =    25.71s     Find the "搜索姓名、公司、电话或标签" SearchField
-    t =    26.93s     Check for interrupting elements affecting "搜索姓名、公司、电话或标签" SearchField
-    t =    27.52s     Synthesize event
-    t =    27.85s     Wait for cn.chaotze.CamCard to idle
-    t =    28.41s Waiting 10.0s for "李四" StaticText to exist
-    t =    29.43s     Checking `Expect predicate `existsNoRetry == 1` for object "李四" StaticText`
-    t =    29.43s         Checking existence of `"李四" StaticText`
-    t =    29.79s Checking existence of `"张三" StaticText`
-    t =    30.20s Tear Down
-Test Case '-[CamCardUITests.CamCardUITests testR16SearchAndTagFilter]' passed (30.515 seconds).
-Test Case '-[CamCardUITests.CamCardUITests testR17TagAndSortControlsAreAvailable]' started.
-    t =     0.00s Start Test at 2026-11-01 10:32:37.065
-    t =     0.50s Set Up
-    t =     0.51s Open cn.chaotze.CamCard
-    t =     0.51s     Launch cn.chaotze.CamCard
-    t =     0.51s         Terminate cn.chaotze.CamCard:16872
-    t =     3.05s         Setting up automation session
-    t =     9.47s         Wait for cn.chaotze.CamCard to idle
-    t =    15.86s Waiting 10.0s for "张三" StaticText to exist
-    t =    16.88s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
-    t =    16.88s         Checking existence of `"张三" StaticText`
-    t =    17.60s Checking existence of `"排序" Button`
-    t =    17.90s Checking existence of `"标签筛选" Button`
-    t =    18.16s Tap "排序" Button
-    t =    18.16s     Wait for cn.chaotze.CamCard to idle
-    t =    18.18s     Find the "排序" Button
-    t =    18.45s     Check for interrupting elements affecting "sortButton" Button
-    t =    18.69s     Synthesize event
-    t =    19.10s     Wait for cn.chaotze.CamCard to idle
-    t =    20.99s Waiting 10.0s for Button (First Match) to exist
-    t =    22.02s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
-    t =    22.02s         Checking existence of `Button (First Match)`
-    t =    22.25s Tap Button (First Match)
-    t =    22.26s     Wait for cn.chaotze.CamCard to idle
-    t =    22.29s     Find the Button (First Match)
-    t =    22.52s     Check for interrupting elements affecting "姓名" Button
-    t =    22.79s     Synthesize event
-    t =    23.18s     Wait for cn.chaotze.CamCard to idle
-    t =    24.37s Waiting 10.0s for "张三" StaticText to exist
-    t =    25.40s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
-    t =    25.40s         Checking existence of `"张三" StaticText`
-    t =    25.70s Tear Down
-Test Case '-[CamCardUITests.CamCardUITests testR17TagAndSortControlsAreAvailable]' passed (26.012 seconds).
-Test Case '-[CamCardUITests.CamCardUITests testR18NotesAndRawTextAreReachable]' started.
-    t =     0.00s Start Test at 2026-11-01 10:33:03.079
+    t =     0.00s Start Test at 2026-11-02 13:58:55.000
     t =     0.44s Set Up
     t =     0.45s Open cn.chaotze.CamCard
     t =     0.45s     Launch cn.chaotze.CamCard
-    t =     0.46s         Terminate cn.chaotze.CamCard:16916
-    t =     2.75s         Setting up automation session
-    t =     8.37s         Wait for cn.chaotze.CamCard to idle
-    t =    15.26s Waiting 10.0s for "张三" StaticText to exist
-    t =    16.31s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
-    t =    16.32s         Checking existence of `"张三" StaticText`
-    t =    17.01s Tap "张三" StaticText
-    t =    17.01s     Wait for cn.chaotze.CamCard to idle
-    t =    17.04s     Find the "张三" StaticText
-    t =    17.34s     Check for interrupting elements affecting "张三" StaticText
-    t =    17.65s     Synthesize event
-    t =    18.03s     Wait for cn.chaotze.CamCard to idle
-    t =    22.90s Waiting 10.0s for "重点客户" StaticText to exist
-    t =    23.93s     Checking `Expect predicate `existsNoRetry == 1` for object "重点客户" StaticText`
-    t =    23.93s         Checking existence of `"重点客户" StaticText`
-    t =    24.57s Tap "查看 OCR 原始文本" Button
-    t =    24.58s     Wait for cn.chaotze.CamCard to idle
-    t =    24.60s     Find the "查看 OCR 原始文本" Button
-    t =    24.97s     Check for interrupting elements affecting "detailRawTextButton" Button
-    t =    25.31s     Synthesize event
-    t =    25.38s         Scroll element to visible
-    t =    25.40s         Find the "detailRawTextButton" Button
-    t =    25.96s         Computed hit point {201, 710.83333333333348} after scrolling to visible
-    t =    26.30s     Wait for cn.chaotze.CamCard to idle
-    t =    27.71s Waiting 10.0s for "OCR 原始文本" StaticText to exist
-    t =    28.77s     Checking `Expect predicate `existsNoRetry == 1` for object "OCR 原始文本" StaticText`
-    t =    28.77s         Checking existence of `"OCR 原始文本" StaticText`
-    t =    29.18s Tear Down
-Test Case '-[CamCardUITests.CamCardUITests testR18NotesAndRawTextAreReachable]' passed (29.485 seconds).
-Test Case '-[CamCardUITests.CamCardUITests testR20ExportFailureShowsMessageAndKeepsData]' started.
-    t =     0.00s Start Test at 2026-11-01 10:33:32.567
-    t =     0.32s Set Up
-    t =     0.33s Open cn.chaotze.CamCard
+    t =     0.45s         Terminate cn.chaotze.CamCard:30510
+    t =     2.10s         Setting up automation session
+    t =     5.92s         Wait for cn.chaotze.CamCard to idle
+    t =     9.19s Waiting 10.0s for "还没有名片" StaticText to exist
+    t =    10.22s     Checking `Expect predicate `existsNoRetry == 1` for object "还没有名片" StaticText`
+    t =    10.22s         Checking existence of `"还没有名片" StaticText`
+    t =    10.43s Tap "拍摄名片" Button
+    t =    10.43s     Wait for cn.chaotze.CamCard to idle
+    t =    10.44s     Find the "拍摄名片" Button
+    t =    10.52s     Check for interrupting elements affecting "cardHolderRoot" Button
+    t =    10.60s     Synthesize event
+    t =    10.92s     Wait for cn.chaotze.CamCard to idle
+    t =    14.43s Waiting 10.0s for "需要相机权限" Alert to exist
+    t =    15.47s     Checking `Expect predicate `existsNoRetry == 1` for object "需要相机权限" Alert`
+    t =    15.47s         Checking existence of `"需要相机权限" Alert`
+    t =    15.84s Tap "取消" Button
+    t =    15.84s     Wait for cn.chaotze.CamCard to idle
+    t =    15.88s     Find the "取消" Button
+    t =    16.12s     Check for interrupting elements affecting "取消" Button
+    t =    16.35s     Synthesize event
+    t =    16.71s     Wait for cn.chaotze.CamCard to idle
+    t =    17.07s Waiting 10.0s for "还没有名片" StaticText to exist
+    t =    18.09s     Checking `Expect predicate `existsNoRetry == 1` for object "还没有名片" StaticText`
+    t =    18.09s         Checking existence of `"还没有名片" StaticText`
+    t =    18.35s Tear Down
+Test Case '-[CamCardUITests.CamCardUITests testR04CancelCaptureReturnsToEmptyHolder]' passed (18.834 seconds).
+Test Case '-[CamCardUITests.CamCardUITests testR08ToR13DetailShowsOnlyFinalValues]' started.
+    t =     0.00s Start Test at 2026-11-02 13:59:13.837
+    t =     0.33s Set Up
+    t =     0.34s Open cn.chaotze.CamCard
     t =     0.34s     Launch cn.chaotze.CamCard
-    t =     0.34s         Terminate cn.chaotze.CamCard:16945
-    t =     2.87s         Setting up automation session
-    t =     8.49s         Wait for cn.chaotze.CamCard to idle
-    t =    14.32s Waiting 10.0s for "张三" StaticText to exist
-    t =    15.36s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
-    t =    15.37s         Checking existence of `"张三" StaticText`
-    t =    16.24s Tap "选择" Button
-    t =    16.25s     Wait for cn.chaotze.CamCard to idle
-    t =    16.27s     Find the "选择" Button
-    t =    16.61s     Check for interrupting elements affecting "selectButton" Button
-    t =    16.89s     Synthesize event
-    t =    17.42s     Wait for cn.chaotze.CamCard to idle
-    t =    18.63s Tap "张三" StaticText
-    t =    18.63s     Wait for cn.chaotze.CamCard to idle
-    t =    18.66s     Find the "张三" StaticText
-    t =    19.18s     Check for interrupting elements affecting "张三" StaticText
-    t =    19.49s     Synthesize event
-    t =    19.88s     Wait for cn.chaotze.CamCard to idle
-    t =    22.10s Tap "导出" Button
-    t =    22.10s     Wait for cn.chaotze.CamCard to idle
-    t =    22.13s     Find the "导出" Button
-    t =    22.45s     Check for interrupting elements affecting "exportButton" Button
-    t =    22.78s     Synthesize event
-    t =    23.22s     Wait for cn.chaotze.CamCard to idle
-    t =    24.39s Waiting 10.0s for "提示" Alert to exist
-    t =    25.44s     Checking `Expect predicate `existsNoRetry == 1` for object "提示" Alert`
-    t =    25.44s         Checking existence of `"提示" Alert`
-    t =    25.91s Tap "好" Button
-    t =    25.91s     Wait for cn.chaotze.CamCard to idle
-    t =    25.93s     Find the "好" Button
-    t =    26.24s     Check for interrupting elements affecting "好" Button
-    t =    26.54s     Synthesize event
-    t =    26.91s     Wait for cn.chaotze.CamCard to idle
-    t =    27.36s Waiting 10.0s for "张三" StaticText to exist
-    t =    28.41s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
-    t =    28.42s         Checking existence of `"张三" StaticText`
-    t =    28.58s Tear Down
-Test Case '-[CamCardUITests.CamCardUITests testR20ExportFailureShowsMessageAndKeepsData]' passed (28.862 seconds).
-Test Suite 'CamCardUITests' passed at 2026-11-01 10:34:01.428.
-	 Executed 11 tests, with 0 failures (0 unexpected) in 383.227 (383.265) seconds
-Test Suite 'CamCardUITests.xctest' passed at 2026-11-01 10:34:01.430.
-	 Executed 11 tests, with 0 failures (0 unexpected) in 383.227 (383.269) seconds
-Test Suite 'Selected tests' passed at 2026-11-01 10:34:01.432.
-	 Executed 11 tests, with 0 failures (0 unexpected) in 383.227 (383.275) seconds
-2026-11-01 10:34:01.916 xcodebuild[16026:156287] [MT] IDETestOperationsObserverDebug: 496.391 elapsed -- Testing started completed.
-2026-11-01 10:34:01.916 xcodebuild[16026:156287] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
-2026-11-01 10:34:01.916 xcodebuild[16026:156287] [MT] IDETestOperationsObserverDebug: 496.391 sec, +496.391 sec -- end
+    t =     0.34s         Terminate cn.chaotze.CamCard:30552
+    t =     1.86s         Setting up automation session
+    t =     4.89s         Wait for cn.chaotze.CamCard to idle
+    t =     8.30s Waiting 10.0s for "张三" StaticText to exist
+    t =     9.31s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
+    t =     9.31s         Checking existence of `"张三" StaticText`
+    t =     9.50s Tap "张三" StaticText
+    t =     9.50s     Wait for cn.chaotze.CamCard to idle
+    t =     9.50s     Find the "张三" StaticText
+    t =     9.58s     Check for interrupting elements affecting "张三" StaticText
+    t =     9.65s     Synthesize event
+    t =     9.96s     Wait for cn.chaotze.CamCard to idle
+    t =    11.07s Waiting 10.0s for "张三" NavigationBar to exist
+    t =    12.08s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" NavigationBar`
+    t =    12.08s         Checking existence of `"张三" NavigationBar`
+    t =    12.27s Checking existence of `"张三" StaticText`
+    t =    12.40s Checking existence of `"星河科技有限公司" StaticText`
+    t =    12.53s Checking existence of `"13800138000" StaticText`
+    t =    12.70s Checking existence of `"010-88886666" StaticText`
+    t =    12.88s Checking existence of `"010-88887777" StaticText`
+    t =    13.07s Checking existence of `StaticText (First Match)`
+    t =    13.26s Checking existence of `"www.xinghe.com" StaticText`
+    t =    13.43s Checking existence of `"北京市朝阳区建国路88号" StaticText`
+    t =    13.65s Checking existence of `"100022" StaticText`
+    t =    13.87s Checking existence of `"重点客户" StaticText`
+    t =    14.12s Checking existence of `"客户" StaticText`
+    t =    14.33s Tap Button (First Match)
+    t =    14.33s     Wait for cn.chaotze.CamCard to idle
+    t =    14.35s     Find the Button (First Match)
+    t =    14.47s     Check for interrupting elements affecting "BackButton" Button
+    t =    14.72s     Synthesize event
+    t =    15.12s     Wait for cn.chaotze.CamCard to idle
+    t =    16.26s Waiting 10.0s for "王五" StaticText to exist
+    t =    17.28s     Checking `Expect predicate `existsNoRetry == 1` for object "王五" StaticText`
+    t =    17.28s         Checking existence of `"王五" StaticText`
+    t =    17.40s Tap "王五" StaticText
+    t =    17.40s     Wait for cn.chaotze.CamCard to idle
+    t =    17.41s     Find the "王五" StaticText
+    t =    17.53s     Check for interrupting elements affecting "王五" StaticText
+    t =    17.64s     Synthesize event
+    t =    17.97s     Wait for cn.chaotze.CamCard to idle
+    t =    18.77s Waiting 10.0s for "王五" NavigationBar to exist
+    t =    19.78s     Checking `Expect predicate `existsNoRetry == 1` for object "王五" NavigationBar`
+    t =    19.78s         Checking existence of `"王五" NavigationBar`
+    t =    19.93s Checking existence of `StaticText (First Match)`
+    t =    20.08s Checking existence of `"网站" StaticText`
+    t =    20.18s Checking existence of `"地址" StaticText`
+    t =    20.28s Checking existence of `"备注" StaticText`
+    t =    20.38s Tear Down
+Test Case '-[CamCardUITests.CamCardUITests testR08ToR13DetailShowsOnlyFinalValues]' passed (20.645 seconds).
+Test Case '-[CamCardUITests.CamCardUITests testR14EditingUpdatesCardWithoutAddingAnother]' started.
+    t =     0.00s Start Test at 2026-11-02 13:59:34.484
+    t =     0.16s Set Up
+    t =     0.16s Open cn.chaotze.CamCard
+    t =     0.16s     Launch cn.chaotze.CamCard
+    t =     0.17s         Terminate cn.chaotze.CamCard:30600
+    t =     1.45s         Setting up automation session
+    t =     4.04s         Wait for cn.chaotze.CamCard to idle
+    t =     8.36s Waiting 10.0s for "张三" StaticText to exist
+    t =     9.38s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
+    t =     9.38s         Checking existence of `"张三" StaticText`
+    t =     9.58s Tap "张三" StaticText
+    t =     9.58s     Wait for cn.chaotze.CamCard to idle
+    t =     9.59s     Find the "张三" StaticText
+    t =     9.69s     Check for interrupting elements affecting "张三" StaticText
+    t =     9.78s     Synthesize event
+    t =    10.09s     Wait for cn.chaotze.CamCard to idle
+    t =    11.23s Waiting 10.0s for "编辑" Button to exist
+    t =    12.26s     Checking `Expect predicate `existsNoRetry == 1` for object "编辑" Button`
+    t =    12.26s         Checking existence of `"编辑" Button`
+    t =    12.50s Tap "编辑" Button
+    t =    12.50s     Wait for cn.chaotze.CamCard to idle
+    t =    12.51s     Find the "编辑" Button
+    t =    12.65s     Check for interrupting elements affecting "detailEditButton" Button
+    t =    12.79s     Synthesize event
+    t =    13.14s     Wait for cn.chaotze.CamCard to idle
+    t =    14.78s Waiting 10.0s for "reviewField-name" TextField to exist
+    t =    15.80s     Checking `Expect predicate `existsNoRetry == 1` for object "reviewField-name" TextField`
+    t =    15.80s         Checking existence of `"reviewField-name" TextField`
+    t =    16.35s Find the "reviewField-name" TextField
+    t =    16.57s Find the "reviewField-name" TextField
+    t =    16.75s Tap "reviewField-name" TextField
+    t =    16.75s     Wait for cn.chaotze.CamCard to idle
+    t =    16.76s     Find the "reviewField-name" TextField
+    t =    16.92s     Check for interrupting elements affecting "reviewField-name" TextField
+    t =    17.08s     Synthesize event
+    t =    17.40s     Wait for cn.chaotze.CamCard to idle
+    t =    20.00s Type '' into "reviewField-name" TextField
+    t =    20.01s     Wait for cn.chaotze.CamCard to idle
+    t =    20.35s     Find the "reviewField-name" TextField
+    t =    20.99s     Check for interrupting elements affecting "reviewField-name" TextField
+    t =    21.45s     Synthesize event
+    t =    21.86s     Wait for cn.chaotze.CamCard to idle
+    t =    23.01s Type '张三丰' into "reviewField-name" TextField
+    t =    23.01s     Wait for cn.chaotze.CamCard to idle
+    t =    23.04s     Find the "reviewField-name" TextField
+    t =    23.51s     Check for interrupting elements affecting "reviewField-name" TextField
+    t =    23.84s     Synthesize event
+    t =    24.11s     Wait for cn.chaotze.CamCard to idle
+    t =    24.19s Find the "reviewField-name" TextField
+    t =    24.51s Tap "reviewSaveButton" Button
+    t =    24.52s     Wait for cn.chaotze.CamCard to idle
+    t =    24.53s     Find the "reviewSaveButton" Button
+    t =    24.79s     Check for interrupting elements affecting "reviewSaveButton" Button
+    t =    25.07s     Synthesize event
+    t =    25.44s     Wait for cn.chaotze.CamCard to idle
+    t =    27.31s Waiting 10.0s for "张三丰" NavigationBar to exist
+    t =    28.32s     Checking `Expect predicate `existsNoRetry == 1` for object "张三丰" NavigationBar`
+    t =    28.32s         Checking existence of `"张三丰" NavigationBar`
+    t =    28.43s Checking existence of `"张三丰" StaticText`
+    t =    28.53s Tap Button (First Match)
+    t =    28.53s     Wait for cn.chaotze.CamCard to idle
+    t =    28.54s     Find the Button (First Match)
+    t =    28.60s     Check for interrupting elements affecting "BackButton" Button
+    t =    28.71s     Synthesize event
+    t =    29.04s     Wait for cn.chaotze.CamCard to idle
+    t =    30.04s Waiting 10.0s for "张三丰" StaticText to exist
+    t =    31.07s     Checking `Expect predicate `existsNoRetry == 1` for object "张三丰" StaticText`
+    t =    31.07s         Checking existence of `"张三丰" StaticText`
+    t =    31.19s Get number of matches for: Elements matching predicate 'label == "张三丰"'
+    t =    31.29s Tear Down
+Test Case '-[CamCardUITests.CamCardUITests testR14EditingUpdatesCardWithoutAddingAnother]' passed (31.563 seconds).
+Test Case '-[CamCardUITests.CamCardUITests testR15DeleteRequiresConfirmationAndRemovesCard]' started.
+    t =     0.00s Start Test at 2026-11-02 14:00:06.050
+    t =     0.15s Set Up
+    t =     0.16s Open cn.chaotze.CamCard
+    t =     0.16s     Launch cn.chaotze.CamCard
+    t =     0.16s         Terminate cn.chaotze.CamCard:30648
+    t =     1.45s         Setting up automation session
+    t =     3.80s         Wait for cn.chaotze.CamCard to idle
+    t =     7.22s Waiting 10.0s for "李四" StaticText to exist
+    t =     8.23s     Checking `Expect predicate `existsNoRetry == 1` for object "李四" StaticText`
+    t =     8.23s         Checking existence of `"李四" StaticText`
+    t =     8.45s Tap "李四" StaticText
+    t =     8.45s     Wait for cn.chaotze.CamCard to idle
+    t =     8.46s     Find the "李四" StaticText
+    t =     8.57s     Check for interrupting elements affecting "李四" StaticText
+    t =     8.67s     Synthesize event
+    t =     9.00s     Wait for cn.chaotze.CamCard to idle
+    t =    10.20s Waiting 10.0s for "删除名片" Button to exist
+    t =    11.22s     Checking `Expect predicate `existsNoRetry == 1` for object "删除名片" Button`
+    t =    11.22s         Checking existence of `"删除名片" Button`
+    t =    11.48s Tap "删除名片" Button
+    t =    11.48s     Wait for cn.chaotze.CamCard to idle
+    t =    11.50s     Find the "删除名片" Button
+    t =    11.74s     Check for interrupting elements affecting "detailDeleteButton" Button
+    t =    11.99s     Synthesize event
+    t =    12.04s         Scroll element to visible
+    t =    12.06s         Find the "detailDeleteButton" Button
+    t =    12.45s         Computed hit point {201, 806.5} after scrolling to visible
+    t =    12.78s     Wait for cn.chaotze.CamCard to idle
+    t =    13.52s Waiting 10.0s for "删除" Button to exist
+    t =    14.56s     Checking `Expect predicate `existsNoRetry == 1` for object "删除" Button`
+    t =    14.56s         Checking existence of `"删除" Button`
+    t =    14.96s Tap "删除" Button
+    t =    14.96s     Wait for cn.chaotze.CamCard to idle
+    t =    14.97s     Find the "删除" Button
+    t =    15.23s     Check for interrupting elements affecting "删除" Button
+    t =    15.41s     Synthesize event
+    t =    15.74s     Wait for cn.chaotze.CamCard to idle
+    t =    16.15s Waiting 10.0s for "张三" StaticText to exist
+    t =    17.17s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
+    t =    17.17s         Checking existence of `"张三" StaticText`
+    t =    18.50s Checking `Expect predicate `exists == 0` for object "李四" StaticText`
+    t =    18.50s     Checking existence of `"李四" StaticText`
+    t =    18.58s Tear Down
+Test Case '-[CamCardUITests.CamCardUITests testR15DeleteRequiresConfirmationAndRemovesCard]' passed (18.836 seconds).
+Test Case '-[CamCardUITests.CamCardUITests testR16bTagFilter]' started.
+    t =     0.00s Start Test at 2026-11-02 14:00:24.887
+    t =     0.14s Set Up
+    t =     0.14s Open cn.chaotze.CamCard
+    t =     0.14s     Launch cn.chaotze.CamCard
+    t =     0.14s         Terminate cn.chaotze.CamCard:30714
+    t =     1.37s         Setting up automation session
+    t =     3.24s         Wait for cn.chaotze.CamCard to idle
+    t =     6.38s Waiting 10.0s for "张三" StaticText to exist
+    t =     7.38s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
+    t =     7.38s         Checking existence of `"张三" StaticText`
+    t =     7.56s Tap "标签筛选" Button
+    t =     7.56s     Wait for cn.chaotze.CamCard to idle
+    t =     7.57s     Find the "标签筛选" Button
+    t =     7.63s     Check for interrupting elements affecting "tagFilterButton" Button
+    t =     7.70s     Synthesize event
+    t =     8.01s     Wait for cn.chaotze.CamCard to idle
+    t =     8.93s Waiting 10.0s for Button (First Match) to exist
+    t =     9.95s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =     9.95s         Checking existence of `Button (First Match)`
+    t =    10.09s Tap Button (First Match)
+    t =    10.09s     Wait for cn.chaotze.CamCard to idle
+    t =    10.11s     Find the Button (First Match)
+    t =    10.24s     Check for interrupting elements affecting "客户" Button
+    t =    10.39s     Synthesize event
+    t =    10.71s     Wait for cn.chaotze.CamCard to idle
+    t =    11.75s Waiting 10.0s for "张三" StaticText to exist
+    t =    12.78s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
+    t =    12.78s         Checking existence of `"张三" StaticText`
+    t =    12.84s Checking existence of `"王五" StaticText`
+    t =    12.90s Checking existence of `"李四" StaticText`
+    t =    12.95s Tear Down
+Test Case '-[CamCardUITests.CamCardUITests testR16bTagFilter]' passed (13.200 seconds).
+Test Case '-[CamCardUITests.CamCardUITests testR16SearchAndTagFilter]' started.
+    t =     0.00s Start Test at 2026-11-02 14:00:38.089
+    t =     0.13s Set Up
+    t =     0.14s Open cn.chaotze.CamCard
+    t =     0.14s     Launch cn.chaotze.CamCard
+    t =     0.14s         Terminate cn.chaotze.CamCard:30755
+    t =     1.62s         Setting up automation session
+    t =     4.10s         Wait for cn.chaotze.CamCard to idle
+    t =     7.39s Waiting 10.0s for "张三" StaticText to exist
+    t =     8.43s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
+    t =     8.43s         Checking existence of `"张三" StaticText`
+    t =     8.95s Waiting 10.0s for SearchField (First Match) to exist
+    t =     9.96s     Checking `Expect predicate `existsNoRetry == 1` for object SearchField (First Match)`
+    t =     9.96s         Checking existence of `SearchField (First Match)`
+    t =    10.10s Tap SearchField (First Match)
+    t =    10.10s     Wait for cn.chaotze.CamCard to idle
+    t =    10.12s     Find the SearchField (First Match)
+    t =    10.24s     Check for interrupting elements affecting "搜索姓名、公司、电话或标签" SearchField
+    t =    10.32s     Synthesize event
+    t =    10.63s     Wait for cn.chaotze.CamCard to idle
+    t =    12.49s Type '云' into "搜索姓名、公司、电话或标签" SearchField
+    t =    12.49s     Wait for cn.chaotze.CamCard to idle
+    t =    12.53s     Find the "搜索姓名、公司、电话或标签" SearchField
+    t =    13.09s     Check for interrupting elements affecting "搜索姓名、公司、电话或标签" SearchField
+    t =    13.26s     Synthesize event
+    t =    13.51s     Wait for cn.chaotze.CamCard to idle
+    t =    13.60s Waiting 10.0s for "李四" StaticText to exist
+    t =    14.61s     Checking `Expect predicate `existsNoRetry == 1` for object "李四" StaticText`
+    t =    14.61s         Checking existence of `"李四" StaticText`
+    t =    14.70s Checking existence of `"张三" StaticText`
+    t =    14.78s Tear Down
+Test Case '-[CamCardUITests.CamCardUITests testR16SearchAndTagFilter]' passed (15.031 seconds).
+Test Case '-[CamCardUITests.CamCardUITests testR17TagAndSortControlsAreAvailable]' started.
+    t =     0.00s Start Test at 2026-11-02 14:00:53.122
+    t =     0.17s Set Up
+    t =     0.17s Open cn.chaotze.CamCard
+    t =     0.18s     Launch cn.chaotze.CamCard
+    t =     0.18s         Terminate cn.chaotze.CamCard:30781
+    t =     1.40s         Setting up automation session
+    t =     3.39s         Wait for cn.chaotze.CamCard to idle
+    t =     6.62s Waiting 10.0s for "张三" StaticText to exist
+    t =     7.62s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
+    t =     7.62s         Checking existence of `"张三" StaticText`
+    t =     7.78s Checking existence of `"排序" Button`
+    t =     7.84s Checking existence of `"标签筛选" Button`
+    t =     7.89s Tap "排序" Button
+    t =     7.89s     Wait for cn.chaotze.CamCard to idle
+    t =     7.90s     Find the "排序" Button
+    t =     7.95s     Check for interrupting elements affecting "sortButton" Button
+    t =     8.01s     Synthesize event
+    t =     8.32s     Wait for cn.chaotze.CamCard to idle
+    t =     9.26s Waiting 10.0s for Button (First Match) to exist
+    t =    10.26s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    10.26s         Checking existence of `Button (First Match)`
+    t =    10.34s Tap Button (First Match)
+    t =    10.34s     Wait for cn.chaotze.CamCard to idle
+    t =    10.35s     Find the Button (First Match)
+    t =    10.43s     Check for interrupting elements affecting "姓名" Button
+    t =    10.52s     Synthesize event
+    t =    10.83s     Wait for cn.chaotze.CamCard to idle
+    t =    11.62s Waiting 10.0s for "张三" StaticText to exist
+    t =    12.65s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
+    t =    12.65s         Checking existence of `"张三" StaticText`
+    t =    12.78s Tear Down
+Test Case '-[CamCardUITests.CamCardUITests testR17TagAndSortControlsAreAvailable]' passed (13.029 seconds).
+Test Case '-[CamCardUITests.CamCardUITests testR18NotesAndRawTextAreReachable]' started.
+    t =     0.00s Start Test at 2026-11-02 14:01:06.151
+    t =     0.11s Set Up
+    t =     0.12s Open cn.chaotze.CamCard
+    t =     0.12s     Launch cn.chaotze.CamCard
+    t =     0.12s         Terminate cn.chaotze.CamCard:30812
+    t =     1.39s         Setting up automation session
+    t =     2.83s         Wait for cn.chaotze.CamCard to idle
+    t =     5.83s Waiting 10.0s for "张三" StaticText to exist
+    t =     6.86s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
+    t =     6.86s         Checking existence of `"张三" StaticText`
+    t =     7.02s Tap "张三" StaticText
+    t =     7.02s     Wait for cn.chaotze.CamCard to idle
+    t =     7.02s     Find the "张三" StaticText
+    t =     7.09s     Check for interrupting elements affecting "张三" StaticText
+    t =     7.14s     Synthesize event
+    t =     7.44s     Wait for cn.chaotze.CamCard to idle
+    t =     8.35s Waiting 10.0s for "重点客户" StaticText to exist
+    t =     9.36s     Checking `Expect predicate `existsNoRetry == 1` for object "重点客户" StaticText`
+    t =     9.36s         Checking existence of `"重点客户" StaticText`
+    t =     9.49s Tap "查看 OCR 原始文本" Button
+    t =     9.49s     Wait for cn.chaotze.CamCard to idle
+    t =     9.50s     Find the "查看 OCR 原始文本" Button
+    t =     9.58s     Check for interrupting elements affecting "detailRawTextButton" Button
+    t =     9.67s     Synthesize event
+    t =     9.68s         Scroll element to visible
+    t =     9.69s         Find the "detailRawTextButton" Button
+    t =     9.81s         Computed hit point {201, 710.83333333333348} after scrolling to visible
+    t =    10.10s     Wait for cn.chaotze.CamCard to idle
+    t =    10.21s Waiting 10.0s for "OCR 原始文本" StaticText to exist
+    t =    11.24s     Checking `Expect predicate `existsNoRetry == 1` for object "OCR 原始文本" StaticText`
+    t =    11.24s         Checking existence of `"OCR 原始文本" StaticText`
+    t =    11.37s Tear Down
+Test Case '-[CamCardUITests.CamCardUITests testR18NotesAndRawTextAreReachable]' passed (11.612 seconds).
+Test Case '-[CamCardUITests.CamCardUITests testR20ExportFailureShowsMessageAndKeepsData]' started.
+    t =     0.00s Start Test at 2026-11-02 14:01:17.767
+    t =     0.13s Set Up
+    t =     0.13s Open cn.chaotze.CamCard
+    t =     0.14s     Launch cn.chaotze.CamCard
+    t =     0.14s         Terminate cn.chaotze.CamCard:30843
+    t =     1.41s         Setting up automation session
+    t =     2.70s         Wait for cn.chaotze.CamCard to idle
+    t =     5.65s Waiting 10.0s for "张三" StaticText to exist
+    t =     6.65s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
+    t =     6.65s         Checking existence of `"张三" StaticText`
+    t =     6.82s Tap "选择" Button
+    t =     6.82s     Wait for cn.chaotze.CamCard to idle
+    t =     6.83s     Find the "选择" Button
+    t =     6.90s     Check for interrupting elements affecting "selectButton" Button
+    t =     6.97s     Synthesize event
+    t =     7.29s     Wait for cn.chaotze.CamCard to idle
+    t =     8.11s Tap "张三" StaticText
+    t =     8.11s     Wait for cn.chaotze.CamCard to idle
+    t =     8.13s     Find the "张三" StaticText
+    t =     8.21s     Check for interrupting elements affecting "张三" StaticText
+    t =     8.27s     Synthesize event
+    t =     8.58s     Wait for cn.chaotze.CamCard to idle
+    t =     8.59s Tap "导出" Button
+    t =     8.59s     Wait for cn.chaotze.CamCard to idle
+    t =     8.60s     Find the "导出" Button
+    t =     8.67s     Check for interrupting elements affecting "exportButton" Button
+    t =     8.74s     Synthesize event
+    t =     9.05s     Wait for cn.chaotze.CamCard to idle
+    t =     9.80s Waiting 10.0s for "提示" Alert to exist
+    t =    10.81s     Checking `Expect predicate `existsNoRetry == 1` for object "提示" Alert`
+    t =    10.82s         Checking existence of `"提示" Alert`
+    t =    11.00s Tap "好" Button
+    t =    11.00s     Wait for cn.chaotze.CamCard to idle
+    t =    11.01s     Find the "好" Button
+    t =    11.17s     Check for interrupting elements affecting "好" Button
+    t =    11.36s     Synthesize event
+    t =    11.69s     Wait for cn.chaotze.CamCard to idle
+    t =    12.20s Waiting 10.0s for "张三" StaticText to exist
+    t =    13.23s     Checking `Expect predicate `existsNoRetry == 1` for object "张三" StaticText`
+    t =    13.23s         Checking existence of `"张三" StaticText`
+    t =    13.33s Tear Down
+Test Case '-[CamCardUITests.CamCardUITests testR20ExportFailureShowsMessageAndKeepsData]' passed (13.582 seconds).
+Test Suite 'CamCardUITests' passed at 2026-11-02 14:01:31.350.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 214.653 (214.678) seconds
+Test Suite 'CamCardUITests.xctest' passed at 2026-11-02 14:01:31.352.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 214.653 (214.681) seconds
+Test Suite 'Selected tests' passed at 2026-11-02 14:01:31.354.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 214.653 (214.685) seconds
+2026-11-02 14:01:31.729 xcodebuild[29926:671247] [MT] IDETestOperationsObserverDebug: 294.039 elapsed -- Testing started completed.
+2026-11-02 14:01:31.730 xcodebuild[29926:671247] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-11-02 14:01:31.730 xcodebuild[29926:671247] [MT] IDETestOperationsObserverDebug: 294.039 sec, +294.039 sec -- end
 
 Test session results, code coverage, and logs:
-	/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Logs/Test/Test-CamCard-2026.11.01_10-25-17-+0800.xcresult
+	/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Logs/Test/Test-CamCard-2026.11.02_13-56-37-+0800.xcresult
 
-** TEST SUCCEEDED **
+** TEST EXECUTE SUCCEEDED **
 
 Testing started
-exit=0

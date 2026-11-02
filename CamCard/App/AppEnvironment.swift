@@ -36,9 +36,23 @@ struct AppEnvironment {
     static func make(arguments: [String] = ProcessInfo.processInfo.arguments) -> AppEnvironment {
         let options = LaunchOptions.parse(arguments)
         if options.isUITest {
+            let repository: CardRepository
+            let imageStore: ImageStore
+            if options.persistentStore {
+                let baseDirectory = FileManager.default.urls(
+                    for: .applicationSupportDirectory,
+                    in: .userDomainMask
+                ).first!.appendingPathComponent("CamCardUITest", isDirectory: true)
+                let imagesDirectory = baseDirectory.appendingPathComponent("images", isDirectory: true)
+                repository = FileCardRepository(directory: baseDirectory, imagesDirectory: imagesDirectory)
+                imageStore = FileImageStore(directory: imagesDirectory)
+            } else {
+                repository = InMemoryCardRepository()
+                imageStore = InMemoryImageStore()
+            }
             return AppEnvironment(
-                repository: InMemoryCardRepository(),
-                imageStore: InMemoryImageStore(),
+                repository: repository,
+                imageStore: imageStore,
                 ocr: MockOCRService(fixture: options.ocrFixture),
                 detection: MockCardDetectionService(),
                 parser: BusinessCardFieldParser(),

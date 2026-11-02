@@ -114,6 +114,33 @@ final class VCardExportTests: XCTestCase {
     }
 
     @MainActor
+    func testWriterProducesVCardFileWithMappedFields() async throws {
+        let environment = makeTestEnvironment()
+        let viewModel = ExportViewModel(environment: environment)
+        let card = BusinessCard.fixture(
+            name: "张三",
+            mobile: ["13800138000", "13900139000"],
+            officePhone: ["010-88886666"],
+            fax: ["010-88887777"],
+            email: ["first@example.com", "second@example.com"],
+            tags: ["客户", "重点"]
+        )
+        viewModel.export([card])
+        let url = try XCTUnwrap(viewModel.shareURL)
+        defer { try? FileManager.default.removeItem(at: url) }
+        XCTAssertEqual(url.pathExtension, "vcf")
+        XCTAssertEqual(url.lastPathComponent, "张三.vcf")
+        let content = try String(contentsOf: url, encoding: .utf8)
+        let parsed = try ParsedVCard(content: content)
+        XCTAssertEqual(parsed.value("FN"), "张三")
+        XCTAssertEqual(parsed.values(whereKeyContains: "TEL;TYPE=CELL"), ["13800138000", "13900139000"])
+        XCTAssertEqual(parsed.values(whereKeyContains: "TEL;TYPE=WORK"), ["010-88886666"])
+        XCTAssertEqual(parsed.values(whereKeyContains: "TEL;TYPE=FAX"), ["010-88887777"])
+        XCTAssertEqual(parsed.values(whereKeyContains: "EMAIL"), ["first@example.com", "second@example.com"])
+        XCTAssertEqual(parsed.value("CATEGORIES"), "客户,重点")
+    }
+
+    @MainActor
     func testWriterFailureIsReported() async {
         let environment = makeTestEnvironment(exportWriter: FailingVCardWriter())
         let viewModel = ExportViewModel(environment: environment)

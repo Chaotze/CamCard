@@ -309,6 +309,14 @@ final class ServiceAndViewModelTests: XCTestCase {
         XCTAssertEqual(finalSnapshot.cards.count, 1)
         XCTAssertEqual(finalSnapshot.cards.first?.name, "李四")
         XCTAssertEqual(finalSnapshot.cards.first?.createdAt, createdAt)
+        let finalAudit = try XCTUnwrap(finalSnapshot.audits[card.id])
+        XCTAssertEqual(finalAudit.structuredFields.name, "张三")
+        XCTAssertEqual(finalAudit.ocrRecords.count, 1)
+        XCTAssertFalse(finalAudit.ocrRecords[0].rawText.isEmpty)
+        XCTAssertEqual(
+            finalAudit.corrections.first(where: { $0.field == .name })?.newValues,
+            ["李四"]
+        )
     }
 
     @MainActor

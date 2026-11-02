@@ -136,13 +136,15 @@ final class ModelTests: XCTestCase {
             "-uiTestSeedFixture", "three",
             "-uiTestOCRFixture=multiphone",
             "-uiTestSkipCamera",
-            "-uiTestForceExportFailure"
+            "-uiTestForceExportFailure",
+            "-uiTestPersistentStore"
         ])
         XCTAssertTrue(options.resetStore)
         XCTAssertEqual(options.seedFixture, "three")
         XCTAssertEqual(options.ocrFixture, "multiphone")
         XCTAssertTrue(options.skipCamera)
         XCTAssertTrue(options.forceExportFailure)
+        XCTAssertTrue(options.persistentStore)
         XCTAssertTrue(options.isUITest)
         XCTAssertEqual(LaunchOptions.parse(["CamCard"]), LaunchOptions())
     }

@@ -6,9 +6,13 @@ final class CamCardUITests: XCTestCase {
     }
 
     @MainActor
-    private func launch(_ arguments: [String]) -> XCUIApplication {
+    private func launch(
+        _ arguments: [String],
+        environment: [String: String] = [:]
+    ) -> XCUIApplication {
         let app = XCUIApplication()
         app.launchArguments = arguments
+        app.launchEnvironment = environment
         app.launch()
         return app
     }
@@ -93,9 +97,12 @@ final class CamCardUITests: XCTestCase {
 
         let nameField = app.textFields["reviewField-name"]
         XCTAssertTrue(nameField.waitForExistence(timeout: 10))
+        XCTAssertEqual(nameField.label, "姓名")
+        XCTAssertEqual(nameField.value as? String, "张三")
         nameField.tap()
         nameField.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 8))
         nameField.typeText("张三丰")
+        XCTAssertEqual(nameField.value as? String, "张三丰")
         app.buttons["reviewSaveButton"].tap()
 
         XCTAssertTrue(app.navigationBars["张三丰"].waitForExistence(timeout: 10))
@@ -179,6 +186,41 @@ final class CamCardUITests: XCTestCase {
         XCTAssertTrue(app.alerts["提示"].waitForExistence(timeout: 10))
         app.alerts["提示"].buttons["好"].tap()
         XCTAssertTrue(app.staticTexts["张三"].waitForExistence(timeout: 10))
+    }
+
+    @MainActor
+    func testKillRelaunchKeepsImagesFieldsTagsAndNotes() throws {
+        let container = "/tmp/CamCardRelaunchContainer"
+        try? FileManager.default.removeItem(atPath: container)
+        let environment = [
+            "SIMULATOR_SHARED_RESOURCES_DIRECTORY": container,
+            "HOME": container
+        ]
+        let app = launch(
+            [
+                "-uiTestResetStore",
+                "-uiTestPersistentStore",
+                "-uiTestSeedFixture", "three"
+            ],
+            environment: environment
+        )
+        XCTAssertTrue(app.staticTexts["张三"].waitForExistence(timeout: 10))
+        app.staticTexts["张三"].tap()
+        XCTAssertTrue(app.navigationBars["张三"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.staticTexts["重点客户"].exists)
+        XCTAssertTrue(app.staticTexts["客户"].exists)
+        XCTAssertTrue(app.staticTexts["13800138000"].exists)
+        XCTAssertTrue(app.segmentedControls.buttons["处理后图像"].exists)
+
+        app.terminate()
+        let relaunched = launch(["-uiTestPersistentStore"], environment: environment)
+        XCTAssertTrue(relaunched.staticTexts["张三"].waitForExistence(timeout: 10))
+        relaunched.staticTexts["张三"].tap()
+        XCTAssertTrue(relaunched.navigationBars["张三"].waitForExistence(timeout: 10))
+        XCTAssertTrue(relaunched.staticTexts["重点客户"].exists)
+        XCTAssertTrue(relaunched.staticTexts["客户"].exists)
+        XCTAssertTrue(relaunched.staticTexts["13800138000"].exists)
+        XCTAssertTrue(relaunched.segmentedControls.buttons["处理后图像"].exists)
     }
 
     @MainActor

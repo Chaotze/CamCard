@@ -1,168 +1,170 @@
 Command line invocation:
     /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -project CamCard.xcodeproj -scheme CamCard -destination "platform=iOS Simulator,id=0984D61E-4372-429E-A653-9819870261FF" "-only-testing:CamCardTests" -parallel-testing-enabled NO
 
-2026-11-01 10:35:31.135 xcodebuild[17310:171299] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
-Test Suite 'All tests' started at 2026-11-01 10:35:48.284.
-Test Suite 'CamCardTests.xctest' started at 2026-11-01 10:35:48.286.
-Test Suite 'CamCardTests' started at 2026-11-01 10:35:48.287.
+2026-11-02 14:06:07.637 xcodebuild[32050:688593] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Test Suite 'All tests' started at 2026-11-02 14:06:24.993.
+Test Suite 'CamCardTests.xctest' started at 2026-11-02 14:06:24.993.
+Test Suite 'CamCardTests' started at 2026-11-02 14:06:24.994.
 Test Case '-[CamCardTests.CamCardTests testExample]' started.
-Test Case '-[CamCardTests.CamCardTests testExample]' passed (0.005 seconds).
+Test Case '-[CamCardTests.CamCardTests testExample]' passed (0.002 seconds).
 Test Case '-[CamCardTests.CamCardTests testPerformanceExample]' started.
-/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/CamCardTests.swift:31: Test Case '-[CamCardTests.CamCardTests testPerformanceExample]' measured [Time, seconds] average: 0.000, relative standard deviation: 101.819%, values: [0.000065, 0.000017, 0.000011, 0.000010, 0.000010, 0.000010, 0.000010, 0.000009, 0.000010, 0.000009], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , polarity: prefers smaller, maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
-Test Case '-[CamCardTests.CamCardTests testPerformanceExample]' passed (1.743 seconds).
-Test Suite 'CamCardTests' passed at 2026-11-01 10:35:50.040.
-	 Executed 2 tests, with 0 failures (0 unexpected) in 1.749 (1.754) seconds
-Test Suite 'FieldParserTests' started at 2026-11-01 10:35:50.042.
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/CamCardTests.swift:31: Test Case '-[CamCardTests.CamCardTests testPerformanceExample]' measured [Time, seconds] average: 0.000, relative standard deviation: 126.561%, values: [0.000040, 0.000008, 0.000005, 0.000005, 0.000004, 0.000004, 0.000004, 0.000004, 0.000004, 0.000004], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , polarity: prefers smaller, maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[CamCardTests.CamCardTests testPerformanceExample]' passed (0.873 seconds).
+Test Suite 'CamCardTests' passed at 2026-11-02 14:06:25.871.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.875 (0.877) seconds
+Test Suite 'FieldParserTests' started at 2026-11-02 14:06:25.871.
 Test Case '-[CamCardTests.FieldParserTests testCompanyAmbiguityUsesEmailDomainAndLeavesJobTitleEmpty]' started.
-Test Case '-[CamCardTests.FieldParserTests testCompanyAmbiguityUsesEmailDomainAndLeavesJobTitleEmpty]' passed (0.025 seconds).
+Test Case '-[CamCardTests.FieldParserTests testCompanyAmbiguityUsesEmailDomainAndLeavesJobTitleEmpty]' passed (0.012 seconds).
 Test Case '-[CamCardTests.FieldParserTests testDepartmentIsNotInferredFromJobTitle]' started.
-Test Case '-[CamCardTests.FieldParserTests testDepartmentIsNotInferredFromJobTitle]' passed (0.008 seconds).
+Test Case '-[CamCardTests.FieldParserTests testDepartmentIsNotInferredFromJobTitle]' passed (0.004 seconds).
 Test Case '-[CamCardTests.FieldParserTests testDeterministicParsing]' started.
-Test Case '-[CamCardTests.FieldParserTests testDeterministicParsing]' passed (0.016 seconds).
+Test Case '-[CamCardTests.FieldParserTests testDeterministicParsing]' passed (0.006 seconds).
 Test Case '-[CamCardTests.FieldParserTests testEmptyFieldHasNoProvenance]' started.
-Test Case '-[CamCardTests.FieldParserTests testEmptyFieldHasNoProvenance]' passed (0.008 seconds).
+Test Case '-[CamCardTests.FieldParserTests testEmptyFieldHasNoProvenance]' passed (0.003 seconds).
 Test Case '-[CamCardTests.FieldParserTests testEmptyInputProducesEmptyStructure]' started.
-Test Case '-[CamCardTests.FieldParserTests testEmptyInputProducesEmptyStructure]' passed (0.005 seconds).
+Test Case '-[CamCardTests.FieldParserTests testEmptyInputProducesEmptyStructure]' passed (0.002 seconds).
 Test Case '-[CamCardTests.FieldParserTests testMissingFieldsStayNil]' started.
-Test Case '-[CamCardTests.FieldParserTests testMissingFieldsStayNil]' passed (0.009 seconds).
+Test Case '-[CamCardTests.FieldParserTests testMissingFieldsStayNil]' passed (0.003 seconds).
 Test Case '-[CamCardTests.FieldParserTests testMissingWebsiteReturnsNilAndIsNotDerivedFromEmail]' started.
-Test Case '-[CamCardTests.FieldParserTests testMissingWebsiteReturnsNilAndIsNotDerivedFromEmail]' passed (0.009 seconds).
+Test Case '-[CamCardTests.FieldParserTests testMissingWebsiteReturnsNilAndIsNotDerivedFromEmail]' passed (0.003 seconds).
 Test Case '-[CamCardTests.FieldParserTests testMixedChineseEnglishCard]' started.
-Test Case '-[CamCardTests.FieldParserTests testMixedChineseEnglishCard]' passed (0.012 seconds).
+Test Case '-[CamCardTests.FieldParserTests testMixedChineseEnglishCard]' passed (0.006 seconds).
 Test Case '-[CamCardTests.FieldParserTests testMultilineAddressPreserved]' started.
-Test Case '-[CamCardTests.FieldParserTests testMultilineAddressPreserved]' passed (0.014 seconds).
+Test Case '-[CamCardTests.FieldParserTests testMultilineAddressPreserved]' passed (0.004 seconds).
 Test Case '-[CamCardTests.FieldParserTests testMultipleEmailsPreserveOrderAndCaseAndDeduplicate]' started.
-Test Case '-[CamCardTests.FieldParserTests testMultipleEmailsPreserveOrderAndCaseAndDeduplicate]' passed (0.007 seconds).
+Test Case '-[CamCardTests.FieldParserTests testMultipleEmailsPreserveOrderAndCaseAndDeduplicate]' passed (0.003 seconds).
 Test Case '-[CamCardTests.FieldParserTests testPhoneClassificationKeepsAllNumbers]' started.
-Test Case '-[CamCardTests.FieldParserTests testPhoneClassificationKeepsAllNumbers]' passed (0.009 seconds).
+Test Case '-[CamCardTests.FieldParserTests testPhoneClassificationKeepsAllNumbers]' passed (0.004 seconds).
 Test Case '-[CamCardTests.FieldParserTests testPostalCodeNotInferredFromAddress]' started.
-Test Case '-[CamCardTests.FieldParserTests testPostalCodeNotInferredFromAddress]' passed (0.009 seconds).
+Test Case '-[CamCardTests.FieldParserTests testPostalCodeNotInferredFromAddress]' passed (0.003 seconds).
 Test Case '-[CamCardTests.FieldParserTests testStandardCardMapsAllFields]' started.
-Test Case '-[CamCardTests.FieldParserTests testStandardCardMapsAllFields]' passed (0.040 seconds).
+Test Case '-[CamCardTests.FieldParserTests testStandardCardMapsAllFields]' passed (0.019 seconds).
 Test Case '-[CamCardTests.FieldParserTests testUnlabeledNumberDefaultsToMobileWithInferredProvenance]' started.
-Test Case '-[CamCardTests.FieldParserTests testUnlabeledNumberDefaultsToMobileWithInferredProvenance]' passed (0.007 seconds).
+Test Case '-[CamCardTests.FieldParserTests testUnlabeledNumberDefaultsToMobileWithInferredProvenance]' passed (0.003 seconds).
 Test Case '-[CamCardTests.FieldParserTests testWebsiteLiteralIsPreserved]' started.
-Test Case '-[CamCardTests.FieldParserTests testWebsiteLiteralIsPreserved]' passed (0.009 seconds).
-Test Suite 'FieldParserTests' passed at 2026-11-01 10:35:50.256.
-	 Executed 15 tests, with 0 failures (0 unexpected) in 0.185 (0.214) seconds
-Test Suite 'ModelTests' started at 2026-11-01 10:35:50.257.
+Test Case '-[CamCardTests.FieldParserTests testWebsiteLiteralIsPreserved]' passed (0.003 seconds).
+Test Suite 'FieldParserTests' passed at 2026-11-02 14:06:25.957.
+	 Executed 15 tests, with 0 failures (0 unexpected) in 0.075 (0.085) seconds
+Test Suite 'ModelTests' started at 2026-11-02 14:06:25.957.
 Test Case '-[CamCardTests.ModelTests testBusinessCardCodableRoundTrip]' started.
-Test Case '-[CamCardTests.ModelTests testBusinessCardCodableRoundTrip]' passed (0.031 seconds).
+Test Case '-[CamCardTests.ModelTests testBusinessCardCodableRoundTrip]' passed (0.015 seconds).
 Test Case '-[CamCardTests.ModelTests testCaptureStateLegalAndIllegalTransitions]' started.
-Test Case '-[CamCardTests.ModelTests testCaptureStateLegalAndIllegalTransitions]' passed (0.005 seconds).
+Test Case '-[CamCardTests.ModelTests testCaptureStateLegalAndIllegalTransitions]' passed (0.002 seconds).
 Test Case '-[CamCardTests.ModelTests testDraftTransitionThrowsForInvalidTarget]' started.
-Test Case '-[CamCardTests.ModelTests testDraftTransitionThrowsForInvalidTarget]' passed (0.010 seconds).
+Test Case '-[CamCardTests.ModelTests testDraftTransitionThrowsForInvalidTarget]' passed (0.005 seconds).
 Test Case '-[CamCardTests.ModelTests testEveryStageCanBeAbandoned]' started.
-Test Case '-[CamCardTests.ModelTests testEveryStageCanBeAbandoned]' passed (0.005 seconds).
+Test Case '-[CamCardTests.ModelTests testEveryStageCanBeAbandoned]' passed (0.001 seconds).
 Test Case '-[CamCardTests.ModelTests testFixtureCoversRequiredAndOptionalFields]' started.
-Test Case '-[CamCardTests.ModelTests testFixtureCoversRequiredAndOptionalFields]' passed (0.004 seconds).
+Test Case '-[CamCardTests.ModelTests testFixtureCoversRequiredAndOptionalFields]' passed (0.001 seconds).
 Test Case '-[CamCardTests.ModelTests testImageReferenceRoundTripAndRelativePath]' started.
-Test Case '-[CamCardTests.ModelTests testImageReferenceRoundTripAndRelativePath]' passed (0.004 seconds).
+Test Case '-[CamCardTests.ModelTests testImageReferenceRoundTripAndRelativePath]' passed (0.002 seconds).
 Test Case '-[CamCardTests.ModelTests testLaunchOptionsParsing]' started.
-Test Case '-[CamCardTests.ModelTests testLaunchOptionsParsing]' passed (0.004 seconds).
+Test Case '-[CamCardTests.ModelTests testLaunchOptionsParsing]' passed (0.001 seconds).
 Test Case '-[CamCardTests.ModelTests testOCRRecordsKeepSequenceAndRawText]' started.
-Test Case '-[CamCardTests.ModelTests testOCRRecordsKeepSequenceAndRawText]' passed (0.070 seconds).
+Test Case '-[CamCardTests.ModelTests testOCRRecordsKeepSequenceAndRawText]' passed (0.035 seconds).
 Test Case '-[CamCardTests.ModelTests testPhoneClassificationFieldsAreMultiValue]' started.
-Test Case '-[CamCardTests.ModelTests testPhoneClassificationFieldsAreMultiValue]' passed (0.005 seconds).
+Test Case '-[CamCardTests.ModelTests testPhoneClassificationFieldsAreMultiValue]' passed (0.001 seconds).
 Test Case '-[CamCardTests.ModelTests testStructuredFieldsAndProvenanceRoundTrip]' started.
-Test Case '-[CamCardTests.ModelTests testStructuredFieldsAndProvenanceRoundTrip]' passed (0.023 seconds).
-Test Suite 'ModelTests' passed at 2026-11-01 10:35:50.435.
-	 Executed 10 tests, with 0 failures (0 unexpected) in 0.160 (0.178) seconds
-Test Suite 'RepositoryTests' started at 2026-11-01 10:35:50.437.
+Test Case '-[CamCardTests.ModelTests testStructuredFieldsAndProvenanceRoundTrip]' passed (0.010 seconds).
+Test Suite 'ModelTests' passed at 2026-11-02 14:06:26.038.
+	 Executed 10 tests, with 0 failures (0 unexpected) in 0.073 (0.080) seconds
+Test Suite 'RepositoryTests' started at 2026-11-02 14:06:26.038.
 Test Case '-[CamCardTests.RepositoryTests testCorruptStoreThrows]' started.
-Test Case '-[CamCardTests.RepositoryTests testCorruptStoreThrows]' passed (0.017 seconds).
+Test Case '-[CamCardTests.RepositoryTests testCorruptStoreThrows]' passed (0.008 seconds).
 Test Case '-[CamCardTests.RepositoryTests testFileImageStoreRoundTripAndMissingReference]' started.
-Test Case '-[CamCardTests.RepositoryTests testFileImageStoreRoundTripAndMissingReference]' passed (0.014 seconds).
+Test Case '-[CamCardTests.RepositoryTests testFileImageStoreRoundTripAndMissingReference]' passed (0.006 seconds).
 Test Case '-[CamCardTests.RepositoryTests testFileRepositoryDeleteCleansOwnedImages]' started.
-Test Case '-[CamCardTests.RepositoryTests testFileRepositoryDeleteCleansOwnedImages]' passed (0.037 seconds).
+Test Case '-[CamCardTests.RepositoryTests testFileRepositoryDeleteCleansOwnedImages]' passed (0.018 seconds).
 Test Case '-[CamCardTests.RepositoryTests testFileRepositoryRoundTripAndUpdate]' started.
-Test Case '-[CamCardTests.RepositoryTests testFileRepositoryRoundTripAndUpdate]' passed (0.081 seconds).
+Test Case '-[CamCardTests.RepositoryTests testFileRepositoryRoundTripAndUpdate]' passed (0.036 seconds).
 Test Case '-[CamCardTests.RepositoryTests testHigherSchemaVersionIsRejectedOnReadAndWrite]' started.
-Test Case '-[CamCardTests.RepositoryTests testHigherSchemaVersionIsRejectedOnReadAndWrite]' passed (0.014 seconds).
+Test Case '-[CamCardTests.RepositoryTests testHigherSchemaVersionIsRejectedOnReadAndWrite]' passed (0.005 seconds).
 Test Case '-[CamCardTests.RepositoryTests testInMemoryImageStoreWriteReadDeleteReset]' started.
-Test Case '-[CamCardTests.RepositoryTests testInMemoryImageStoreWriteReadDeleteReset]' passed (0.009 seconds).
+Test Case '-[CamCardTests.RepositoryTests testInMemoryImageStoreWriteReadDeleteReset]' passed (0.004 seconds).
 Test Case '-[CamCardTests.RepositoryTests testInMemoryRepositorySaveLoadUpdateDeleteReset]' started.
-Test Case '-[CamCardTests.RepositoryTests testInMemoryRepositorySaveLoadUpdateDeleteReset]' passed (0.008 seconds).
+Test Case '-[CamCardTests.RepositoryTests testInMemoryRepositorySaveLoadUpdateDeleteReset]' passed (0.003 seconds).
 Test Case '-[CamCardTests.RepositoryTests testInMemorySaveFailureLeavesSnapshotUnchanged]' started.
-Test Case '-[CamCardTests.RepositoryTests testInMemorySaveFailureLeavesSnapshotUnchanged]' passed (0.007 seconds).
+Test Case '-[CamCardTests.RepositoryTests testInMemorySaveFailureLeavesSnapshotUnchanged]' passed (0.002 seconds).
 Test Case '-[CamCardTests.RepositoryTests testInMemoryUpdateFailureLeavesSnapshotUnchanged]' started.
-Test Case '-[CamCardTests.RepositoryTests testInMemoryUpdateFailureLeavesSnapshotUnchanged]' passed (0.007 seconds).
+Test Case '-[CamCardTests.RepositoryTests testInMemoryUpdateFailureLeavesSnapshotUnchanged]' passed (0.002 seconds).
 Test Case '-[CamCardTests.RepositoryTests testOlderSchemaVersionLoads]' started.
-Test Case '-[CamCardTests.RepositoryTests testOlderSchemaVersionLoads]' passed (0.011 seconds).
+Test Case '-[CamCardTests.RepositoryTests testOlderSchemaVersionLoads]' passed (0.004 seconds).
 Test Case '-[CamCardTests.RepositoryTests testOrphanImagesAreCleanedOnLoad]' started.
-Test Case '-[CamCardTests.RepositoryTests testOrphanImagesAreCleanedOnLoad]' passed (0.014 seconds).
+Test Case '-[CamCardTests.RepositoryTests testOrphanImagesAreCleanedOnLoad]' passed (0.005 seconds).
 Test Case '-[CamCardTests.RepositoryTests testSharedImageIsKeptWhenOneCardIsDeleted]' started.
-Test Case '-[CamCardTests.RepositoryTests testSharedImageIsKeptWhenOneCardIsDeleted]' passed (0.025 seconds).
-Test Suite 'RepositoryTests' passed at 2026-11-01 10:35:50.707.
-	 Executed 12 tests, with 0 failures (0 unexpected) in 0.245 (0.270) seconds
-Test Suite 'ServiceAndViewModelTests' started at 2026-11-01 10:35:50.708.
+Test Case '-[CamCardTests.RepositoryTests testSharedImageIsKeptWhenOneCardIsDeleted]' passed (0.011 seconds).
+Test Suite 'RepositoryTests' passed at 2026-11-02 14:06:26.152.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 0.105 (0.113) seconds
+Test Suite 'ServiceAndViewModelTests' started at 2026-11-02 14:06:26.152.
 Test Case '-[CamCardTests.ServiceAndViewModelTests testCameraUnavailableShowsPermissionMessage]' started.
-Test Case '-[CamCardTests.ServiceAndViewModelTests testCameraUnavailableShowsPermissionMessage]' passed (0.012 seconds).
+Test Case '-[CamCardTests.ServiceAndViewModelTests testCameraUnavailableShowsPermissionMessage]' passed (0.005 seconds).
 Test Case '-[CamCardTests.ServiceAndViewModelTests testCaptureFlowDetectionFailureCanContinueWithOriginal]' started.
-Test Case '-[CamCardTests.ServiceAndViewModelTests testCaptureFlowDetectionFailureCanContinueWithOriginal]' passed (0.138 seconds).
+Test Case '-[CamCardTests.ServiceAndViewModelTests testCaptureFlowDetectionFailureCanContinueWithOriginal]' passed (0.057 seconds).
 Test Case '-[CamCardTests.ServiceAndViewModelTests testCaptureFlowReachesReviewWithMockServices]' started.
-Test Case '-[CamCardTests.ServiceAndViewModelTests testCaptureFlowReachesReviewWithMockServices]' passed (0.037 seconds).
+Test Case '-[CamCardTests.ServiceAndViewModelTests testCaptureFlowReachesReviewWithMockServices]' passed (0.018 seconds).
 Test Case '-[CamCardTests.ServiceAndViewModelTests testCardHolderSearchTagFilterAndSort]' started.
-Test Case '-[CamCardTests.ServiceAndViewModelTests testCardHolderSearchTagFilterAndSort]' passed (0.012 seconds).
+Test Case '-[CamCardTests.ServiceAndViewModelTests testCardHolderSearchTagFilterAndSort]' passed (0.006 seconds).
 Test Case '-[CamCardTests.ServiceAndViewModelTests testCorruptImageStillShowsCardText]' started.
-Test Case '-[CamCardTests.ServiceAndViewModelTests testCorruptImageStillShowsCardText]' passed (0.009 seconds).
+Test Case '-[CamCardTests.ServiceAndViewModelTests testCorruptImageStillShowsCardText]' passed (0.005 seconds).
 Test Case '-[CamCardTests.ServiceAndViewModelTests testDetailLoadsAndDeletesCard]' started.
-Test Case '-[CamCardTests.ServiceAndViewModelTests testDetailLoadsAndDeletesCard]' passed (0.007 seconds).
+Test Case '-[CamCardTests.ServiceAndViewModelTests testDetailLoadsAndDeletesCard]' passed (0.004 seconds).
 Test Case '-[CamCardTests.ServiceAndViewModelTests testMockDetectionReturnsCornersAndProcessedImage]' started.
-Test Case '-[CamCardTests.ServiceAndViewModelTests testMockDetectionReturnsCornersAndProcessedImage]' passed (0.023 seconds).
+Test Case '-[CamCardTests.ServiceAndViewModelTests testMockDetectionReturnsCornersAndProcessedImage]' passed (0.011 seconds).
 Test Case '-[CamCardTests.ServiceAndViewModelTests testMockOCRBlankFixtureIsEmpty]' started.
-Test Case '-[CamCardTests.ServiceAndViewModelTests testMockOCRBlankFixtureIsEmpty]' passed (0.006 seconds).
+Test Case '-[CamCardTests.ServiceAndViewModelTests testMockOCRBlankFixtureIsEmpty]' passed (0.002 seconds).
 Test Case '-[CamCardTests.ServiceAndViewModelTests testMockOCRIsDeterministic]' started.
-Test Case '-[CamCardTests.ServiceAndViewModelTests testMockOCRIsDeterministic]' passed (0.006 seconds).
+Test Case '-[CamCardTests.ServiceAndViewModelTests testMockOCRIsDeterministic]' passed (0.003 seconds).
 Test Case '-[CamCardTests.ServiceAndViewModelTests testPersistenceSurvivesRelaunchIncludingImagesTagsAndNotes]' started.
-Test Case '-[CamCardTests.ServiceAndViewModelTests testPersistenceSurvivesRelaunchIncludingImagesTagsAndNotes]' passed (0.080 seconds).
+Test Case '-[CamCardTests.ServiceAndViewModelTests testPersistenceSurvivesRelaunchIncludingImagesTagsAndNotes]' passed (0.040 seconds).
 Test Case '-[CamCardTests.ServiceAndViewModelTests testPreparedJPEGCapsLongestEdgeAndDecodes]' started.
-Test Case '-[CamCardTests.ServiceAndViewModelTests testPreparedJPEGCapsLongestEdgeAndDecodes]' passed (0.357 seconds).
+Test Case '-[CamCardTests.ServiceAndViewModelTests testPreparedJPEGCapsLongestEdgeAndDecodes]' passed (0.157 seconds).
 Test Case '-[CamCardTests.ServiceAndViewModelTests testRetakeAndCancelDiscardDraft]' started.
-Test Case '-[CamCardTests.ServiceAndViewModelTests testRetakeAndCancelDiscardDraft]' passed (0.097 seconds).
+Test Case '-[CamCardTests.ServiceAndViewModelTests testRetakeAndCancelDiscardDraft]' passed (0.036 seconds).
 Test Case '-[CamCardTests.ServiceAndViewModelTests testReviewBlocksSavingEmptyCard]' started.
-Test Case '-[CamCardTests.ServiceAndViewModelTests testReviewBlocksSavingEmptyCard]' passed (0.020 seconds).
+Test Case '-[CamCardTests.ServiceAndViewModelTests testReviewBlocksSavingEmptyCard]' passed (0.014 seconds).
 Test Case '-[CamCardTests.ServiceAndViewModelTests testReviewRestoreReturnsToParsedValue]' started.
-Test Case '-[CamCardTests.ServiceAndViewModelTests testReviewRestoreReturnsToParsedValue]' passed (0.011 seconds).
+Test Case '-[CamCardTests.ServiceAndViewModelTests testReviewRestoreReturnsToParsedValue]' passed (0.005 seconds).
 Test Case '-[CamCardTests.ServiceAndViewModelTests testReviewSaveFailureLeavesNoCardAndCleansImages]' started.
-Test Case '-[CamCardTests.ServiceAndViewModelTests testReviewSaveFailureLeavesNoCardAndCleansImages]' passed (0.036 seconds).
+Test Case '-[CamCardTests.ServiceAndViewModelTests testReviewSaveFailureLeavesNoCardAndCleansImages]' passed (0.019 seconds).
 Test Case '-[CamCardTests.ServiceAndViewModelTests testReviewSavesCardWithImagesAndAudit]' started.
-Test Case '-[CamCardTests.ServiceAndViewModelTests testReviewSavesCardWithImagesAndAudit]' passed (0.039 seconds).
+Test Case '-[CamCardTests.ServiceAndViewModelTests testReviewSavesCardWithImagesAndAudit]' passed (0.019 seconds).
 Test Case '-[CamCardTests.ServiceAndViewModelTests testVisionOCRExtractsStructuralLines]' started.
-Test Case '-[CamCardTests.ServiceAndViewModelTests testVisionOCRExtractsStructuralLines]' passed (5.364 seconds).
+Test Case '-[CamCardTests.ServiceAndViewModelTests testVisionOCRExtractsStructuralLines]' passed (2.740 seconds).
 Test Case '-[CamCardTests.ServiceAndViewModelTests testVisionRectificationProducesProcessedImage]' started.
-Test Case '-[CamCardTests.ServiceAndViewModelTests testVisionRectificationProducesProcessedImage]' passed (0.528 seconds).
-Test Suite 'ServiceAndViewModelTests' passed at 2026-11-01 10:35:57.523.
-	 Executed 18 tests, with 0 failures (0 unexpected) in 6.781 (6.815) seconds
-Test Suite 'VCardExportTests' started at 2026-11-01 10:35:57.524.
+Test Case '-[CamCardTests.ServiceAndViewModelTests testVisionRectificationProducesProcessedImage]' passed (0.140 seconds).
+Test Suite 'ServiceAndViewModelTests' passed at 2026-11-02 14:06:29.448.
+	 Executed 18 tests, with 0 failures (0 unexpected) in 3.280 (3.296) seconds
+Test Suite 'VCardExportTests' started at 2026-11-02 14:06:29.448.
 Test Case '-[CamCardTests.VCardExportTests testEmptyFieldsAreOmitted]' started.
-Test Case '-[CamCardTests.VCardExportTests testEmptyFieldsAreOmitted]' passed (0.006 seconds).
+Test Case '-[CamCardTests.VCardExportTests testEmptyFieldsAreOmitted]' passed (0.003 seconds).
 Test Case '-[CamCardTests.VCardExportTests testEmptySelectionIsBlocked]' started.
-Test Case '-[CamCardTests.VCardExportTests testEmptySelectionIsBlocked]' passed (0.011 seconds).
+Test Case '-[CamCardTests.VCardExportTests testEmptySelectionIsBlocked]' passed (0.006 seconds).
 Test Case '-[CamCardTests.VCardExportTests testFieldMapping]' started.
-Test Case '-[CamCardTests.VCardExportTests testFieldMapping]' passed (0.005 seconds).
+Test Case '-[CamCardTests.VCardExportTests testFieldMapping]' passed (0.002 seconds).
 Test Case '-[CamCardTests.VCardExportTests testFileNames]' started.
-Test Case '-[CamCardTests.VCardExportTests testFileNames]' passed (0.007 seconds).
+Test Case '-[CamCardTests.VCardExportTests testFileNames]' passed (0.003 seconds).
 Test Case '-[CamCardTests.VCardExportTests testMultipleEmailsFirstHasPreference]' started.
-Test Case '-[CamCardTests.VCardExportTests testMultipleEmailsFirstHasPreference]' passed (0.006 seconds).
+Test Case '-[CamCardTests.VCardExportTests testMultipleEmailsFirstHasPreference]' passed (0.002 seconds).
 Test Case '-[CamCardTests.VCardExportTests testRoundTripFidelity]' started.
-Test Case '-[CamCardTests.VCardExportTests testRoundTripFidelity]' passed (0.007 seconds).
+Test Case '-[CamCardTests.VCardExportTests testRoundTripFidelity]' passed (0.003 seconds).
 Test Case '-[CamCardTests.VCardExportTests testSpecialCharactersAreEscaped]' started.
-Test Case '-[CamCardTests.VCardExportTests testSpecialCharactersAreEscaped]' passed (0.005 seconds).
+Test Case '-[CamCardTests.VCardExportTests testSpecialCharactersAreEscaped]' passed (0.003 seconds).
 Test Case '-[CamCardTests.VCardExportTests testWriterFailureIsReported]' started.
-Test Case '-[CamCardTests.VCardExportTests testWriterFailureIsReported]' passed (0.007 seconds).
-Test Suite 'VCardExportTests' passed at 2026-11-01 10:35:57.592.
-	 Executed 8 tests, with 0 failures (0 unexpected) in 0.053 (0.068) seconds
-Test Suite 'CamCardTests.xctest' passed at 2026-11-01 10:35:57.594.
-	 Executed 65 tests, with 0 failures (0 unexpected) in 9.172 (9.308) seconds
-Test Suite 'All tests' passed at 2026-11-01 10:35:57.595.
-	 Executed 65 tests, with 0 failures (0 unexpected) in 9.172 (9.311) seconds
-2026-11-01 10:35:57.971 xcodebuild[17310:171299] [MT] IDETestOperationsObserverDebug: 25.548 elapsed -- Testing started completed.
-2026-11-01 10:35:57.971 xcodebuild[17310:171299] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
-2026-11-01 10:35:57.971 xcodebuild[17310:171299] [MT] IDETestOperationsObserverDebug: 25.548 sec, +25.548 sec -- end
+Test Case '-[CamCardTests.VCardExportTests testWriterFailureIsReported]' passed (0.003 seconds).
+Test Case '-[CamCardTests.VCardExportTests testWriterProducesVCardFileWithMappedFields]' started.
+Test Case '-[CamCardTests.VCardExportTests testWriterProducesVCardFileWithMappedFields]' passed (0.005 seconds).
+Test Suite 'VCardExportTests' passed at 2026-11-02 14:06:29.485.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 0.029 (0.037) seconds
+Test Suite 'CamCardTests.xctest' passed at 2026-11-02 14:06:29.486.
+	 Executed 66 tests, with 0 failures (0 unexpected) in 4.437 (4.492) seconds
+Test Suite 'All tests' passed at 2026-11-02 14:06:29.486.
+	 Executed 66 tests, with 0 failures (0 unexpected) in 4.437 (4.494) seconds
+2026-11-02 14:06:29.807 xcodebuild[32050:688593] [MT] IDETestOperationsObserverDebug: 21.491 elapsed -- Testing started completed.
+2026-11-02 14:06:29.807 xcodebuild[32050:688593] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-11-02 14:06:29.807 xcodebuild[32050:688593] [MT] IDETestOperationsObserverDebug: 21.492 sec, +21.491 sec -- end
 
 Test session results, code coverage, and logs:
-	/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Logs/Test/Test-CamCard-2026.11.01_10-35-31-+0800.xcresult
+	/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Logs/Test/Test-CamCard-2026.11.02_14-06-07-+0800.xcresult
 
 ** TEST EXECUTE SUCCEEDED **
 

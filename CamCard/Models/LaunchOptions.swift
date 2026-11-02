@@ -6,9 +6,11 @@ struct LaunchOptions: Equatable {
     var ocrFixture: String?
     var skipCamera: Bool = false
     var forceExportFailure: Bool = false
+    var persistentStore: Bool = false
 
     var isUITest: Bool {
-        resetStore || seedFixture != nil || ocrFixture != nil || skipCamera || forceExportFailure
+        resetStore || seedFixture != nil || ocrFixture != nil || skipCamera
+            || forceExportFailure || persistentStore
     }
 
     static func parse(_ arguments: [String]) -> LaunchOptions {
@@ -23,6 +25,8 @@ struct LaunchOptions: Equatable {
                 options.skipCamera = true
             case "-uiTestForceExportFailure":
                 options.forceExportFailure = true
+            case "-uiTestPersistentStore":
+                options.persistentStore = true
             case "-uiTestSeedFixture":
                 if index + 1 < arguments.count {
                     options.seedFixture = arguments[index + 1]

@@ -84,7 +84,7 @@
 - [x] 9.1 实现 `VCardExporter` 字段映射（N/FN、ORG 公司;部门、TITLE、TEL CELL/WORK/FAX、EMAIL 多值 PREF、URL、ADR 地址+邮编、CATEGORIES、NOTE）；验证：单测逐行断言映射
 - [x] 9.2 实现空字段省略与转义（`\`、`;`、`,`、换行）；验证：单测断言无网站不出现 URL、含逗号公司名回环完整
 - [x] 9.3 实现 vCard 3.0 输出（UTF-8、CRLF、BEGIN/END）与文件名规则（单张姓名、多张时间戳、非法字符清理）；验证：单测断言行分隔与文件名（R20）
-- [ ] 9.4 实现临时文件写入、分享面板与写入失败提示；验证：`-uiTestForceExportFailure` 断言失败提示且数据不变
+- [x] 9.4 实现临时文件写入、分享面板与写入失败提示；验证：`-uiTestForceExportFailure` 断言失败提示且数据不变
 - [x] 9.5 实现测试侧 `VCardParser` 与往返用例；验证：`-only-testing:CamCardTests/VCardExportTests` 全通过并断言多值与类别一致
 
 ## 10. 确定性 Reference Test Scenarios
@@ -107,7 +107,7 @@
 - [x] 12.1 执行构建并记录退出码；验证：`xcodebuild -project CamCard.xcodeproj -scheme CamCard -destination 'platform=iOS Simulator,name=iPhone 17 Pro,OS=26.0' build` 退出码 0，命令与输出归档到 `verification/`
 - [x] 12.2 执行单元测试；验证：`xcodebuild test ... -only-testing:CamCardTests` 退出码 0，xcresult 留存
 - [ ] 12.3 执行 UI 测试（R01～R20）；验证：`xcodebuild test ... -only-testing:CamCardUITests` 退出码 0，报告为真实执行而非仅编译
-- [ ] 12.4 执行 Kill-Relaunch 验证：新建/编辑/打标签/删除各一次后 `xcrun simctl terminate` + `launch`；验证：重启后数据与最后保存一致，命令与截图留证（R19）
+- [x] 12.4 执行 Kill-Relaunch 验证：新建/编辑/打标签/删除各一次后 `xcrun simctl terminate` + `launch`；验证：重启后数据与最后保存一致，命令与截图留证（R19）
 - [ ] 12.5 执行图像缺失降级验证：移除沙盒中某卡片图像后重启；验证：文本仍显示、标注图像不可用、无崩溃日志
 - [ ] 12.6 执行导出文件验证：导出单张与多张，取出 `.vcf` 用独立脚本校验 CRLF/UTF-8 与字段映射；验证：单张逐项匹配、多张记录数匹配（R20）
 - [x] 12.7 核对全部任务勾选条件（真实运行证据、无伪造预期）；验证：未验证项保持未勾选，`openspec validate --strict` 通过

@@ -1,7 +1,7 @@
 Command line invocation:
     /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project CamCard.xcodeproj -scheme CamCard -destination "platform=iOS Simulator,id=0984D61E-4372-429E-A653-9819870261FF" build-for-testing
 
-2026-11-01 10:35:20.778 xcodebuild[17228:171011] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-11-02 14:05:59.161 xcodebuild[31957:688185] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
 ComputePackagePrebuildTargetDependencyGraph
 
 Prepare packages
@@ -31,109 +31,324 @@ ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeD
 
 ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCard/Assets.xcassets
 
-ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
-
 ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
 
-Build description signature: 86b15f0e44d87e0ea9b53ff00dea1dac
-Build description path: /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/XCBuildData/86b15f0e44d87e0ea9b53ff00dea1dac.xcbuilddata
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+Build description signature: 5ad3b00f571c951b8f50d512d8e41f51
+Build description path: /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/XCBuildData/5ad3b00f571c951b8f50d512d8e41f51.xcbuilddata
 ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk /Users/chaotze/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.0-23A339-26257891a6c027eb51374368541b8346.sdkstatcache
     cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard/CamCard.xcodeproj
     /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk -o /Users/chaotze/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.0-23A339-26257891a6c027eb51374368541b8346.sdkstatcache
 
-MkDir /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest (in target 'CamCardTests' from project 'CamCard')
+SwiftDriver CamCardTests normal x86_64 com.apple.xcode.tools.swift.compiler (in target 'CamCardTests' from project 'CamCard')
     cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /bin/mkdir -p /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest
-
-MkDir /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /bin/mkdir -p /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns
-
-MkDir /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /bin/mkdir -p /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks
-
-ProcessProductPackaging "" /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    
-    Entitlements:
-    
-    {
-    "application-identifier" = "TongjiNIC.cn.chaotze.CamCard";
-}
-    
-    builtin-productPackagingUtility -entitlements -format xml -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent
-
-ProcessProductPackagingDER /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent.der (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /usr/bin/derq query -f xml -i /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent.der --raw
-
-Copy /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks/XCUnit.framework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCUnit.framework (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCUnit.framework /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks
-
-Copy /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks/XCTest.framework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks
-
-Copy /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks/XCTAutomationSupport.framework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTAutomationSupport.framework (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTAutomationSupport.framework /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks
-
-Copy /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks/XCTestCore.framework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTestCore.framework (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTestCore.framework /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks
-
-Copy /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks/XCTestSupport.framework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTestSupport.framework (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks/XCTestSupport.framework /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks
-
-Copy /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks/XCUIAutomation.framework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCUIAutomation.framework (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCUIAutomation.framework /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks
-
-Copy /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks/Testing.framework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/Testing.framework (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/Testing.framework /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks
-
-Copy /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks/libXCTestSwiftSupport.dylib /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks
-
-Ld /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib normal (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target x86_64-apple-ios26.0-simulator -dynamiclib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk -O0 -L/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -F/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -filelist /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard.LinkFileList -install_name @rpath/CamCard.debug.dylib -Xlinker -rpath -Xlinker @executable_path/Frameworks -dead_strip -Xlinker -object_path_lto -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -debug_variant -Xlinker -dependency_info -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard_dependency_info.dat -fobjc-link-runtime -fprofile-instr-generate -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard.swiftmodule @/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard-linker-args.resp -Xlinker -alias -Xlinker _main -Xlinker ___debug_main_executable_dylib_entry_point -Xlinker -no_adhoc_codesign -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib
-
-Copy /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks/libXCTestBundleInject.dylib /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestBundleInject.dylib (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestBundleInject.dylib /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CamCardTests -Onone -enforce-exclusivity\=checked @/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests.SwiftFileList -DDEBUG -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-upcoming-feature DisableOutwardActorInference -enable-upcoming-feature InferSendableFromCaptures -enable-upcoming-feature GlobalActorIsolatedTypesUsability -enable-upcoming-feature MemberImportVisibility -enable-upcoming-feature InferIsolatedConformances -enable-upcoming-feature NonisolatedNonsendingByDefault -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk -target x86_64-apple-ios26.0-simulator -g -module-cache-path /Users/chaotze/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -profile-coverage-mapping -profile-generate -enable-testing -index-store-path /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk/Developer/Library/Frameworks -c -j8 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/chaotze/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.0-23A339-26257891a6c027eb51374368541b8346.sdkstatcache -output-file-map /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/chaotze/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/chaotze/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/chaotze/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests_const_extract_protocols.json -Xcc -iquote -Xcc /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/CamCardTests-generated-files.hmap -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/CamCardTests-own-target-headers.hmap -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/CamCardTests-all-target-headers.hmap -Xcc -iquote -Xcc /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/CamCardTests-project-headers.hmap -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/DerivedSources-normal/x86_64 -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/DerivedSources/x86_64 -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests-Swift.h -working-directory /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard -experimental-emit-module-separately -disable-cmo
 
 ProcessInfoPlistFile /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Info.plist /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/empty-CamCard.plist (in target 'CamCard' from project 'CamCard')
     cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
     builtin-infoPlistUtility /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/empty-CamCard.plist -producttype com.apple.product-type.application -genpkginfo /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/assetcatalog_generated_info.plist -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Info.plist
 
-ConstructStubExecutorLinkFileList /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard-ExecutorLinkFileList-normal-x86_64.txt (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    construct-stub-executor-link-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor_no_swift_entry_point.a /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor.a --output /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard-ExecutorLinkFileList-normal-x86_64.txt
-note: Using stub executor library with Swift entry point. (in target 'CamCard' from project 'CamCard')
-
-Ld /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard normal (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target x86_64-apple-ios26.0-simulator -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk -O0 -L/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -F/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -Xlinker -rpath -Xlinker @executable_path -Xlinker -rpath -Xlinker @executable_path/Frameworks -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -debug_variant -e ___debug_blank_executor_main -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_dylib -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard-DebugDylibPath-normal-x86_64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_instlnm -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard-DebugDylibInstallName-normal-x86_64.txt -Xlinker -filelist -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard-ExecutorLinkFileList-normal-x86_64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __entitlements -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __ents_der -Xlinker /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.app-Simulated.xcent.der /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib -Xlinker -no_adhoc_codesign -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard
-
 CopySwiftLibs /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app (in target 'CamCard' from project 'CamCard')
     cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
     builtin-swiftStdLibTool --copy --verbose --sign - --scan-executable /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/SystemExtensions --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Extensions --platform iphonesimulator --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
 
-ExtractAppIntentsMetadata (in target 'CamCard' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name CamCard --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk --xcode-version 17A324 --platform-family iOS --deployment-target 26.0 --bundle-identifier cn.chaotze.CamCard --output /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app --target-triple x86_64-apple-ios26.0-simulator --binary-file /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard --dependency-file /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard_dependency_info.dat --stringsdata-file /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard.SwiftFileList --metadata-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.DependencyMetadataFileList --static-metadata-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/CamCard.DependencyStaticMetadataFileList --swift-const-vals-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCard.build/Objects-normal/x86_64/CamCard.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
-2026-11-01 10:35:25.114 appintentsmetadataprocessor[17298:171251] Starting appintentsmetadataprocessor export
-2026-11-01 10:35:25.122 appintentsmetadataprocessor[17298:171251] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
-
 ProcessInfoPlistFile /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest/Info.plist /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/empty-CamCardTests.plist (in target 'CamCardTests' from project 'CamCard')
     cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
     builtin-infoPlistUtility /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/empty-CamCardTests.plist -producttype com.apple.product-type.bundle.unit-test -expandbuildsettings -format binary -platform iphonesimulator -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest/Info.plist
+
+SwiftCompile normal x86_64 Compiling\ ServiceAndViewModelTests.swift /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift (in target 'CamCardTests' from project 'CamCard')
+
+SwiftCompile normal x86_64 /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift (in target 'CamCardTests' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:10:9: warning: main actor-isolated conformance of 'OCRRecord' to 'Equatable' cannot be used in caller isolation inheriting-isolated context; this is an error in the Swift 6 language mode
+        XCTAssertEqual(first, second)
+        ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:11:30: warning: main actor-isolated property 'status' can not be referenced from a nonisolated autoclosure
+        XCTAssertEqual(first.status, .success)
+                             ^
+CamCard.OCRRecord.status:2:25: note: property declared here
+@MainActor internal var status: CamCard.OCRStatus}
+                        ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:12:30: warning: main actor-isolated property 'lines' can not be referenced from a nonisolated autoclosure
+        XCTAssertFalse(first.lines.isEmpty)
+                             ^
+CamCard.OCRRecord.lines:2:25: note: property declared here
+@MainActor internal var lines: [CamCard.OCRLine]}
+                        ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:13:29: warning: main actor-isolated property 'lines' can not be referenced from a nonisolated autoclosure
+        XCTAssertTrue(first.lines.allSatisfy { (0...1).contains($0.x) && (0...1).contains($0.y) })
+                            ^
+CamCard.OCRRecord.lines:2:25: note: property declared here
+@MainActor internal var lines: [CamCard.OCRLine]}
+                        ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:13:68: warning: main actor-isolated property 'x' can not be referenced from a nonisolated context
+        XCTAssertTrue(first.lines.allSatisfy { (0...1).contains($0.x) && (0...1).contains($0.y) })
+                                                                   ^
+CamCard.OCRLine.x:2:25: note: property declared here
+@MainActor internal var x: Double}
+                        ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:13:94: warning: main actor-isolated property 'y' can not be referenced from a nonisolated autoclosure
+        XCTAssertTrue(first.lines.allSatisfy { (0...1).contains($0.x) && (0...1).contains($0.y) })
+                                                                                             ^
+CamCard.OCRLine.y:2:25: note: property declared here
+@MainActor internal var y: Double}
+                        ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:7:23: warning: main actor-isolated initializer 'init(fixture:)' cannot be called from outside of the actor; this is an error in the Swift 6 language mode
+        let service = MockOCRService(fixture: "standard")
+                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                      await 
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:23:31: warning: main actor-isolated property 'status' can not be referenced from a nonisolated autoclosure
+        XCTAssertEqual(record.status, .success)
+                              ^
+CamCard.OCRRecord.status:2:25: note: property declared here
+@MainActor internal var status: CamCard.OCRStatus}
+                        ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:24:31: warning: main actor-isolated property 'lines' can not be referenced from a nonisolated autoclosure
+        XCTAssertFalse(record.lines.isEmpty)
+                              ^
+CamCard.OCRRecord.lines:2:25: note: property declared here
+@MainActor internal var lines: [CamCard.OCRLine]}
+                        ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:26:33: warning: main actor-isolated property 'text' can not be referenced from a nonisolated autoclosure
+            XCTAssertFalse(line.text.isEmpty)
+                                ^
+CamCard.OCRLine.text:2:25: note: property declared here
+@MainActor internal var text: String}
+                        ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:27:49: warning: main actor-isolated property 'x' can not be referenced from a nonisolated autoclosure
+            XCTAssertTrue((0...1).contains(line.x))
+                                                ^
+CamCard.OCRLine.x:2:25: note: property declared here
+@MainActor internal var x: Double}
+                        ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:28:49: warning: main actor-isolated property 'y' can not be referenced from a nonisolated autoclosure
+            XCTAssertTrue((0...1).contains(line.y))
+                                                ^
+CamCard.OCRLine.y:2:25: note: property declared here
+@MainActor internal var y: Double}
+                        ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:29:39: warning: main actor-isolated property 'confidence' can not be referenced from a nonisolated autoclosure
+            XCTAssertGreaterThan(line.confidence, 0)
+                                      ^
+CamCard.OCRLine.confidence:2:25: note: property declared here
+@MainActor internal var confidence: Double}
+                        ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:31:31: warning: main actor-isolated property 'source' can not be referenced from a nonisolated autoclosure
+        XCTAssertEqual(record.source, .processed)
+                              ^
+CamCard.OCRRecord.source:2:25: note: property declared here
+@MainActor internal var source: CamCard.OCRSource}
+                        ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:17:23: warning: main actor-isolated initializer 'init()' cannot be called from outside of the actor; this is an error in the Swift 6 language mode
+        let service = VisionOCRService()
+                      ^~~~~~~~~~~~~~~~~~
+                      await 
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:18:37: warning: main actor-isolated static method 'sampleJPEG(text:size:)' cannot be called from outside of the actor; this is an error in the Swift 6 language mode
+        let image = ImageProcessing.sampleJPEG(
+                    ~~~~~~~~~~~~~~~~^~~~~~~~~~~
+                    await 
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:25:28: warning: main actor-isolated property 'lines' cannot be accessed from outside of the actor; this is an error in the Swift 6 language mode
+        for line in record.lines {
+                    ~~~~~~~^~~~~
+                    await 
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:37:31: warning: main actor-isolated property 'status' can not be referenced from a nonisolated autoclosure
+        XCTAssertEqual(record.status, .empty)
+                              ^
+CamCard.OCRRecord.status:2:25: note: property declared here
+@MainActor internal var status: CamCard.OCRStatus}
+                        ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:38:30: warning: main actor-isolated property 'lines' can not be referenced from a nonisolated autoclosure
+        XCTAssertTrue(record.lines.isEmpty)
+                             ^
+CamCard.OCRRecord.lines:2:25: note: property declared here
+@MainActor internal var lines: [CamCard.OCRLine]}
+                        ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:35:23: warning: main actor-isolated initializer 'init(fixture:)' cannot be called from outside of the actor; this is an error in the Swift 6 language mode
+        let service = MockOCRService(fixture: "blank")
+                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                      await 
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:59:33: warning: main actor-isolated property 'corners' can not be referenced from a nonisolated autoclosure
+        XCTAssertEqual(detected.corners.count, 4)
+                                ^
+CamCard.DetectedCard.corners:2:25: note: property declared here
+@MainActor internal var corners: [CGPoint]}
+                        ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:60:34: warning: main actor-isolated property 'processedData' can not be referenced from a nonisolated autoclosure
+        XCTAssertNotNil(detected.processedData)
+                                 ^
+CamCard.DetectedCard.processedData:2:25: note: property declared here
+@MainActor internal var processedData: Data?}
+                        ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:61:48: warning: main actor-isolated property 'processedData' can not be referenced from a nonisolated autoclosure
+        XCTAssertNotNil(UIImage(data: detected.processedData!))
+                                               ^
+CamCard.DetectedCard.processedData:2:25: note: property declared here
+@MainActor internal var processedData: Data?}
+                        ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:53:23: warning: main actor-isolated initializer 'init(shouldFail:)' cannot be called from outside of the actor; this is an error in the Swift 6 language mode
+        let service = MockCardDetectionService()
+                      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+                      await 
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:54:37: warning: main actor-isolated static method 'sampleJPEG(text:size:)' cannot be called from outside of the actor; this is an error in the Swift 6 language mode
+        let image = ImageProcessing.sampleJPEG(text: "张三")
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:65:23: warning: main actor-isolated initializer 'init()' cannot be called from outside of the actor; this is an error in the Swift 6 language mode
+        let service = VisionCardDetectionService()
+                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                      await 
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:66:37: warning: main actor-isolated static method 'sampleJPEG(text:size:)' cannot be called from outside of the actor; this is an error in the Swift 6 language mode
+        let image = ImageProcessing.sampleJPEG(text: "张三 星河科技有限公司")
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/ServiceAndViewModelTests.swift:71:35: warning: main actor-isolated property 'processedData' cannot be accessed from outside of the actor; this is an error in the Swift 6 language mode
+        guard let data = detected.processedData, let processed = UIImage(data: data) else {
+                         ~~~~~~~~~^~~~~~~~~~~~~
+                         await 
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:7:34: warning: main actor-isolated conformance of 'InMemoryCardRepository' to 'CardRepository' cannot be used in nonisolated context; this is an error in the Swift 6 language mode
+    repository: CardRepository = InMemoryCardRepository(),
+                                 ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:7:34: warning: call to main actor-isolated initializer 'init(snapshot:)' in a synchronous nonisolated context
+    repository: CardRepository = InMemoryCardRepository(),
+                                 ^
+CamCard.InMemoryCardRepository.init:2:21: note: calls to initializer 'init(snapshot:)' from outside of its actor context are implicitly asynchronous
+@MainActor internal init(snapshot: CamCard.CardSnapshot = .empty)}
+                    ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:8:30: warning: main actor-isolated conformance of 'InMemoryImageStore' to 'ImageStore' cannot be used in nonisolated context; this is an error in the Swift 6 language mode
+    imageStore: ImageStore = InMemoryImageStore(),
+                             ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:8:30: warning: call to main actor-isolated initializer 'init()' in a synchronous nonisolated context
+    imageStore: ImageStore = InMemoryImageStore(),
+                             ^
+CamCard.InMemoryImageStore.init:2:21: note: calls to initializer 'init()' from outside of its actor context are implicitly asynchronous
+@MainActor internal init()}
+                    ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:9:23: warning: main actor-isolated conformance of 'MockOCRService' to 'OCRService' cannot be used in nonisolated context; this is an error in the Swift 6 language mode
+    ocr: OCRService = MockOCRService(fixture: "standard"),
+                      ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:9:23: warning: call to main actor-isolated initializer 'init(fixture:)' in a synchronous nonisolated context
+    ocr: OCRService = MockOCRService(fixture: "standard"),
+                      ^
+CamCard.MockOCRService.init:2:33: note: calls to initializer 'init(fixture:)' from outside of its actor context are implicitly asynchronous
+@MainActor internal convenience init(fixture: String?)}
+                                ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:10:39: warning: main actor-isolated conformance of 'MockCardDetectionService' to 'CardDetectionService' cannot be used in nonisolated context; this is an error in the Swift 6 language mode
+    detection: CardDetectionService = MockCardDetectionService(),
+                                      ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:10:39: warning: call to main actor-isolated initializer 'init(shouldFail:)' in a synchronous nonisolated context
+    detection: CardDetectionService = MockCardDetectionService(),
+                                      ^
+CamCard.MockCardDetectionService.init:2:21: note: calls to initializer 'init(shouldFail:)' from outside of its actor context are implicitly asynchronous
+@MainActor internal init(shouldFail: Bool = false)}
+                    ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:11:20: warning: main actor-isolated conformance of 'FixedClock' to 'Clock' cannot be used in nonisolated context; this is an error in the Swift 6 language mode
+    clock: Clock = FixedClock(),
+                   ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:11:20: warning: call to main actor-isolated initializer 'init(_:)' in a synchronous nonisolated context
+    clock: Clock = FixedClock(),
+                   ^
+CamCard.FixedClock.init:2:21: note: calls to initializer 'init(_:)' from outside of its actor context are implicitly asynchronous
+@MainActor internal init(_ date: Date = Date(timeIntervalSince1970: 1_700_000_000))}
+                    ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:12:37: warning: main actor-isolated conformance of 'TemporaryVCardWriter' to 'VCardFileWriter' cannot be used in nonisolated context; this is an error in the Swift 6 language mode
+    exportWriter: VCardFileWriter = TemporaryVCardWriter(),
+                                    ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:12:37: warning: call to main actor-isolated initializer 'init()' in a synchronous nonisolated context
+    exportWriter: VCardFileWriter = TemporaryVCardWriter(),
+                                    ^
+CamCard.TemporaryVCardWriter.init:2:21: note: calls to initializer 'init()' from outside of its actor context are implicitly asynchronous
+@MainActor internal init()}
+                    ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:13:30: warning: call to main actor-isolated initializer 'init()' in a synchronous nonisolated context
+    options: LaunchOptions = LaunchOptions()
+                             ^
+CamCard.LaunchOptions.init:2:21: note: calls to initializer 'init()' from outside of its actor context are implicitly asynchronous
+@MainActor internal init()}
+                    ^
+
+SwiftEmitModule normal x86_64 Emitting\ module\ for\ CamCardTests (in target 'CamCardTests' from project 'CamCard')
+
+EmitSwiftModule normal x86_64 (in target 'CamCardTests' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:7:34: warning: main actor-isolated conformance of 'InMemoryCardRepository' to 'CardRepository' cannot be used in nonisolated context; this is an error in the Swift 6 language mode
+    repository: CardRepository = InMemoryCardRepository(),
+                                 ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:7:34: warning: call to main actor-isolated initializer 'init(snapshot:)' in a synchronous nonisolated context
+    repository: CardRepository = InMemoryCardRepository(),
+                                 ^
+CamCard.InMemoryCardRepository.init:2:21: note: calls to initializer 'init(snapshot:)' from outside of its actor context are implicitly asynchronous
+@MainActor internal init(snapshot: CamCard.CardSnapshot = .empty)}
+                    ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:8:30: warning: main actor-isolated conformance of 'InMemoryImageStore' to 'ImageStore' cannot be used in nonisolated context; this is an error in the Swift 6 language mode
+    imageStore: ImageStore = InMemoryImageStore(),
+                             ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:8:30: warning: call to main actor-isolated initializer 'init()' in a synchronous nonisolated context
+    imageStore: ImageStore = InMemoryImageStore(),
+                             ^
+CamCard.InMemoryImageStore.init:2:21: note: calls to initializer 'init()' from outside of its actor context are implicitly asynchronous
+@MainActor internal init()}
+                    ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:9:23: warning: main actor-isolated conformance of 'MockOCRService' to 'OCRService' cannot be used in nonisolated context; this is an error in the Swift 6 language mode
+    ocr: OCRService = MockOCRService(fixture: "standard"),
+                      ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:9:23: warning: call to main actor-isolated initializer 'init(fixture:)' in a synchronous nonisolated context
+    ocr: OCRService = MockOCRService(fixture: "standard"),
+                      ^
+CamCard.MockOCRService.init:2:33: note: calls to initializer 'init(fixture:)' from outside of its actor context are implicitly asynchronous
+@MainActor internal convenience init(fixture: String?)}
+                                ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:10:39: warning: main actor-isolated conformance of 'MockCardDetectionService' to 'CardDetectionService' cannot be used in nonisolated context; this is an error in the Swift 6 language mode
+    detection: CardDetectionService = MockCardDetectionService(),
+                                      ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:10:39: warning: call to main actor-isolated initializer 'init(shouldFail:)' in a synchronous nonisolated context
+    detection: CardDetectionService = MockCardDetectionService(),
+                                      ^
+CamCard.MockCardDetectionService.init:2:21: note: calls to initializer 'init(shouldFail:)' from outside of its actor context are implicitly asynchronous
+@MainActor internal init(shouldFail: Bool = false)}
+                    ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:11:20: warning: main actor-isolated conformance of 'FixedClock' to 'Clock' cannot be used in nonisolated context; this is an error in the Swift 6 language mode
+    clock: Clock = FixedClock(),
+                   ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:11:20: warning: call to main actor-isolated initializer 'init(_:)' in a synchronous nonisolated context
+    clock: Clock = FixedClock(),
+                   ^
+CamCard.FixedClock.init:2:21: note: calls to initializer 'init(_:)' from outside of its actor context are implicitly asynchronous
+@MainActor internal init(_ date: Date = Date(timeIntervalSince1970: 1_700_000_000))}
+                    ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:12:37: warning: main actor-isolated conformance of 'TemporaryVCardWriter' to 'VCardFileWriter' cannot be used in nonisolated context; this is an error in the Swift 6 language mode
+    exportWriter: VCardFileWriter = TemporaryVCardWriter(),
+                                    ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:12:37: warning: call to main actor-isolated initializer 'init()' in a synchronous nonisolated context
+    exportWriter: VCardFileWriter = TemporaryVCardWriter(),
+                                    ^
+CamCard.TemporaryVCardWriter.init:2:21: note: calls to initializer 'init()' from outside of its actor context are implicitly asynchronous
+@MainActor internal init()}
+                    ^
+/Users/chaotze/Downloads/Mobile Application Development/CamCard/CamCardTests/TestSupport.swift:13:30: warning: call to main actor-isolated initializer 'init()' in a synchronous nonisolated context
+    options: LaunchOptions = LaunchOptions()
+                             ^
+CamCard.LaunchOptions.init:2:21: note: calls to initializer 'init()' from outside of its actor context are implicitly asynchronous
+@MainActor internal init()}
+                    ^
+
+SwiftDriverJobDiscovery normal x86_64 Emitting module for CamCardTests (in target 'CamCardTests' from project 'CamCard')
+
+SwiftDriver\ Compilation\ Requirements CamCardTests normal x86_64 com.apple.xcode.tools.swift.compiler (in target 'CamCardTests' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CamCardTests -Onone -enforce-exclusivity\=checked @/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests.SwiftFileList -DDEBUG -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-upcoming-feature DisableOutwardActorInference -enable-upcoming-feature InferSendableFromCaptures -enable-upcoming-feature GlobalActorIsolatedTypesUsability -enable-upcoming-feature MemberImportVisibility -enable-upcoming-feature InferIsolatedConformances -enable-upcoming-feature NonisolatedNonsendingByDefault -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk -target x86_64-apple-ios26.0-simulator -g -module-cache-path /Users/chaotze/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -profile-coverage-mapping -profile-generate -enable-testing -index-store-path /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk/Developer/Library/Frameworks -c -j8 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/chaotze/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.0-23A339-26257891a6c027eb51374368541b8346.sdkstatcache -output-file-map /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/chaotze/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/chaotze/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/chaotze/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests_const_extract_protocols.json -Xcc -iquote -Xcc /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/CamCardTests-generated-files.hmap -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/CamCardTests-own-target-headers.hmap -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/CamCardTests-all-target-headers.hmap -Xcc -iquote -Xcc /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/CamCardTests-project-headers.hmap -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/DerivedSources-normal/x86_64 -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/DerivedSources/x86_64 -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests-Swift.h -working-directory /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard -experimental-emit-module-separately -disable-cmo
+
+Copy /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardTests.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests.swiftsourceinfo (in target 'CamCardTests' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests.swiftsourceinfo /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardTests.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo
+
+Copy /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardTests.swiftmodule/x86_64-apple-ios-simulator.abi.json /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests.abi.json (in target 'CamCardTests' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests.abi.json /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardTests.swiftmodule/x86_64-apple-ios-simulator.abi.json
+
+SwiftDriverJobDiscovery normal x86_64 Compiling ServiceAndViewModelTests.swift (in target 'CamCardTests' from project 'CamCard')
+
+SwiftDriver\ Compilation CamCardTests normal x86_64 com.apple.xcode.tools.swift.compiler (in target 'CamCardTests' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    builtin-Swift-Compilation -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CamCardTests -Onone -enforce-exclusivity\=checked @/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests.SwiftFileList -DDEBUG -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-upcoming-feature DisableOutwardActorInference -enable-upcoming-feature InferSendableFromCaptures -enable-upcoming-feature GlobalActorIsolatedTypesUsability -enable-upcoming-feature MemberImportVisibility -enable-upcoming-feature InferIsolatedConformances -enable-upcoming-feature NonisolatedNonsendingByDefault -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk -target x86_64-apple-ios26.0-simulator -g -module-cache-path /Users/chaotze/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -profile-coverage-mapping -profile-generate -enable-testing -index-store-path /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk/Developer/Library/Frameworks -c -j8 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/chaotze/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.0-23A339-26257891a6c027eb51374368541b8346.sdkstatcache -output-file-map /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/chaotze/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/chaotze/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/chaotze/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests_const_extract_protocols.json -Xcc -iquote -Xcc /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/CamCardTests-generated-files.hmap -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/CamCardTests-own-target-headers.hmap -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/CamCardTests-all-target-headers.hmap -Xcc -iquote -Xcc /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/CamCardTests-project-headers.hmap -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/DerivedSources-normal/x86_64 -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/DerivedSources/x86_64 -Xcc -I/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests-Swift.h -working-directory /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard -experimental-emit-module-separately -disable-cmo
 
 Ld /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest/CamCardTests normal (in target 'CamCardTests' from project 'CamCard')
     cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
@@ -146,14 +361,8 @@ CopySwiftLibs /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiy
 ExtractAppIntentsMetadata (in target 'CamCardTests' from project 'CamCard')
     cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
     /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name CamCardTests --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk --xcode-version 17A324 --platform-family iOS --deployment-target 26.0 --bundle-identifier cn.chaotze.CamCardTests --output /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest --target-triple x86_64-apple-ios26.0-simulator --binary-file /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest/CamCardTests --dependency-file /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests_dependency_info.dat --stringsdata-file /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests.SwiftFileList --metadata-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/CamCardTests.DependencyMetadataFileList --static-metadata-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/CamCardTests.DependencyStaticMetadataFileList --swift-const-vals-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/Objects-normal/x86_64/CamCardTests.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
-2026-11-01 10:35:26.619 appintentsmetadataprocessor[17302:171267] Starting appintentsmetadataprocessor export
-2026-11-01 10:35:26.626 appintentsmetadataprocessor[17302:171267] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
-
-AppIntentsSSUTraining (in target 'CamCardTests' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsnltrainingprocessor --infoplist-path /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest/Info.plist --temp-dir-path /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/ssu --bundle-id cn.chaotze.CamCardTests --product-path /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest --extracted-metadata-path /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest/Metadata.appintents --metadata-file-list /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardTests.build/CamCardTests.DependencyMetadataFileList --archive-ssu-assets
-2026-11-01 10:35:26.722 appintentsnltrainingprocessor[17303:171268] Parsing options for appintentsnltrainingprocessor
-2026-11-01 10:35:26.724 appintentsnltrainingprocessor[17303:171268] No AppShortcuts found - Skipping.
+2026-11-02 14:06:05.913 appintentsmetadataprocessor[32044:688554] Starting appintentsmetadataprocessor export
+2026-11-02 14:06:05.916 appintentsmetadataprocessor[32044:688554] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
 
 CodeSign /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest (in target 'CamCardTests' from project 'CamCard')
     cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
@@ -162,20 +371,13 @@ CodeSign /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxpon
     
     /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest
 
-RegisterExecutionPolicyException /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest (in target 'CamCardTests' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    builtin-RegisterExecutionPolicyException /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest
-
-Touch /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest (in target 'CamCardTests' from project 'CamCard')
-    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
-    /usr/bin/touch -c /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/PlugIns/CamCardTests.xctest
-
 CodeSign /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib (in target 'CamCard' from project 'CamCard')
     cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
     
     Signing Identity:     "Sign to Run Locally"
     
     /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib
+/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/CamCard.debug.dylib: replacing existing signature
 
 CodeSign /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app/__preview.dylib (in target 'CamCard' from project 'CamCard')
     cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
@@ -191,6 +393,7 @@ CodeSign /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxpon
     Signing Identity:     "Sign to Run Locally"
     
     /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app
+/Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app: replacing existing signature
 
 Validate /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCard.app (in target 'CamCard' from project 'CamCard')
     cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
@@ -199,6 +402,10 @@ Validate /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxpon
 ProcessInfoPlistFile /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/Info.plist /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/empty-CamCardUITests.plist (in target 'CamCardUITests' from project 'CamCard')
     cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
     builtin-infoPlistUtility /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/empty-CamCardUITests.plist -producttype com.apple.product-type.bundle.ui-testing -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/ProductTypeInfoPlistAdditions.plist -o /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/Info.plist
+
+CopySwiftLibs /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest (in target 'CamCardUITests' from project 'CamCard')
+    cd /Users/chaotze/Downloads/Mobile\ Application\ Development/CamCard
+    builtin-swiftStdLibTool --copy --verbose --sign - --scan-executable /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/CamCardUITests --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/Frameworks --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/PlugIns --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/SystemExtensions --scan-folder /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/Extensions --platform iphonesimulator --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Products/Debug-iphonesimulator/CamCardUITests-Runner.app/PlugIns/CamCardUITests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/chaotze/Library/Developer/Xcode/DerivedData/CamCard-dqrdqiykxponsnfeqqhppuqevjkb/Build/Intermediates.noindex/CamCard.build/Debug-iphonesimulator/CamCardUITests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
 
 ** TEST BUILD SUCCEEDED **
 
