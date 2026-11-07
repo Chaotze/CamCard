@@ -47,7 +47,7 @@ enum ContactField: String, Codable, CaseIterable, Hashable {
         case .website: return "globe"
         case .address: return "mappin.and.ellipse"
         case .department: return "person.3"
-        case .postalCode: return "mailbox"
+        case .postalCode: return "mail"
         case .notes: return "note.text"
         }
     }

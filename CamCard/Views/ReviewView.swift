@@ -54,11 +54,11 @@ struct ReviewView: View {
             phoneSection("办公电话", field: .officePhone)
             phoneSection("传真", field: .fax)
             emailSection
-            fieldRow(.address, multiline: true)
             Section("补充信息") {
+                fieldRow(.address, multiline: true)
+                fieldRow(.notes, multiline: true)
                 fieldRow(.department)
                 fieldRow(.postalCode)
-                fieldRow(.notes, multiline: true)
             }
 
             Section("标签") {
@@ -95,8 +95,7 @@ struct ReviewView: View {
                     Image(systemName: "checkmark")
                 }
                 .disabled(viewModel.isSaving || !viewModel.hasAnyValue)
-                .accessibilityLabel("保存")
-                .accessibilityIdentifier("reviewSaveButton")
+                .accessibilityLabel("保存")                .accessibilityIdentifier("reviewSaveButton")
             }
         }
         .alert("提示", isPresented: errorBinding) {
@@ -122,7 +121,7 @@ struct ReviewView: View {
                         Button {
                             viewModel.showRawText = false
                         } label: {
-                            Image(systemName: "checkmark")
+                            Image(systemName: "xmark")
                         }
                         .accessibilityLabel("完成")
                     }
@@ -158,6 +157,15 @@ struct ReviewView: View {
             if multiline {
                 TextEditor(text: textBinding(for: field))
                     .frame(minHeight: 70)
+                    .overlay(alignment: .topLeading) {
+                        if textBinding(for: field).wrappedValue.isEmpty {
+                            Text("未识别")
+                                .foregroundStyle(.tertiary)
+                                .padding(.top, 8)
+                                .padding(.leading, 5)
+                                .allowsHitTesting(false)
+                        }
+                    }
                     .accessibilityLabel(field.displayName)
                     .accessibilityIdentifier("reviewField-\(field.rawValue)")
             } else {

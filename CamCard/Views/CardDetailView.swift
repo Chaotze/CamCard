@@ -48,7 +48,7 @@ struct CardDetailView: View {
                         editingModel = viewModel.makeReviewViewModel()
                         showEdit = editingModel != nil
                     } label: {
-                        Image(systemName: "pencil")
+                        Image(systemName: "square.and.pencil")
                     }
                     .accessibilityLabel("编辑")
                     .accessibilityIdentifier("detailEditButton")
@@ -93,7 +93,7 @@ struct CardDetailView: View {
                         Button {
                             showRawText = false
                         } label: {
-                            Image(systemName: "checkmark")
+                            Image(systemName: "xmark")
                         }
                         .accessibilityLabel("完成")
                     }
@@ -200,6 +200,7 @@ struct CardDetailView: View {
                     cardPendingDeletion = card
                 } label: {
                     Label("删除名片", systemImage: "trash")
+                        .foregroundStyle(.red)
                 }
                 .accessibilityIdentifier("detailDeleteButton")
             }
@@ -208,12 +209,12 @@ struct CardDetailView: View {
 
     private func heroHeader(_ card: BusinessCard) -> some View {
         HStack(alignment: .center, spacing: 16) {
-            Text(monogram(for: card.displayName))
-                .font(.system(size: 28, weight: .semibold, design: .rounded))
-                .foregroundStyle(Color.accentColor)
-                .frame(width: 68, height: 68)
-                .background(Color.accentColor.opacity(0.12), in: Circle())
-                .accessibilityHidden(true)
+//            Text(monogram(for: card.displayName))
+//                .font(.system(size: 28, weight: .semibold, design: .rounded))
+//                .foregroundStyle(Color.accentColor)
+//                .frame(width: 68, height: 68)
+//                .background(Color.accentColor.opacity(0.12), in: Circle())
+//                .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(card.displayName)
@@ -240,6 +241,8 @@ struct CardDetailView: View {
                     }
                 }
             }
+            .padding(.horizontal, 2)
+            .padding(.top, 3)
             Spacer(minLength: 0)
         }
     }

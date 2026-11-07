@@ -284,17 +284,16 @@ struct CardHolderView: View {
     @ToolbarContentBuilder
     private var toolbarContent: some ToolbarContent {
         if viewModel.isSelecting {
-            ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    viewModel.exitSelection()
-                } label: {
-                    Image(systemName: "checkmark")
-                }
-                .accessibilityLabel("完成")
-                .accessibilityIdentifier("selectButton")
-            }
             ToolbarItem(placement: .topBarTrailing) {
                 HStack(spacing: 16) {
+                    Button {
+                        viewModel.exitSelection()
+                    } label: {
+                        Image(systemName: "xmark")
+                    }
+                    .accessibilityLabel("完成")
+                    .accessibilityIdentifier("selectButton")
+
                     Button {
                         exporter.export(viewModel.selectedCards)
                     } label: {
@@ -314,6 +313,7 @@ struct CardHolderView: View {
                     .accessibilityLabel("删除")
                     .accessibilityIdentifier("bulkDeleteButton")
                 }
+                .padding(.horizontal, 12)
             }
         } else {
             ToolbarItem(placement: .topBarTrailing) {
@@ -363,12 +363,13 @@ struct CardHolderView: View {
                         Button {
                             viewModel.isSelecting = true
                         } label: {
-                            Image(systemName: "checkmark.circle")
+                            Image(systemName: "checklist")
                         }
                         .accessibilityLabel("选择")
                         .accessibilityIdentifier("selectButton")
                     }
                 }
+                .padding(.horizontal, 12)
             }
         }
     }
