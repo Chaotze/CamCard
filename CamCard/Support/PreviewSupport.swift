@@ -70,7 +70,7 @@ enum PreviewData {
             card: card,
             audit: BusinessCard.fixtureAudit(for: card),
             originalImageData: imageData,
-            processedImageData: imageData,
+            processedImageData: nil,
             environment: environment
         )
     }

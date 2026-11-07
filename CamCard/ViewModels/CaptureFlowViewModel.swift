@@ -10,6 +10,7 @@ final class CaptureFlowViewModel: ObservableObject {
     @Published private(set) var corners: [CGPoint] = []
     @Published private(set) var ocrRecord: OCRRecord?
     @Published private(set) var structured: StructuredFields?
+    @Published private(set) var isAwaitingCrop = false
     @Published private(set) var isBusy = false
     @Published var errorMessage: String?
     @Published var detectionMessage: String?
@@ -27,7 +28,6 @@ final class CaptureFlowViewModel: ObservableObject {
     var isReadyForReview: Bool { state == .readyForReview }
     var isUnrecognizable: Bool { state == .unrecognizable }
     var isDetectionFailed: Bool { state == .detectionFailed }
-    var hasProcessedImage: Bool { processedImageData != nil }
     var cameraUnavailable: Bool { environment.cameraPermission.status() == .unavailable }
 
     func openCamera() async {
@@ -76,16 +76,18 @@ final class CaptureFlowViewModel: ObservableObject {
         corners = []
         ocrRecord = nil
         structured = nil
+        isAwaitingCrop = false
         await detect()
     }
 
     func retryDetection() async {
-        guard state == .detectionFailed else { return }
+        guard draft != nil else { return }
         await detect()
     }
 
     func continueWithOriginal() async {
         guard var current = draft else { return }
+        isAwaitingCrop = false
         current.processedData = nil
         current.corners = []
         draft = current
@@ -97,6 +99,7 @@ final class CaptureFlowViewModel: ObservableObject {
 
     func applyManualCrop(corners newCorners: [CGPoint]) async {
         guard var current = draft, newCorners.count == 4 else { return }
+        isAwaitingCrop = false
         isBusy = true
         defer { isBusy = false }
         let outcome = await environment.detection.rectify(
@@ -115,7 +118,15 @@ final class CaptureFlowViewModel: ObservableObject {
             state = current.state
             await runOCR()
         case let .failure(failure):
+            current.processedData = nil
+            current.corners = newCorners
+            try? current.transition(to: .detected)
+            draft = current
+            processedImageData = nil
+            corners = newCorners
             detectionMessage = failure.message
+            state = current.state
+            await runOCR()
         }
     }
 
@@ -162,6 +173,7 @@ final class CaptureFlowViewModel: ObservableObject {
         structured = nil
         detectionMessage = nil
         errorMessage = nil
+        isAwaitingCrop = false
     }
 
     private func detect() async {
@@ -182,16 +194,25 @@ final class CaptureFlowViewModel: ObservableObject {
             corners = detected.corners
             detectionMessage = nil
             state = current.state
-            await runOCR()
         case let .failure(failure):
-            current.state = .detectionFailed
+            current.processedData = nil
+            current.corners = Self.defaultCorners
+            try? current.transition(to: .detectionFailed)
             draft = current
             processedImageData = nil
-            corners = []
+            corners = Self.defaultCorners
             detectionMessage = failure.message
-            state = .detectionFailed
+            state = current.state
         }
+        isAwaitingCrop = true
     }
+
+    static let defaultCorners = [
+        CGPoint(x: 0.08, y: 0.16),
+        CGPoint(x: 0.92, y: 0.16),
+        CGPoint(x: 0.08, y: 0.84),
+        CGPoint(x: 0.92, y: 0.84)
+    ]
 
     private func runOCR() async {
         guard var current = draft else { return }

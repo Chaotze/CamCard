@@ -5,12 +5,10 @@ import Combine
 final class CardDetailViewModel: ObservableObject {
     @Published private(set) var card: BusinessCard?
     @Published private(set) var audit: CardAudit?
-    @Published private(set) var originalImageData: Data?
-    @Published private(set) var processedImageData: Data?
+    @Published private(set) var imageData: Data?
     @Published private(set) var imageUnavailable = false
     @Published private(set) var isDeleted = false
     @Published var errorMessage: String?
-    @Published var showingOriginal = true
 
     let cardID: UUID
     let environment: AppEnvironment
@@ -24,10 +22,6 @@ final class CardDetailViewModel: ObservableObject {
         audit?.ocrRecords.last?.rawText ?? ""
     }
 
-    var hasProcessedImage: Bool {
-        card?.processedImage != nil && processedImageData != nil
-    }
-
     func load() async {
         do {
             let snapshot = try await environment.repository.load()
@@ -37,17 +31,9 @@ final class CardDetailViewModel: ObservableObject {
             }
             card = found
             audit = snapshot.audits[cardID]
-            originalImageData = try await environment.imageStore.read(found.originalImage)
-            if let processed = found.processedImage {
-                processedImageData = try await environment.imageStore.read(processed)
-            } else {
-                processedImageData = nil
-            }
-            if let data = originalImageData {
-                imageUnavailable = ImageProcessing.uiImage(from: data) == nil
-            } else {
-                imageUnavailable = true
-            }
+            let reference = found.processedImage ?? found.originalImage
+            imageData = try await environment.imageStore.read(reference)
+            imageUnavailable = imageData.flatMap { ImageProcessing.uiImage(from: $0) } == nil
             errorMessage = nil
         } catch {
             errorMessage = (error as? LocalizedError)?.errorDescription ?? "无法读取名片"
@@ -68,8 +54,8 @@ final class CardDetailViewModel: ObservableObject {
         return ReviewViewModel(
             card: card,
             audit: audit,
-            originalImageData: originalImageData,
-            processedImageData: processedImageData,
+            originalImageData: imageData,
+            processedImageData: nil,
             environment: environment
         )
     }

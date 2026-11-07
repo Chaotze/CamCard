@@ -3,36 +3,36 @@ import SwiftUI
 struct ReviewView: View {
     @StateObject private var viewModel: ReviewViewModel
     let onSaved: () -> Void
-    let onCancel: () -> Void
 
     @Environment(\.dismiss) private var dismiss
 
     init(
         viewModel: ReviewViewModel,
-        onSaved: @escaping () -> Void,
-        onCancel: @escaping () -> Void
+        onSaved: @escaping () -> Void
     ) {
         _viewModel = StateObject(wrappedValue: viewModel)
         self.onSaved = onSaved
-        self.onCancel = onCancel
     }
 
     var body: some View {
         Form {
             Section("名片图像") {
-                HStack(spacing: 12) {
-                    imageThumbnail(viewModel.originalImageData, label: "原始图像")
-                    if let processed = viewModel.processedImageData {
-                        imageThumbnail(processed, label: "处理后图像")
-                    } else {
-                        VStack(spacing: 4) {
-                            Image(systemName: "rectangle.slash")
-                                .foregroundStyle(.secondary)
-                            Text("未生成校正图像")
-                                .font(.caption2)
-                                .foregroundStyle(.secondary)
-                        }
+                if let data = viewModel.displayImageData,
+                   let image = UIImage(data: data) {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
                         .frame(maxWidth: .infinity)
+                        .clipShape(RoundedRectangle(cornerRadius: 14))
+                        .listRowInsets(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
+                        .accessibilityLabel("名片图像")
+                } else {
+                    HStack(spacing: 8) {
+                        Image(systemName: "rectangle.slash")
+                            .foregroundStyle(.secondary)
+                        Text("名片图像不可用")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
                     }
                 }
                 Button {
@@ -88,12 +88,6 @@ struct ReviewView: View {
         .navigationTitle(viewModel.isEditing ? "编辑名片" : "校正名片")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button("取消") {
-                    onCancel()
-                    dismiss()
-                }
-            }
             ToolbarItem(placement: .confirmationAction) {
                 Button("保存") {
                     Task { await viewModel.save() }
@@ -133,27 +127,6 @@ struct ReviewView: View {
             dismiss()
         }
         .interactiveDismissDisabled(viewModel.isSaving)
-    }
-
-    private func imageThumbnail(_ data: Data?, label: String) -> some View {
-        VStack(spacing: 4) {
-            if let data, let image = UIImage(data: data) {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 90)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-            } else {
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color(white: 0.92))
-                    .frame(height: 90)
-                    .overlay(Text("不可用").font(.caption).foregroundStyle(.secondary))
-            }
-            Text(label)
-                .font(.caption2)
-                .foregroundStyle(.secondary)
-        }
-        .frame(maxWidth: .infinity)
     }
 
     @ViewBuilder
@@ -303,8 +276,7 @@ struct ReviewView: View {
     NavigationStack {
         ReviewView(
             viewModel: PreviewData.reviewViewModel(),
-            onSaved: {},
-            onCancel: {}
+            onSaved: {}
         )
     }
 }

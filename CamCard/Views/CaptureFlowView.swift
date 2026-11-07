@@ -10,7 +10,6 @@ struct CaptureFlowView: View {
 
     @Environment(\.dismiss) private var dismiss
     @State private var photoItem: PhotosPickerItem?
-    @State private var showManualCrop = false
     @State private var reviewModel: ReviewViewModel?
     @State private var didAutoStart = false
 
@@ -28,33 +27,22 @@ struct CaptureFlowView: View {
     var body: some View {
         Group {
             if let reviewModel {
-                ReviewView(
-                    viewModel: reviewModel,
-                    onSaved: {
-                        onSaved()
-                        dismiss()
-                    },
-                    onCancel: {
-                        viewModel.cancel()
-                        dismiss()
-                    }
-                )
-            } else {
-                captureContent
-            }
-        }
-        .navigationTitle(reviewModel == nil ? "扫描名片" : "校正名片")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            if reviewModel == nil {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("取消") {
-                        viewModel.cancel()
-                        dismiss()
-                    }
+                ReviewView(viewModel: reviewModel) {
+                    onSaved()
                 }
+            } else if viewModel.state == .unrecognizable {
+                unrecognizableContent
+                    .navigationTitle("无法识别名片")
+            } else if viewModel.isAwaitingCrop, let image = cropImage {
+                ManualCropView(image: image, initialCorners: viewModel.corners) { corners in
+                    Task { await viewModel.applyManualCrop(corners: corners) }
+                }
+            } else {
+                processingContent
+                    .navigationTitle("扫描名片")
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             guard !didAutoStart, !isRunningInPreview else { return }
             didAutoStart = true
@@ -67,6 +55,16 @@ struct CaptureFlowView: View {
         .onChange(of: viewModel.isReadyForReview) { _, isReady in
             guard isReady, reviewModel == nil else { return }
             reviewModel = viewModel.makeReviewViewModel()
+        }
+        .onChange(of: viewModel.photoPickerPresented) { _, presented in
+            guard !presented, photoItem == nil, viewModel.originalImageData == nil else { return }
+            Task {
+                try? await Task.sleep(for: .milliseconds(500))
+                if photoItem == nil, viewModel.originalImageData == nil, !viewModel.isAwaitingCrop {
+                    viewModel.cancel()
+                    dismiss()
+                }
+            }
         }
         .sheet(isPresented: $viewModel.cameraPickerPresented) {
             CameraPicker(
@@ -81,15 +79,7 @@ struct CaptureFlowView: View {
                 }
             )
             .ignoresSafeArea()
-        }
-        .sheet(isPresented: $showManualCrop) {
-            if let data = viewModel.originalImageData,
-               let image = UIImage(data: data) {
-                ManualCropView(image: image, initialCorners: viewModel.corners) { corners in
-                    showManualCrop = false
-                    Task { await viewModel.applyManualCrop(corners: corners) }
-                }
-            }
+            .interactiveDismissDisabled()
         }
         .photosPicker(
             isPresented: $viewModel.photoPickerPresented,
@@ -132,147 +122,76 @@ struct CaptureFlowView: View {
         }
     }
 
-    @ViewBuilder
-    private var captureContent: some View {
-        ScrollView {
-            VStack(spacing: 18) {
-                if let data = viewModel.originalImageData,
-                   let image = UIImage(data: data) {
-                    ZStack {
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFit()
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                        if viewModel.corners.count == 4 {
-                            DetectionOverlay(corners: viewModel.corners)
-                                .clipShape(RoundedRectangle(cornerRadius: 12))
-                        }
-                    }
-                    .accessibilityIdentifier("capturePreview")
-                }
+    private var cropImage: UIImage? {
+        viewModel.originalImageData.flatMap { UIImage(data: $0) }
+    }
 
-                if viewModel.isBusy {
-                    ProgressView(stateDescription)
-                        .accessibilityIdentifier("processingIndicator")
-                }
-
-                switch viewModel.state {
-                case .idle:
-                    VStack(spacing: 12) {
-                        Text("拍摄或导入一张名片")
-                            .font(.headline)
-                        Button {
-                            Task { await viewModel.openCamera() }
-                        } label: {
-                            Label("拍摄名片", systemImage: "camera")
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(.borderedProminent)
-                        Button {
-                            viewModel.openPhotoPicker()
-                        } label: {
-                            Label("从相册导入", systemImage: "photo")
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(.bordered)
-                    }
-                    .accessibilityIdentifier("captureIdleState")
-                case .detectionFailed:
-                    VStack(spacing: 14) {
-                        Label("未能检测到名片区域", systemImage: "exclamationmark.triangle")
-                            .font(.headline)
-                            .foregroundStyle(.orange)
-                        Text(detectionHint)
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                            .multilineTextAlignment(.center)
-                            .accessibilityIdentifier("detectionFailureMessage")
-                        Button {
-                            Task { await viewModel.retryDetection() }
-                        } label: {
-                            Label("重试检测", systemImage: "arrow.clockwise")
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .accessibilityIdentifier("retryDetectionButton")
-                        HStack(spacing: 8) {
-                            Button {
-                                showManualCrop = true
-                            } label: {
-                                Text("手动框选")
-                                    .frame(maxWidth: .infinity)
-                            }
-                            .accessibilityIdentifier("manualCropButton")
-                            Button {
-                                Task { await viewModel.continueWithOriginal() }
-                            } label: {
-                                Text("使用原图")
-                                    .frame(maxWidth: .infinity)
-                            }
-                            .accessibilityIdentifier("continueOriginalButton")
-                            Button {
-                                viewModel.retake()
-                            } label: {
-                                Text("重拍")
-                                    .frame(maxWidth: .infinity)
-                            }
-                        }
-                        .buttonStyle(.bordered)
-                    }
-                case .unrecognizable:
-                    VStack(spacing: 14) {
-                        Label("无法识别名片", systemImage: "text.viewfinder")
-                            .font(.headline)
-                            .foregroundStyle(.orange)
-                        Text("没有识别到名片文字，请重拍或手动填写。")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                            .multilineTextAlignment(.center)
-                        Button {
-                            viewModel.retake()
-                        } label: {
-                            Label("重拍", systemImage: "camera.rotate")
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .accessibilityIdentifier("retakeButton")
-                        Button {
-                            Task { await viewModel.proceedToManualEntry() }
-                        } label: {
-                            Label("手动填写", systemImage: "square.and.pencil")
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(.bordered)
-                        .accessibilityIdentifier("manualEntryButton")
-                    }
-                    .accessibilityIdentifier("unrecognizableState")
-                case .detected, .ocrRunning, .ocrFinished, .parsing:
-                    VStack(spacing: 10) {
-                        Text("正在识别名片文字…")
-                            .foregroundStyle(.secondary)
-                        if viewModel.corners.count == 4 {
-                            Text("已显示检测到的名片区域")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                .accessibilityIdentifier("detectedRegionLabel")
-                        }
-                        Button("重拍") { viewModel.retake() }
-                            .buttonStyle(.bordered)
-                    }
-                case .captured, .detecting, .capturing:
-                    Text("正在处理图像…")
-                        .foregroundStyle(.secondary)
-                case .readyForReview:
-                    Text("准备校正")
-                case .saving, .saved, .savingFailed:
-                    Text("正在保存…")
-                case .abandoned:
-                    Text("已取消")
-                }
+    private var processingContent: some View {
+        ZStack {
+            Color(uiColor: .systemBackground)
+                .ignoresSafeArea()
+            if let image = cropImage {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .opacity(0.16)
+                    .blur(radius: 2)
+                    .allowsHitTesting(false)
             }
-            .padding()
+            VStack(spacing: 14) {
+                ProgressView()
+                    .controlSize(.large)
+                Text(stateDescription)
+                    .font(.subheadline.weight(.medium))
+                    .foregroundStyle(.secondary)
+            }
         }
         .accessibilityIdentifier("captureFlowRoot")
+    }
+
+    private var unrecognizableContent: some View {
+        ScrollView {
+            VStack(spacing: 18) {
+                if let image = cropImage {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight: 240)
+                        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                        .shadow(color: .black.opacity(0.15), radius: 14, y: 6)
+                }
+
+                Label("无法识别名片", systemImage: "text.viewfinder")
+                    .font(.title3.bold())
+                    .foregroundStyle(.orange)
+
+                Text("没有识别到名片文字，请重新拍摄或手动填写。")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+
+                Button {
+                    viewModel.retake()
+                } label: {
+                    Label("重新拍摄", systemImage: "camera.rotate")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .accessibilityIdentifier("retakeButton")
+
+                Button {
+                    Task { await viewModel.proceedToManualEntry() }
+                } label: {
+                    Label("手动填写", systemImage: "square.and.pencil")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.large)
+                .accessibilityIdentifier("manualEntryButton")
+            }
+            .padding(24)
+        }
     }
 
     private var stateDescription: String {
@@ -281,15 +200,8 @@ struct CaptureFlowView: View {
         case .ocrRunning: return "正在识别文字…"
         case .parsing: return "正在整理字段…"
         case .saving: return "正在保存…"
-        default: return "正在处理…"
+        default: return viewModel.isBusy ? "正在处理…" : "正在准备…"
         }
-    }
-
-    private var detectionHint: String {
-        guard let message = viewModel.detectionMessage, message != DetectionFailure.noCard.message else {
-            return "请调整光线与角度后重试，也可以手动框选名片区域。"
-        }
-        return message
     }
 
     private var permissionAlertBinding: Binding<Bool> {

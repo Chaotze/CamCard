@@ -12,7 +12,7 @@ struct CardDetailView: View {
     @State private var showEdit = false
     @State private var editingModel: ReviewViewModel?
     @State private var showRawText = false
-    @State private var showDeleteConfirmation = false
+    @State private var cardPendingDeletion: BusinessCard?
 
     init(cardID: UUID, environment: AppEnvironment, onChanged: @escaping () -> Void = {}) {
         self.environment = environment
@@ -54,8 +54,7 @@ struct CardDetailView: View {
                     onSaved: {
                         Task { await viewModel.load() }
                         onChanged()
-                    },
-                    onCancel: {}
+                    }
                 )
             }
         }
@@ -80,17 +79,8 @@ struct CardDetailView: View {
                 }
             }
         }
-        .confirmationDialog(
-            "删除这张名片？",
-            isPresented: $showDeleteConfirmation,
-            titleVisibility: .visible
-        ) {
-            Button("删除", role: .destructive) {
-                Task { await viewModel.delete() }
-            }
-            Button("取消", role: .cancel) {}
-        } message: {
-            Text("删除后图像与识别记录将一并移除。")
+        .cardDeleteConfirmation(card: $cardPendingDeletion) { _ in
+            Task { await viewModel.delete() }
         }
         .onChange(of: viewModel.isDeleted) { _, deleted in
             if deleted {
@@ -116,137 +106,223 @@ struct CardDetailView: View {
 
     private func detailContent(_ card: BusinessCard) -> some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 18) {
-                imageSection(card)
+            VStack(alignment: .leading, spacing: 22) {
+                heroHeader(card)
+                imageSection
 
                 if viewModel.imageUnavailable {
-                    Label("原始图像不可用，文字信息仍可查看", systemImage: "photo.badge.exclamationmark")
+                    Label("名片图像不可用，文字信息仍可查看", systemImage: "photo.badge.exclamationmark")
                         .font(.footnote)
                         .foregroundStyle(.orange)
                         .accessibilityIdentifier("imageUnavailableLabel")
                 }
 
-                VStack(alignment: .leading, spacing: 12) {
-                    if let name = nonEmpty(card.name) {
-                        infoRow("姓名", name)
-                    }
-                    if let company = nonEmpty(card.company) {
-                        infoRow("公司", company)
-                    }
-                    if let jobTitle = nonEmpty(card.jobTitle) {
-                        infoRow("职位", jobTitle)
-                    }
+                VStack(alignment: .leading, spacing: 10) {
+                    sectionTitle("联系信息")
                     if let department = nonEmpty(card.department) {
-                        infoRow("部门", department)
+                        fieldRow("部门", department, icon: "person.3.fill", tint: .purple)
                     }
                     if !card.mobile.isEmpty {
-                        infoRow("手机", card.mobile.joined(separator: "\n"))
+                        fieldRow("手机", card.mobile.joined(separator: "\n"), icon: "iphone", tint: .green)
                     }
                     if !card.officePhone.isEmpty {
-                        infoRow("办公电话", card.officePhone.joined(separator: "\n"))
+                        fieldRow("办公电话", card.officePhone.joined(separator: "\n"), icon: "phone.fill", tint: .blue)
                     }
                     if !card.fax.isEmpty {
-                        infoRow("传真", card.fax.joined(separator: "\n"))
+                        fieldRow("传真", card.fax.joined(separator: "\n"), icon: "printer.fill", tint: .teal)
                     }
                     if !card.email.isEmpty {
-                        infoRow("Email", card.email.enumerated().map { index, value in
-                            index == 0 ? "\(value)（主）" : value
-                        }.joined(separator: "\n"))
+                        fieldRow(
+                            "Email",
+                            card.email.enumerated().map { index, value in
+                                index == 0 ? "\(value)（主）" : value
+                            }.joined(separator: "\n"),
+                            icon: "envelope.fill",
+                            tint: .orange
+                        )
                     }
                     if let website = nonEmpty(card.website) {
-                        infoRow("网站", website)
+                        fieldRow("网站", website, icon: "globe", tint: .cyan)
                     }
                     if let address = nonEmpty(card.address) {
-                        infoRow("地址", address)
+                        fieldRow("地址", address, icon: "mappin.and.ellipse", tint: .pink)
                     }
                     if let postalCode = nonEmpty(card.postalCode) {
-                        infoRow("邮编", postalCode)
+                        fieldRow("邮编", postalCode, icon: "mailbox.fill", tint: .brown)
                     }
                     if let notes = nonEmpty(card.notes) {
-                        infoRow("备注", notes)
-                    }
-                    if !card.tags.isEmpty {
-                        infoRow("标签", card.tags.joined(separator: "、"))
+                        fieldRow("备注", notes, icon: "note.text", tint: .indigo)
                     }
                 }
                 .accessibilityIdentifier("detailFields")
 
                 VStack(spacing: 12) {
-                    Button {
-                        showRawText = true
-                    } label: {
-                        Label("查看 OCR 原始文本", systemImage: "doc.text.magnifyingglass")
-                            .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(.bordered)
-                    .accessibilityIdentifier("detailRawTextButton")
+                    HStack(spacing: 12) {
+                        Button {
+                            exporter.export([card])
+                        } label: {
+                            Label("导出名片", systemImage: "square.and.arrow.up")
+                                .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .controlSize(.large)
+                        .accessibilityIdentifier("detailExportButton")
 
-                    Button {
-                        exporter.export([card])
-                    } label: {
-                        Label("导出 vCard", systemImage: "square.and.arrow.up")
-                            .frame(maxWidth: .infinity)
+                        Button {
+                            showRawText = true
+                        } label: {
+                            Label("OCR 文本", systemImage: "doc.text.magnifyingglass")
+                                .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(.bordered)
+                        .controlSize(.large)
+                        .accessibilityIdentifier("detailRawTextButton")
                     }
-                    .buttonStyle(.bordered)
-                    .accessibilityIdentifier("detailExportButton")
 
                     Button(role: .destructive) {
-                        showDeleteConfirmation = true
+                        cardPendingDeletion = card
                     } label: {
                         Label("删除名片", systemImage: "trash")
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.bordered)
+                    .controlSize(.large)
                     .accessibilityIdentifier("detailDeleteButton")
                 }
-                .padding(.top, 6)
+                .padding(.top, 4)
             }
-            .padding()
+            .padding(.horizontal, 20)
+            .padding(.vertical, 12)
         }
+        .background(Color(uiColor: .systemGroupedBackground))
     }
 
-    @ViewBuilder
-    private func imageSection(_ card: BusinessCard) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            if viewModel.hasProcessedImage {
-                Picker("图像", selection: $viewModel.showingOriginal) {
-                    Text("原始图像").tag(true)
-                    Text("处理后图像").tag(false)
+    private func heroHeader(_ card: BusinessCard) -> some View {
+        HStack(alignment: .center, spacing: 16) {
+            Text(monogram(for: card.displayName))
+                .font(.system(size: 34, weight: .black, design: .rounded))
+                .foregroundStyle(.white)
+                .frame(width: 84, height: 84)
+                .background(
+                    LinearGradient(
+                        colors: [.indigo, .blue, .cyan],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ),
+                    in: Circle()
+                )
+                .overlay(Circle().stroke(Color.white.opacity(0.25), lineWidth: 2))
+                .shadow(color: Color.indigo.opacity(0.35), radius: 14, y: 8)
+                .accessibilityHidden(true)
+
+            VStack(alignment: .leading, spacing: 6) {
+                Text(card.displayName)
+                    .font(.largeTitle.bold())
+                    .lineLimit(2)
+                let subtitle = [card.company, card.jobTitle]
+                    .compactMap { nonEmpty($0) }
+                    .joined(separator: " · ")
+                if !subtitle.isEmpty {
+                    Text(subtitle)
+                        .font(.subheadline.weight(.medium))
+                        .foregroundStyle(.secondary)
                 }
-                .pickerStyle(.segmented)
+                if !card.tags.isEmpty {
+                    HStack(spacing: 6) {
+                        ForEach(Array(card.tags.prefix(4)), id: \.self) { tag in
+                            Text(tag)
+                                .font(.caption.weight(.semibold))
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 4)
+                                .background(Color.accentColor.opacity(0.12), in: Capsule())
+                                .foregroundStyle(Color.accentColor)
+                        }
+                    }
+                }
             }
-            let data = viewModel.showingOriginal ? viewModel.originalImageData : viewModel.processedImageData
-            if let data, let image = UIImage(data: data) {
+            Spacer(minLength: 0)
+        }
+        .padding(.top, 4)
+    }
+
+    private var imageSection: some View {
+        Group {
+            if let data = viewModel.imageData, let image = UIImage(data: data) {
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: .infinity)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .accessibilityLabel(viewModel.showingOriginal ? "原始图像" : "处理后图像")
+                    .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 22, style: .continuous)
+                            .stroke(Color.white.opacity(0.35), lineWidth: 1)
+                    )
+                    .shadow(color: Color.black.opacity(0.14), radius: 16, y: 8)
+                    .accessibilityLabel("名片图像")
             } else {
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(white: 0.93))
-                    .frame(height: 160)
-                    .overlay(Text("图像不可用").foregroundStyle(.secondary))
-            }
-            if card.processedImage == nil {
-                Text("该名片未生成校正图像")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                RoundedRectangle(cornerRadius: 22, style: .continuous)
+                    .fill(Color(uiColor: .secondarySystemGroupedBackground))
+                    .frame(height: 180)
+                    .overlay {
+                        VStack(spacing: 8) {
+                            Image(systemName: "photo")
+                                .font(.title2)
+                            Text("图像不可用")
+                                .font(.caption)
+                        }
+                        .foregroundStyle(.secondary)
+                    }
             }
         }
     }
 
-    private func infoRow(_ label: String, _ value: String) -> some View {
-        VStack(alignment: .leading, spacing: 3) {
-            Text(label)
-                .font(.caption)
-                .foregroundStyle(.secondary)
-            Text(value)
-                .font(.body)
-                .accessibilityIdentifier("detailValue-\(label)")
+    private func sectionTitle(_ title: String) -> some View {
+        Text(title)
+            .font(.footnote.weight(.semibold))
+            .foregroundStyle(.secondary)
+            .textCase(.uppercase)
+            .tracking(1.2)
+    }
+
+    private func fieldRow(_ label: String, _ value: String, icon: String, tint: Color) -> some View {
+        HStack(alignment: .top, spacing: 14) {
+            Image(systemName: icon)
+                .font(.system(size: 15, weight: .semibold))
+                .foregroundStyle(tint)
+                .frame(width: 34, height: 34)
+                .background(
+                    tint.opacity(0.12),
+                    in: RoundedRectangle(cornerRadius: 10, style: .continuous)
+                )
+            VStack(alignment: .leading, spacing: 3) {
+                Text(label)
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                Text(value)
+                    .font(.body.weight(.medium))
+                    .textSelection(.enabled)
+                    .accessibilityIdentifier("detailValue-\(label)")
+            }
+            Spacer(minLength: 0)
         }
+        .padding(14)
         .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            Color(uiColor: .secondarySystemGroupedBackground),
+            in: RoundedRectangle(cornerRadius: 16, style: .continuous)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(Color.primary.opacity(0.04), lineWidth: 1)
+        )
+    }
+
+    private func monogram(for name: String) -> String {
+        let tokens = name.split(separator: " ")
+        if tokens.count > 1 {
+            return tokens.prefix(2).compactMap { $0.first.map(String.init) }.joined().uppercased()
+        }
+        return String(name.prefix(1)).uppercased()
     }
 
     private func nonEmpty(_ value: String?) -> String? {

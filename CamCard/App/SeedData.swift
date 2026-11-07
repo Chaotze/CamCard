@@ -57,14 +57,13 @@ enum SeedData {
         for index in templates.indices {
             let id = UUID()
             let label = templates[index].displayName
-            let originalData = ImageProcessing.sampleJPEG(text: label)
-            guard let original = try? await environment.imageStore.write(originalData, id: id, kind: .original) else {
+            let imageData = ImageProcessing.sampleJPEG(text: label)
+            guard let imageReference = try? await environment.imageStore.write(imageData, id: id, kind: .original) else {
                 continue
             }
-            let processed = try? await environment.imageStore.write(originalData, id: id, kind: .processed)
             templates[index].id = id
-            templates[index].originalImage = original
-            templates[index].processedImage = processed
+            templates[index].originalImage = imageReference
+            templates[index].processedImage = nil
             let card = templates[index]
             let audit = CardAudit(
                 cardID: card.id,

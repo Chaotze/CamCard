@@ -162,7 +162,7 @@ final class BusinessCardFieldParser: FieldParser {
 
     private func extractDepartment(from lines: [OCRLine], used: inout Set<UUID>, into result: inout StructuredFields) {
         for line in lines where !used.contains(line.id) {
-            if let value = labeledValue(line.text, labels: ["部门", "department", "dept", "division"]) {
+            if let value = labeledValue(line.text, labels: ["部门", "科室", "department", "dept", "division", "team"]) {
                 result.department = value
                 used.insert(line.id)
                 addProvenance(.department, lineIDs: [line.id], method: .label, confidence: 0.95, to: &result)
@@ -173,7 +173,7 @@ final class BusinessCardFieldParser: FieldParser {
 
     private func extractPostalCode(from lines: [OCRLine], used: inout Set<UUID>, into result: inout StructuredFields) {
         for line in lines where !used.contains(line.id) {
-            if let value = labeledValue(line.text, labels: ["邮编", "邮政编码", "zip", "postal code", "postalcode"]) {
+            if let value = labeledValue(line.text, labels: ["邮编", "邮政编码", "zip code", "zip", "postal code", "postalcode"]) {
                 let digits = value.filter(\.isNumber)
                 if digits.count == 6 {
                     result.postalCode = digits
@@ -196,7 +196,7 @@ final class BusinessCardFieldParser: FieldParser {
 
     private func extractNotes(from lines: [OCRLine], used: inout Set<UUID>, into result: inout StructuredFields) {
         for line in lines where !used.contains(line.id) {
-            if let value = labeledValue(line.text, labels: ["备注", "note", "notes", "remark", "remarks"]) {
+            if let value = labeledValue(line.text, labels: ["备注", "note", "notes", "remark", "remarks", "memo"]) {
                 result.notes = value
                 used.insert(line.id)
                 addProvenance(.notes, lineIDs: [line.id], method: .label, confidence: 0.95, to: &result)
@@ -207,7 +207,7 @@ final class BusinessCardFieldParser: FieldParser {
 
     private func extractJobTitle(from lines: [OCRLine], used: inout Set<UUID>, into result: inout StructuredFields) {
         for line in lines where !used.contains(line.id) {
-            if let value = labeledValue(line.text, labels: ["职位", "title", "job title"]) {
+            if let value = labeledValue(line.text, labels: ["职位", "职务", "岗位", "job title", "title", "position", "role"]) {
                 result.jobTitle = value
                 used.insert(line.id)
                 addProvenance(.jobTitle, lineIDs: [line.id], method: .label, confidence: 0.9, to: &result)
@@ -233,7 +233,7 @@ final class BusinessCardFieldParser: FieldParser {
         into result: inout StructuredFields
     ) {
         for line in lines where !used.contains(line.id) {
-            if let value = labeledValue(line.text, labels: ["公司", "company", "organization", "org"]) {
+            if let value = labeledValue(line.text, labels: ["公司名称", "公司", "单位", "company", "organization", "organisation", "org", "employer"]) {
                 result.company = value
                 used.insert(line.id)
                 addProvenance(.company, lineIDs: [line.id], method: .label, confidence: 0.95, to: &result)
@@ -264,7 +264,7 @@ final class BusinessCardFieldParser: FieldParser {
 
     private func extractName(from lines: [OCRLine], used: inout Set<UUID>, into result: inout StructuredFields) {
         for line in lines where !used.contains(line.id) {
-            if let value = labeledValue(line.text, labels: ["姓名", "name"]) {
+            if let value = labeledValue(line.text, labels: ["姓名", "联系人", "name", "contact person", "contact", "attn"]) {
                 result.name = value
                 used.insert(line.id)
                 addProvenance(.name, lineIDs: [line.id], method: .label, confidence: 0.95, to: &result)
@@ -283,7 +283,7 @@ final class BusinessCardFieldParser: FieldParser {
 
     private func extractAddress(from lines: [OCRLine], used: inout Set<UUID>, into result: inout StructuredFields) {
         for (index, line) in lines.enumerated() where !used.contains(line.id) {
-            if let value = labeledValue(line.text, labels: ["地址", "address"]) {
+            if let value = labeledValue(line.text, labels: ["公司地址", "办公地址", "地址", "住址", "address", "addr", "add", "location"]) {
                 var parts = [value]
                 var addressLineIDs = [line.id]
                 used.insert(line.id)
@@ -350,8 +350,14 @@ final class BusinessCardFieldParser: FieldParser {
     }
 
     private func labeledValue(_ text: String, labels: [String]) -> String? {
-        let escaped = labels.map { NSRegularExpression.escapedPattern(for: $0) }
-        let pattern = "^(?:\(escaped.joined(separator: "|")))\\s*[:：]?\\s*(.+)$"
+        let alternatives = labels
+            .sorted { $0.count > $1.count }
+            .map { label -> String in
+                let escaped = NSRegularExpression.escapedPattern(for: label)
+                let isLatin = label.unicodeScalars.allSatisfy(\.isASCII)
+                return isLatin ? escaped + "(?![A-Za-z])" : escaped
+            }
+        let pattern = "^(?:\(alternatives.joined(separator: "|")))\\s*[:：]?\\s*(.+)$"
         guard let expression = try? NSRegularExpression(pattern: pattern, options: [.caseInsensitive]) else {
             return nil
         }
@@ -361,7 +367,8 @@ final class BusinessCardFieldParser: FieldParser {
               let valueRange = Range(match.range(at: 1), in: text) else {
             return nil
         }
-        let value = String(text[valueRange]).trimmingCharacters(in: .whitespacesAndNewlines)
+        let value = String(text[valueRange])
+            .trimmingCharacters(in: CharacterSet(charactersIn: " \t\n:：,，;；-—"))
         return value.isEmpty ? nil : value
     }
 

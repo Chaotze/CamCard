@@ -7,6 +7,7 @@ struct CardHolderView: View {
     @StateObject private var exporter: ExportViewModel
     @State private var shareItem: ShareItem?
     @State private var activeRoute: AppRoute?
+    @State private var cardPendingDeletion: BusinessCard?
 
     init(viewModel: CardHolderViewModel, environment: AppEnvironment) {
         self.viewModel = viewModel
@@ -51,6 +52,9 @@ struct CardHolderView: View {
         }
         .sheet(item: $shareItem) { item in
             ShareSheet(url: item.url)
+        }
+        .cardDeleteConfirmation(card: $cardPendingDeletion) { card in
+            Task { await viewModel.delete(card) }
         }
         .onChange(of: exporter.shareURL) { _, url in
             guard let url else { return }
@@ -104,23 +108,32 @@ struct CardHolderView: View {
                 .listRowSeparator(.hidden)
             } else {
                 ForEach(viewModel.filteredCards) { card in
-                    if viewModel.isSelecting {
-                        Button {
-                            viewModel.toggleSelection(card.id)
-                        } label: {
-                            HStack {
-                                Image(systemName: viewModel.selectedIDs.contains(card.id) ? "checkmark.circle.fill" : "circle")
-                                    .foregroundStyle(viewModel.selectedIDs.contains(card.id) ? Color.accentColor : .secondary)
+                    Group {
+                        if viewModel.isSelecting {
+                            Button {
+                                viewModel.toggleSelection(card.id)
+                            } label: {
+                                HStack {
+                                    Image(systemName: viewModel.selectedIDs.contains(card.id) ? "checkmark.circle.fill" : "circle")
+                                        .foregroundStyle(viewModel.selectedIDs.contains(card.id) ? Color.accentColor : .secondary)
+                                    cardRow(card)
+                                }
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityIdentifier("cardRow-\(card.id.uuidString)")
+                        } else {
+                            NavigationLink(value: AppRoute.detail(card.id)) {
                                 cardRow(card)
                             }
+                            .accessibilityIdentifier("cardRow-\(card.id.uuidString)")
                         }
-                        .buttonStyle(.plain)
-                        .accessibilityIdentifier("cardRow-\(card.id.uuidString)")
-                    } else {
-                        NavigationLink(value: AppRoute.detail(card.id)) {
-                            cardRow(card)
+                    }
+                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                        Button(role: .destructive) {
+                            cardPendingDeletion = card
+                        } label: {
+                            Label("删除", systemImage: "trash")
                         }
-                        .accessibilityIdentifier("cardRow-\(card.id.uuidString)")
                     }
                 }
             }

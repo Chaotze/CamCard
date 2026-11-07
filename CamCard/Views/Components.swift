@@ -114,79 +114,138 @@ struct ManualCropView: View {
     let initialCorners: [CGPoint]
     let onConfirm: ([CGPoint]) -> Void
 
-    @Environment(\.dismiss) private var dismiss
     @State private var corners: [CGPoint]
+
+    // Vision 返回的顺序是 左上、右上、左下、右下；绘制时按顺时针取点。
+    private let displayOrder = [0, 1, 3, 2]
+
+    private var accentGradient: LinearGradient {
+        LinearGradient(
+            colors: [
+                Color(red: 0.20, green: 0.85, blue: 1.00),
+                Color(red: 0.55, green: 0.40, blue: 1.00),
+                Color(red: 1.00, green: 0.35, blue: 0.70)
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
 
     init(image: UIImage, initialCorners: [CGPoint], onConfirm: @escaping ([CGPoint]) -> Void) {
         self.image = image
         self.initialCorners = initialCorners
         self.onConfirm = onConfirm
         let defaults = [
-            CGPoint(x: 0.08, y: 0.18),
-            CGPoint(x: 0.92, y: 0.18),
-            CGPoint(x: 0.08, y: 0.82),
-            CGPoint(x: 0.92, y: 0.82)
+            CGPoint(x: 0.08, y: 0.16),
+            CGPoint(x: 0.92, y: 0.16),
+            CGPoint(x: 0.08, y: 0.84),
+            CGPoint(x: 0.92, y: 0.84)
         ]
         _corners = State(initialValue: initialCorners.count == 4 ? initialCorners : defaults)
     }
 
     var body: some View {
-        NavigationStack {
-            GeometryReader { geometry in
-                let rect = fittedRect(in: geometry.size)
-                ZStack {
-                    Color.black
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFit()
-                    Path { path in
-                        let points = corners.map {
-                            CGPoint(
-                                x: rect.minX + $0.x * rect.width,
-                                y: rect.minY + $0.y * rect.height
-                            )
-                        }
-                        path.move(to: points[0])
-                        for point in points.dropFirst() {
-                            path.addLine(to: point)
-                        }
-                        path.closeSubpath()
-                    }
-                    .stroke(Color.green, lineWidth: 3)
-                    ForEach(0..<4, id: \.self) { index in
-                        Circle()
-                            .fill(Color.green)
-                            .frame(width: 26, height: 26)
-                            .position(
-                                x: rect.minX + corners[index].x * rect.width,
-                                y: rect.minY + corners[index].y * rect.height
-                            )
-                            .gesture(
-                                DragGesture()
-                                    .onChanged { value in
-                                        let x = min(1, max(0, (value.location.x - rect.minX) / rect.width))
-                                        let y = min(1, max(0, (value.location.y - rect.minY) / rect.height))
-                                        corners[index] = CGPoint(x: x, y: y)
-                                    }
-                            )
-                    }
+        GeometryReader { geometry in
+            let rect = fittedRect(in: geometry.size)
+            ZStack {
+                Color.black
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                dimMask(size: geometry.size, rect: rect)
+                quadPath(in: rect)
+                    .stroke(
+                        accentGradient,
+                        style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round)
+                    )
+                    .shadow(color: Color.cyan.opacity(0.55), radius: 10)
+                ForEach(displayOrder, id: \.self) { index in
+                    handle(for: index, in: rect)
                 }
             }
-            .ignoresSafeArea(edges: .bottom)
-            .navigationTitle("手动框选")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("取消") { dismiss() }
-                }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("应用") {
-                        onConfirm(corners)
-                        dismiss()
-                    }
-                }
+            .coordinateSpace(.named("cropSpace"))
+            .overlay(alignment: .bottom) {
+                confirmBar
+                    .padding(.horizontal, 24)
+                    .padding(.bottom, 20)
             }
         }
+        .background(Color.black.ignoresSafeArea())
+        .navigationTitle("框选名片")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private var confirmBar: some View {
+        VStack(spacing: 10) {
+            Text("拖动四角，让边框贴合名片")
+                .font(.footnote.weight(.medium))
+                .foregroundStyle(.white.opacity(0.85))
+            Button {
+                onConfirm(corners)
+            } label: {
+                Label("下一步", systemImage: "arrow.right")
+                    .font(.headline)
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 14)
+                    .background(accentGradient, in: Capsule())
+                    .shadow(color: Color.cyan.opacity(0.35), radius: 12, y: 6)
+            }
+            .buttonStyle(.plain)
+            .accessibilityIdentifier("cropConfirmButton")
+        }
+    }
+
+    private func dimMask(size: CGSize, rect: CGRect) -> some View {
+        Path { path in
+            path.addRect(CGRect(origin: .zero, size: size))
+            path.addPath(quadPath(in: rect))
+        }
+        .fill(Color.black.opacity(0.55), style: FillStyle(eoFill: true))
+    }
+
+    private func quadPath(in rect: CGRect) -> Path {
+        let points = displayOrder.map { screenPoint(for: corners[$0], in: rect) }
+        return Path { path in
+            guard let first = points.first else { return }
+            path.move(to: first)
+            for point in points.dropFirst() {
+                path.addLine(to: point)
+            }
+            path.closeSubpath()
+        }
+    }
+
+    private func handle(for index: Int, in rect: CGRect) -> some View {
+        ZStack {
+            Circle()
+                .fill(Color.white)
+                .frame(width: 26, height: 26)
+            Circle()
+                .stroke(accentGradient, lineWidth: 3)
+                .frame(width: 26, height: 26)
+            Circle()
+                .fill(Color.black.opacity(0.2))
+                .frame(width: 6, height: 6)
+        }
+        .shadow(color: Color.black.opacity(0.35), radius: 5, y: 2)
+        .position(screenPoint(for: corners[index], in: rect))
+        .gesture(
+            DragGesture(minimumDistance: 0, coordinateSpace: .named("cropSpace"))
+                .onChanged { value in
+                    let x = min(1, max(0, (value.location.x - rect.minX) / rect.width))
+                    let y = min(1, max(0, (value.location.y - rect.minY) / rect.height))
+                    corners[index] = CGPoint(x: x, y: y)
+                }
+        )
+        .accessibilityLabel("名片角点 \(index + 1)")
+    }
+
+    private func screenPoint(for point: CGPoint, in rect: CGRect) -> CGPoint {
+        CGPoint(
+            x: rect.minX + point.x * rect.width,
+            y: rect.minY + point.y * rect.height
+        )
     }
 
     private func fittedRect(in size: CGSize) -> CGRect {
@@ -202,6 +261,54 @@ struct ManualCropView: View {
             width: width,
             height: height
         )
+    }
+}
+
+struct CardDeleteConfirmationModifier: ViewModifier {
+    @Binding var card: BusinessCard?
+    let onDelete: (BusinessCard) -> Void
+
+    func body(content: Content) -> some View {
+        content.confirmationDialog(
+            "删除名片",
+            isPresented: Binding(
+                get: { card != nil },
+                set: { if !$0 { card = nil } }
+            ),
+            titleVisibility: .visible,
+            presenting: card
+        ) { target in
+            Button("删除", role: .destructive) {
+                card = nil
+                onDelete(target)
+            }
+            Button("取消", role: .cancel) {
+                card = nil
+            }
+        } message: { target in
+            Text(Self.message(for: target))
+        }
+    }
+
+    private static func message(for card: BusinessCard) -> String {
+        var detail = card.displayName
+        if let company = card.company?.trimmingCharacters(in: .whitespacesAndNewlines),
+           !company.isEmpty {
+            detail += " · \(company)"
+        }
+        if let phone = card.summary {
+            detail += "\n\(phone)"
+        }
+        return "将永久删除「\(detail)」的名片，图像与识别记录也会一并移除，此操作无法撤销。"
+    }
+}
+
+extension View {
+    func cardDeleteConfirmation(
+        card: Binding<BusinessCard?>,
+        onDelete: @escaping (BusinessCard) -> Void
+    ) -> some View {
+        modifier(CardDeleteConfirmationModifier(card: card, onDelete: onDelete))
     }
 }
 
@@ -228,9 +335,11 @@ struct ShareItem: Identifiable {
 }
 
 #Preview("手动框选") {
-    ManualCropView(
-        image: UIImage(data: ImageProcessing.sampleJPEG(text: "名片原图"))!,
-        initialCorners: MockCardDetectionService.defaultCorners,
-        onConfirm: { _ in }
-    )
+    NavigationStack {
+        ManualCropView(
+            image: UIImage(data: ImageProcessing.sampleJPEG(text: "名片原图"))!,
+            initialCorners: MockCardDetectionService.defaultCorners,
+            onConfirm: { _ in }
+        )
+    }
 }

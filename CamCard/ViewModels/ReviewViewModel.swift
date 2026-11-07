@@ -93,6 +93,10 @@ final class ReviewViewModel: ObservableObject {
 
     var isEditing: Bool { existingCard != nil }
 
+    var displayImageData: Data? {
+        processedImageData ?? originalImageData
+    }
+
     var hasAnyValue: Bool {
         ContactField.allCases.contains { !normalized(values(for: $0)).isEmpty }
             || !normalized(tags).isEmpty
@@ -213,51 +217,34 @@ final class ReviewViewModel: ObservableObject {
                 try await environment.repository.update(card, audit: audit)
                 savedCard = card
             } else {
-                guard let draftID, let originalData = draftOriginalData else {
+                guard let draftID, let imageData = draftProcessedData ?? draftOriginalData else {
                     throw RepositoryError.saveFailed
                 }
-                let originalReference = try await environment.imageStore.write(
-                    originalData,
+                let reference = try await environment.imageStore.write(
+                    imageData,
                     id: draftID,
                     kind: .original
                 )
-                var written = [originalReference]
-                do {
-                    var processedReference: ImageReference?
-                    if let processedData = draftProcessedData {
-                        processedReference = try await environment.imageStore.write(
-                            processedData,
-                            id: draftID,
-                            kind: .processed
-                        )
-                        if let processedReference { written.append(processedReference) }
-                    }
-                    var card = BusinessCard(
-                        id: draftID,
-                        originalImage: originalReference,
-                        processedImage: processedReference,
-                        createdAt: now,
-                        updatedAt: now
-                    )
-                    applyFields(to: &card)
-                    card.tags = normalized(tags)
-                    let audit = CardAudit(
-                        cardID: card.id,
-                        originalImage: originalReference,
-                        processedImage: processedReference,
-                        ocrRecords: existingRecords,
-                        structuredFields: parsed,
-                        corrections: makeCorrections(previous: parsed, timestamp: now),
-                        createdAt: now
-                    )
-                    try await environment.repository.save(card, audit: audit)
-                    savedCard = card
-                } catch {
-                    for reference in written {
-                        try? await environment.imageStore.delete(reference)
-                    }
-                    throw error
-                }
+                var card = BusinessCard(
+                    id: draftID,
+                    originalImage: reference,
+                    processedImage: nil,
+                    createdAt: now,
+                    updatedAt: now
+                )
+                applyFields(to: &card)
+                card.tags = normalized(tags)
+                let audit = CardAudit(
+                    cardID: card.id,
+                    originalImage: reference,
+                    processedImage: nil,
+                    ocrRecords: existingRecords,
+                    structuredFields: parsed,
+                    corrections: makeCorrections(previous: parsed, timestamp: now),
+                    createdAt: now
+                )
+                try await environment.repository.save(card, audit: audit)
+                savedCard = card
             }
             didSave = true
         } catch {
