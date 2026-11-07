@@ -16,7 +16,7 @@ struct ReviewView: View {
 
     var body: some View {
         Form {
-            Section {
+            Section("名片图像") {
                 if let data = viewModel.displayImageData,
                    let image = UIImage(data: data) {
                     Image(uiImage: image)
@@ -41,17 +41,13 @@ struct ReviewView: View {
                     Label("查看 OCR 原始文本", systemImage: "doc.text.magnifyingglass")
                 }
                 .accessibilityIdentifier("reviewRawTextButton")
-            } header: {
-                Label("名片图像", systemImage: "photo")
             }
 
-            Section {
+            Section("联系人") {
                 fieldRow(.name)
                 fieldRow(.company)
                 fieldRow(.jobTitle)
                 fieldRow(.website)
-            } header: {
-                Label("联系人", systemImage: "person.crop.circle")
             }
 
             phoneSection("手机", field: .mobile)
@@ -59,15 +55,13 @@ struct ReviewView: View {
             phoneSection("传真", field: .fax)
             emailSection
             fieldRow(.address, multiline: true)
-            Section {
+            Section("补充信息") {
                 fieldRow(.department)
                 fieldRow(.postalCode)
                 fieldRow(.notes, multiline: true)
-            } header: {
-                Label("补充信息", systemImage: "ellipsis.circle")
             }
 
-            Section {
+            Section("标签") {
                 ForEach(viewModel.tags, id: \.self) { tag in
                     HStack {
                         Text(tag)
@@ -89,18 +83,19 @@ struct ReviewView: View {
                     }
                     .disabled(viewModel.newTag.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 }
-            } header: {
-                Label("标签", systemImage: "tag")
             }
         }
         .navigationTitle(viewModel.isEditing ? "编辑名片" : "校正名片")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
-                Button("保存") {
+                Button {
                     Task { await viewModel.save() }
+                } label: {
+                    Image(systemName: "checkmark")
                 }
                 .disabled(viewModel.isSaving || !viewModel.hasAnyValue)
+                .accessibilityLabel("保存")
                 .accessibilityIdentifier("reviewSaveButton")
             }
         }
@@ -124,7 +119,12 @@ struct ReviewView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) {
-                        Button("完成") { viewModel.showRawText = false }
+                        Button {
+                            viewModel.showRawText = false
+                        } label: {
+                            Image(systemName: "checkmark")
+                        }
+                        .accessibilityLabel("完成")
                     }
                 }
             }
@@ -141,10 +141,6 @@ struct ReviewView: View {
     private func fieldRow(_ field: ContactField, multiline: Bool = false) -> some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack(spacing: 8) {
-                Image(systemName: field.systemImage)
-                    .font(.caption)
-                    .foregroundStyle(.tint)
-                    .frame(width: 18)
                 Text(field.displayName)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
@@ -206,8 +202,6 @@ struct ReviewView: View {
             .accessibilityIdentifier("add-\(field.rawValue)")
         } header: {
             HStack {
-                Image(systemName: field.systemImage)
-                    .foregroundStyle(.tint)
                 Text(title)
                 sourceBadge(for: field)
             }
@@ -245,8 +239,6 @@ struct ReviewView: View {
             .accessibilityIdentifier("add-email")
         } header: {
             HStack {
-                Image(systemName: ContactField.email.systemImage)
-                    .foregroundStyle(.tint)
                 Text("Email")
                 sourceBadge(for: .email)
             }

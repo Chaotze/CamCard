@@ -37,17 +37,17 @@ enum ContactField: String, Codable, CaseIterable, Hashable {
 
     var systemImage: String {
         switch self {
-        case .name: return "person.fill"
-        case .company: return "building.2.fill"
-        case .jobTitle: return "briefcase.fill"
+        case .name: return "person"
+        case .company: return "building.2"
+        case .jobTitle: return "briefcase"
         case .mobile: return "iphone"
-        case .officePhone: return "phone.fill"
-        case .fax: return "printer.fill"
-        case .email: return "envelope.fill"
+        case .officePhone: return "phone"
+        case .fax: return "printer"
+        case .email: return "envelope"
         case .website: return "globe"
         case .address: return "mappin.and.ellipse"
-        case .department: return "person.3.fill"
-        case .postalCode: return "mailbox.fill"
+        case .department: return "person.3"
+        case .postalCode: return "mailbox"
         case .notes: return "note.text"
         }
     }

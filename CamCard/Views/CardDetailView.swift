@@ -44,10 +44,13 @@ struct CardDetailView: View {
         .toolbar {
             if viewModel.card != nil {
                 ToolbarItem(placement: .primaryAction) {
-                    Button("编辑") {
+                    Button {
                         editingModel = viewModel.makeReviewViewModel()
                         showEdit = editingModel != nil
+                    } label: {
+                        Image(systemName: "pencil")
                     }
+                    .accessibilityLabel("编辑")
                     .accessibilityIdentifier("detailEditButton")
                 }
             }
@@ -87,7 +90,12 @@ struct CardDetailView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) {
-                        Button("完成") { showRawText = false }
+                        Button {
+                            showRawText = false
+                        } label: {
+                            Image(systemName: "checkmark")
+                        }
+                        .accessibilityLabel("完成")
                     }
                 }
             }
@@ -176,7 +184,6 @@ struct CardDetailView: View {
                     exporter.export([card])
                 } label: {
                     Label("导出名片", systemImage: "square.and.arrow.up")
-                        .frame(maxWidth: .infinity)
                 }
                 .accessibilityIdentifier("detailExportButton")
 
@@ -184,7 +191,6 @@ struct CardDetailView: View {
                     showRawText = true
                 } label: {
                     Label("查看 OCR 原始文本", systemImage: "doc.text.magnifyingglass")
-                        .frame(maxWidth: .infinity)
                 }
                 .accessibilityIdentifier("detailRawTextButton")
             }
@@ -194,7 +200,6 @@ struct CardDetailView: View {
                     cardPendingDeletion = card
                 } label: {
                     Label("删除名片", systemImage: "trash")
-                        .frame(maxWidth: .infinity)
                 }
                 .accessibilityIdentifier("detailDeleteButton")
             }
@@ -266,10 +271,11 @@ struct CardDetailView: View {
     }
 
     private func fieldRow(_ field: ContactField, _ value: String) -> some View {
-        HStack(alignment: .top, spacing: 12) {
+        HStack(alignment: .center, spacing: 12) {
             Image(systemName: field.systemImage)
                 .font(.body)
-                .foregroundStyle(.tint)
+                .fontWeight(.light)
+                .foregroundStyle(.secondary)
                 .frame(width: 24)
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 2) {

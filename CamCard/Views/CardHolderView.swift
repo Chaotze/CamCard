@@ -283,70 +283,91 @@ struct CardHolderView: View {
 
     @ToolbarContentBuilder
     private var toolbarContent: some ToolbarContent {
-        ToolbarItem(placement: .topBarTrailing) {
-            HStack(spacing: 12) {
-                if !viewModel.allTags.isEmpty {
-                    Menu {
-                        ForEach(viewModel.allTags, id: \.self) { tag in
-                            Button {
-                                viewModel.toggleTag(tag)
-                            } label: {
-                                if viewModel.selectedTags.contains(tag) {
-                                    Label(tag, systemImage: "checkmark")
-                                } else {
-                                    Text(tag)
-                                }
-                            }
-                        }
-                        if !viewModel.selectedTags.isEmpty {
-                            Button("清除标签筛选") {
-                                viewModel.selectedTags.removeAll()
-                            }
-                        }
-                    } label: {
-                        Label("标签筛选", systemImage: "tag")
-                    }
-                    .accessibilityIdentifier("tagFilterButton")
-                }
-                Menu {
-                    ForEach(CardSortOrder.allCases) { order in
-                        Button {
-                            viewModel.sortOrder = order
-                        } label: {
-                            if viewModel.sortOrder == order {
-                                Label(order.displayName, systemImage: "checkmark")
-                            } else {
-                                Text(order.displayName)
-                            }
-                        }
-                    }
+        if viewModel.isSelecting {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    viewModel.exitSelection()
                 } label: {
-                    Label("排序", systemImage: "arrow.up.arrow.down")
+                    Image(systemName: "checkmark")
                 }
-                .accessibilityIdentifier("sortButton")
-                if !viewModel.cards.isEmpty {
-                    Button(viewModel.isSelecting ? "完成" : "选择") {
-                        if viewModel.isSelecting {
-                            viewModel.exitSelection()
-                        } else {
-                            viewModel.isSelecting = true
-                        }
+                .accessibilityLabel("完成")
+                .accessibilityIdentifier("selectButton")
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                HStack(spacing: 16) {
+                    Button {
+                        exporter.export(viewModel.selectedCards)
+                    } label: {
+                        Image(systemName: "square.and.arrow.up")
                     }
-                    .accessibilityIdentifier("selectButton")
-                }
-                if viewModel.isSelecting {
+                    .disabled(viewModel.selectedIDs.isEmpty)
+                    .accessibilityLabel("导出")
+                    .accessibilityIdentifier("exportButton")
+
                     Button(role: .destructive) {
                         showBulkDeleteConfirmation = true
                     } label: {
-                        Label("删除", systemImage: "trash")
+                        Image(systemName: "trash")
                     }
+                    .tint(.red)
                     .disabled(viewModel.selectedIDs.isEmpty)
+                    .accessibilityLabel("删除")
                     .accessibilityIdentifier("bulkDeleteButton")
-                    Button("导出") {
-                        exporter.export(viewModel.selectedCards)
+                }
+            }
+        } else {
+            ToolbarItem(placement: .topBarTrailing) {
+                HStack(spacing: 16) {
+                    if !viewModel.allTags.isEmpty {
+                        Menu {
+                            ForEach(viewModel.allTags, id: \.self) { tag in
+                                Button {
+                                    viewModel.toggleTag(tag)
+                                } label: {
+                                    if viewModel.selectedTags.contains(tag) {
+                                        Label(tag, systemImage: "checkmark")
+                                    } else {
+                                        Text(tag)
+                                    }
+                                }
+                            }
+                            if !viewModel.selectedTags.isEmpty {
+                                Button("清除标签筛选") {
+                                    viewModel.selectedTags.removeAll()
+                                }
+                            }
+                        } label: {
+                            Image(systemName: "tag")
+                        }
+                        .accessibilityLabel("标签筛选")
+                        .accessibilityIdentifier("tagFilterButton")
                     }
-                    .disabled(viewModel.selectedIDs.isEmpty)
-                    .accessibilityIdentifier("exportButton")
+                    Menu {
+                        ForEach(CardSortOrder.allCases) { order in
+                            Button {
+                                viewModel.sortOrder = order
+                            } label: {
+                                if viewModel.sortOrder == order {
+                                    Label(order.displayName, systemImage: "checkmark")
+                                } else {
+                                    Text(order.displayName)
+                                }
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "arrow.up.arrow.down")
+                    }
+                    .accessibilityLabel("排序")
+                    .accessibilityIdentifier("sortButton")
+                    if !viewModel.cards.isEmpty {
+                        Button {
+                            viewModel.isSelecting = true
+                        } label: {
+                            Image(systemName: "checkmark.circle")
+                        }
+                        .accessibilityLabel("选择")
+                        .accessibilityIdentifier("selectButton")
+                    }
                 }
             }
         }
