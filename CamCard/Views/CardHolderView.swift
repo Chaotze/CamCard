@@ -13,6 +13,8 @@ struct CardHolderView: View {
     @State private var photoItem: PhotosPickerItem?
     @State private var pendingCaptureData: Data?
     @State private var capturedImage: CapturedImage?
+    @State private var detailRoute: CardDetailRoute?
+    @State private var showBulkDeleteConfirmation = false
     @State private var cameraPermissionMessage: String?
 
     init(viewModel: CardHolderViewModel, environment: AppEnvironment) {
@@ -32,22 +34,36 @@ struct CardHolderView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(uiColor: .systemBackground))
         .navigationTitle("名片夹")
-        .toolbar { toolbarContent }
+        .toolbar {
+            if !viewModel.emptyStateVisible {
+                toolbarContent
+            }
+        }
         .safeAreaInset(edge: .bottom, spacing: 0) {
-            FloatingSearchBar(
-                text: $viewModel.searchText,
-                onScan: startCamera,
-                onImport: { photoPickerPresented = true }
-            )
-            .padding(.horizontal, 20)
-            .padding(.top, 6)
-            .padding(.bottom, 2)
+            if !viewModel.emptyStateVisible {
+                FloatingSearchBar(
+                    text: $viewModel.searchText,
+                    onScan: startCamera,
+                    onImport: { photoPickerPresented = true }
+                )
+                .padding(.horizontal, 20)
+                .padding(.top, 6)
+                .padding(.bottom, 0)
+            }
         }
         .navigationDestination(item: $capturedImage) { item in
             CaptureFlowView(
                 environment: environment,
                 initialImageData: item.data,
                 onSaved: { Task { await viewModel.reload() } }
+            )
+        }
+        .navigationDestination(item: $detailRoute) { route in
+            CardDetailView(
+                cardID: route.id,
+                environment: environment,
+                autoEdit: route.autoEdit,
+                onChanged: { Task { await viewModel.reload() } }
             )
         }
         .sheet(isPresented: $cameraPresented, onDismiss: {
@@ -112,6 +128,17 @@ struct CardHolderView: View {
         }
         .cardDeleteConfirmation(card: $cardPendingDeletion) { card in
             Task { await viewModel.delete(card) }
+        }
+        .alert("删除所选名片？", isPresented: $showBulkDeleteConfirmation) {
+            Button("删除", role: .destructive) {
+                Task {
+                    await viewModel.delete(viewModel.selectedCards)
+                    viewModel.exitSelection()
+                }
+            }
+            Button("取消", role: .cancel) {}
+        } message: {
+            Text("所选 \(viewModel.selectedIDs.count) 张名片、图像与识别记录将被永久删除，且无法恢复。")
         }
         .onChange(of: exporter.shareURL) { _, url in
             guard let url else { return }
@@ -181,18 +208,39 @@ struct CardHolderView: View {
                             .buttonStyle(.plain)
                             .accessibilityIdentifier("cardRow-\(card.id.uuidString)")
                         } else {
-                            NavigationLink(value: AppRoute.detail(card.id)) {
+                            Button {
+                                detailRoute = CardDetailRoute(id: card.id)
+                            } label: {
                                 cardRow(card)
                             }
+                            .buttonStyle(.plain)
                             .accessibilityIdentifier("cardRow-\(card.id.uuidString)")
                         }
                     }
-                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                    .contextMenu {
+                        Button {
+                            detailRoute = CardDetailRoute(id: card.id)
+                        } label: {
+                            Label("查看", systemImage: "eye")
+                        }
+                        Button {
+                            detailRoute = CardDetailRoute(id: card.id, autoEdit: true)
+                        } label: {
+                            Label("编辑", systemImage: "square.and.pencil")
+                        }
                         Button(role: .destructive) {
                             cardPendingDeletion = card
                         } label: {
                             Label("删除", systemImage: "trash")
                         }
+                    }
+                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                        Button {
+                            cardPendingDeletion = card
+                        } label: {
+                            Label("删除", systemImage: "trash")
+                        }
+                        .tint(.red)
                     }
                 }
             }
@@ -287,6 +335,13 @@ struct CardHolderView: View {
                     .accessibilityIdentifier("selectButton")
                 }
                 if viewModel.isSelecting {
+                    Button(role: .destructive) {
+                        showBulkDeleteConfirmation = true
+                    } label: {
+                        Label("删除", systemImage: "trash")
+                    }
+                    .disabled(viewModel.selectedIDs.isEmpty)
+                    .accessibilityIdentifier("bulkDeleteButton")
                     Button("导出") {
                         exporter.export(viewModel.selectedCards)
                     }
@@ -350,7 +405,13 @@ struct CapturedImage: Identifiable, Hashable {
     let data: Data
 }
 
-#Preview("名片夹") {    let environment = PreviewData.environment()
+struct CardDetailRoute: Identifiable, Hashable {
+    let id: UUID
+    var autoEdit = false
+}
+
+#Preview("名片夹") {
+    let environment = PreviewData.environment()
     NavigationStack {
         CardHolderView(
             viewModel: CardHolderViewModel(environment: environment),

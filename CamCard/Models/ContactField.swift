@@ -35,6 +35,23 @@ enum ContactField: String, Codable, CaseIterable, Hashable {
         Self.requiredFields.contains(self)
     }
 
+    var systemImage: String {
+        switch self {
+        case .name: return "person.fill"
+        case .company: return "building.2.fill"
+        case .jobTitle: return "briefcase.fill"
+        case .mobile: return "iphone"
+        case .officePhone: return "phone.fill"
+        case .fax: return "printer.fill"
+        case .email: return "envelope.fill"
+        case .website: return "globe"
+        case .address: return "mappin.and.ellipse"
+        case .department: return "person.3.fill"
+        case .postalCode: return "mailbox.fill"
+        case .notes: return "note.text"
+        }
+    }
+
     var isMultiValue: Bool {
         switch self {
         case .mobile, .officePhone, .fax, .email: return true

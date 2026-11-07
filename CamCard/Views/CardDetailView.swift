@@ -5,18 +5,26 @@ struct CardDetailView: View {
     @StateObject private var exporter: ExportViewModel
     let environment: AppEnvironment
     let onChanged: () -> Void
+    let autoEdit: Bool
 
     @Environment(\.dismiss) private var dismiss
 
     @State private var shareItem: ShareItem?
     @State private var showEdit = false
+    @State private var didAutoEdit = false
     @State private var editingModel: ReviewViewModel?
     @State private var showRawText = false
     @State private var cardPendingDeletion: BusinessCard?
 
-    init(cardID: UUID, environment: AppEnvironment, onChanged: @escaping () -> Void = {}) {
+    init(
+        cardID: UUID,
+        environment: AppEnvironment,
+        autoEdit: Bool = false,
+        onChanged: @escaping () -> Void = {}
+    ) {
         self.environment = environment
         self.onChanged = onChanged
+        self.autoEdit = autoEdit
         _viewModel = StateObject(wrappedValue: CardDetailViewModel(cardID: cardID, environment: environment))
         _exporter = StateObject(wrappedValue: ExportViewModel(environment: environment))
     }
@@ -46,6 +54,11 @@ struct CardDetailView: View {
         }
         .task {
             await viewModel.load()
+            if autoEdit, !didAutoEdit, viewModel.card != nil {
+                didAutoEdit = true
+                editingModel = viewModel.makeReviewViewModel()
+                showEdit = editingModel != nil
+            }
         }
         .navigationDestination(isPresented: $showEdit) {
             if let editingModel {
@@ -105,117 +118,108 @@ struct CardDetailView: View {
     }
 
     private func detailContent(_ card: BusinessCard) -> some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 22) {
+        Form {
+            Section {
                 heroHeader(card)
+                    .listRowInsets(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
                 imageSection
+                    .listRowInsets(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
+            }
 
-                if viewModel.imageUnavailable {
+            if viewModel.imageUnavailable {
+                Section {
                     Label("名片图像不可用，文字信息仍可查看", systemImage: "photo.badge.exclamationmark")
                         .font(.footnote)
                         .foregroundStyle(.orange)
                         .accessibilityIdentifier("imageUnavailableLabel")
                 }
-
-                VStack(alignment: .leading, spacing: 10) {
-                    sectionTitle("联系信息")
-                    if let department = nonEmpty(card.department) {
-                        fieldRow("部门", department, icon: "person.3.fill")
-                    }
-                    if !card.mobile.isEmpty {
-                        fieldRow("手机", card.mobile.joined(separator: "\n"), icon: "iphone")
-                    }
-                    if !card.officePhone.isEmpty {
-                        fieldRow("办公电话", card.officePhone.joined(separator: "\n"), icon: "phone.fill")
-                    }
-                    if !card.fax.isEmpty {
-                        fieldRow("传真", card.fax.joined(separator: "\n"), icon: "printer.fill")
-                    }
-                    if !card.email.isEmpty {
-                        fieldRow(
-                            "Email",
-                            card.email.enumerated().map { index, value in
-                                index == 0 ? "\(value)（主）" : value
-                            }.joined(separator: "\n"),
-                            icon: "envelope.fill"
-                        )
-                    }
-                    if let website = nonEmpty(card.website) {
-                        fieldRow("网站", website, icon: "globe")
-                    }
-                    if let address = nonEmpty(card.address) {
-                        fieldRow("地址", address, icon: "mappin.and.ellipse")
-                    }
-                    if let postalCode = nonEmpty(card.postalCode) {
-                        fieldRow("邮编", postalCode, icon: "mailbox.fill")
-                    }
-                    if let notes = nonEmpty(card.notes) {
-                        fieldRow("备注", notes, icon: "note.text")
-                    }
-                }
-                .accessibilityIdentifier("detailFields")
-
-                VStack(spacing: 12) {
-                    HStack(spacing: 12) {
-                        Button {
-                            exporter.export([card])
-                        } label: {
-                            Label("导出名片", systemImage: "square.and.arrow.up")
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .controlSize(.large)
-                        .accessibilityIdentifier("detailExportButton")
-
-                        Button {
-                            showRawText = true
-                        } label: {
-                            Label("OCR 文本", systemImage: "doc.text.magnifyingglass")
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(.bordered)
-                        .controlSize(.large)
-                        .accessibilityIdentifier("detailRawTextButton")
-                    }
-
-                    Button(role: .destructive) {
-                        cardPendingDeletion = card
-                    } label: {
-                        Label("删除名片", systemImage: "trash")
-                            .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(.bordered)
-                    .controlSize(.large)
-                    .accessibilityIdentifier("detailDeleteButton")
-                }
-                .padding(.top, 4)
             }
-            .padding(.horizontal, 20)
-            .padding(.vertical, 12)
+
+            Section("联系信息") {
+                if let department = nonEmpty(card.department) {
+                    fieldRow(.department, department)
+                }
+                if !card.mobile.isEmpty {
+                    fieldRow(.mobile, card.mobile.joined(separator: "\n"))
+                }
+                if !card.officePhone.isEmpty {
+                    fieldRow(.officePhone, card.officePhone.joined(separator: "\n"))
+                }
+                if !card.fax.isEmpty {
+                    fieldRow(.fax, card.fax.joined(separator: "\n"))
+                }
+                if !card.email.isEmpty {
+                    fieldRow(
+                        .email,
+                        card.email.enumerated().map { index, value in
+                            index == 0 ? "\(value)（主）" : value
+                        }.joined(separator: "\n")
+                    )
+                }
+                if let website = nonEmpty(card.website) {
+                    fieldRow(.website, website)
+                }
+                if let address = nonEmpty(card.address) {
+                    fieldRow(.address, address)
+                }
+                if let postalCode = nonEmpty(card.postalCode) {
+                    fieldRow(.postalCode, postalCode)
+                }
+                if let notes = nonEmpty(card.notes) {
+                    fieldRow(.notes, notes)
+                }
+            }
+            .accessibilityIdentifier("detailFields")
+
+            Section {
+                Button {
+                    exporter.export([card])
+                } label: {
+                    Label("导出名片", systemImage: "square.and.arrow.up")
+                        .frame(maxWidth: .infinity)
+                }
+                .accessibilityIdentifier("detailExportButton")
+
+                Button {
+                    showRawText = true
+                } label: {
+                    Label("查看 OCR 原始文本", systemImage: "doc.text.magnifyingglass")
+                        .frame(maxWidth: .infinity)
+                }
+                .accessibilityIdentifier("detailRawTextButton")
+            }
+
+            Section {
+                Button(role: .destructive) {
+                    cardPendingDeletion = card
+                } label: {
+                    Label("删除名片", systemImage: "trash")
+                        .frame(maxWidth: .infinity)
+                }
+                .accessibilityIdentifier("detailDeleteButton")
+            }
         }
-        .background(Color(uiColor: .systemGroupedBackground))
     }
 
     private func heroHeader(_ card: BusinessCard) -> some View {
         HStack(alignment: .center, spacing: 16) {
             Text(monogram(for: card.displayName))
-                .font(.system(size: 34, weight: .semibold, design: .rounded))
+                .font(.system(size: 28, weight: .semibold, design: .rounded))
                 .foregroundStyle(Color.accentColor)
-                .frame(width: 84, height: 84)
+                .frame(width: 68, height: 68)
                 .background(Color.accentColor.opacity(0.12), in: Circle())
-                .overlay(Circle().stroke(Color.accentColor.opacity(0.18), lineWidth: 1))
                 .accessibilityHidden(true)
 
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: 4) {
                 Text(card.displayName)
-                    .font(.largeTitle.bold())
+                    .font(.title.bold())
                     .lineLimit(2)
                 let subtitle = [card.company, card.jobTitle]
                     .compactMap { nonEmpty($0) }
                     .joined(separator: " · ")
                 if !subtitle.isEmpty {
                     Text(subtitle)
-                        .font(.subheadline.weight(.medium))
+                        .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
                 if !card.tags.isEmpty {
@@ -223,8 +227,8 @@ struct CardDetailView: View {
                         ForEach(Array(card.tags.prefix(4)), id: \.self) { tag in
                             Text(tag)
                                 .font(.caption.weight(.semibold))
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 4)
+                                .padding(.horizontal, 9)
+                                .padding(.vertical, 3)
                                 .background(Color.accentColor.opacity(0.12), in: Capsule())
                                 .foregroundStyle(Color.accentColor)
                         }
@@ -233,7 +237,6 @@ struct CardDetailView: View {
             }
             Spacer(minLength: 0)
         }
-        .padding(.top, 4)
     }
 
     private var imageSection: some View {
@@ -243,17 +246,12 @@ struct CardDetailView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: .infinity)
-                    .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 22, style: .continuous)
-                            .stroke(Color.white.opacity(0.35), lineWidth: 1)
-                    )
-                    .shadow(color: Color.black.opacity(0.14), radius: 16, y: 8)
+                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                     .accessibilityLabel("名片图像")
             } else {
-                RoundedRectangle(cornerRadius: 22, style: .continuous)
-                    .fill(Color(uiColor: .secondarySystemGroupedBackground))
-                    .frame(height: 180)
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .fill(Color(uiColor: .tertiarySystemFill))
+                    .frame(height: 160)
                     .overlay {
                         VStack(spacing: 8) {
                             Image(systemName: "photo")
@@ -267,45 +265,24 @@ struct CardDetailView: View {
         }
     }
 
-    private func sectionTitle(_ title: String) -> some View {
-        Text(title)
-            .font(.footnote.weight(.semibold))
-            .foregroundStyle(.secondary)
-            .textCase(.uppercase)
-            .tracking(1.2)
-    }
-
-    private func fieldRow(_ label: String, _ value: String, icon: String) -> some View {
-        HStack(alignment: .top, spacing: 14) {
-            Image(systemName: icon)
-                .font(.system(size: 15, weight: .semibold))
-                .foregroundStyle(Color.accentColor)
-                .frame(width: 34, height: 34)
-                .background(
-                    Color.accentColor.opacity(0.1),
-                    in: RoundedRectangle(cornerRadius: 10, style: .continuous)
-                )
-            VStack(alignment: .leading, spacing: 3) {
-                Text(label)
-                    .font(.caption.weight(.semibold))
+    private func fieldRow(_ field: ContactField, _ value: String) -> some View {
+        HStack(alignment: .top, spacing: 12) {
+            Image(systemName: field.systemImage)
+                .font(.body)
+                .foregroundStyle(.tint)
+                .frame(width: 24)
+                .accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(field.displayName)
+                    .font(.caption)
                     .foregroundStyle(.secondary)
                 Text(value)
-                    .font(.body.weight(.medium))
+                    .font(.body)
                     .textSelection(.enabled)
-                    .accessibilityIdentifier("detailValue-\(label)")
+                    .accessibilityIdentifier("detailValue-\(field.displayName)")
             }
-            Spacer(minLength: 0)
         }
-        .padding(14)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(
-            Color(uiColor: .secondarySystemGroupedBackground),
-            in: RoundedRectangle(cornerRadius: 16, style: .continuous)
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .stroke(Color.primary.opacity(0.04), lineWidth: 1)
-        )
+        .padding(.vertical, 2)
     }
 
     private func monogram(for name: String) -> String {

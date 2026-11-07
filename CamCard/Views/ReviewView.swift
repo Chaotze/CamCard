@@ -16,7 +16,7 @@ struct ReviewView: View {
 
     var body: some View {
         Form {
-            Section("名片图像") {
+            Section {
                 if let data = viewModel.displayImageData,
                    let image = UIImage(data: data) {
                     Image(uiImage: image)
@@ -41,13 +41,17 @@ struct ReviewView: View {
                     Label("查看 OCR 原始文本", systemImage: "doc.text.magnifyingglass")
                 }
                 .accessibilityIdentifier("reviewRawTextButton")
+            } header: {
+                Label("名片图像", systemImage: "photo")
             }
 
-            Section("联系人") {
+            Section {
                 fieldRow(.name)
                 fieldRow(.company)
                 fieldRow(.jobTitle)
                 fieldRow(.website)
+            } header: {
+                Label("联系人", systemImage: "person.crop.circle")
             }
 
             phoneSection("手机", field: .mobile)
@@ -55,13 +59,15 @@ struct ReviewView: View {
             phoneSection("传真", field: .fax)
             emailSection
             fieldRow(.address, multiline: true)
-            Section("补充信息") {
+            Section {
                 fieldRow(.department)
                 fieldRow(.postalCode)
                 fieldRow(.notes, multiline: true)
+            } header: {
+                Label("补充信息", systemImage: "ellipsis.circle")
             }
 
-            Section("标签") {
+            Section {
                 ForEach(viewModel.tags, id: \.self) { tag in
                     HStack {
                         Text(tag)
@@ -83,6 +89,8 @@ struct ReviewView: View {
                     }
                     .disabled(viewModel.newTag.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 }
+            } header: {
+                Label("标签", systemImage: "tag")
             }
         }
         .navigationTitle(viewModel.isEditing ? "编辑名片" : "校正名片")
@@ -133,6 +141,10 @@ struct ReviewView: View {
     private func fieldRow(_ field: ContactField, multiline: Bool = false) -> some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack(spacing: 8) {
+                Image(systemName: field.systemImage)
+                    .font(.caption)
+                    .foregroundStyle(.tint)
+                    .frame(width: 18)
                 Text(field.displayName)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
@@ -194,6 +206,8 @@ struct ReviewView: View {
             .accessibilityIdentifier("add-\(field.rawValue)")
         } header: {
             HStack {
+                Image(systemName: field.systemImage)
+                    .foregroundStyle(.tint)
                 Text(title)
                 sourceBadge(for: field)
             }
@@ -231,6 +245,8 @@ struct ReviewView: View {
             .accessibilityIdentifier("add-email")
         } header: {
             HStack {
+                Image(systemName: ContactField.email.systemImage)
+                    .foregroundStyle(.tint)
                 Text("Email")
                 sourceBadge(for: .email)
             }

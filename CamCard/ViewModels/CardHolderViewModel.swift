@@ -148,6 +148,18 @@ final class CardHolderViewModel: ObservableObject {
         }
     }
 
+    func delete(_ cards: [BusinessCard]) async {
+        do {
+            for card in cards {
+                try await environment.repository.delete(id: card.id)
+            }
+            selectedIDs.subtract(cards.map(\.id))
+            await reload()
+        } catch {
+            errorMessage = (error as? LocalizedError)?.errorDescription ?? "删除失败，请重试"
+        }
+    }
+
     private func sorted(_ input: [BusinessCard]) -> [BusinessCard] {
         let indexed = Array(input.enumerated())
         let sorted: [(offset: Int, element: BusinessCard)]

@@ -60,7 +60,7 @@ struct FloatingSearchBar: View {
                    .font(.system(size: 20, weight: .medium))
                    .foregroundStyle(.primary)
                    .contentTransition(.symbolEffect(.replace.byLayer.downUp))
-                   .frame(width: 50, height: 50)
+                   .frame(width: 56, height: 50)
                    .contentShape(Circle())
            }
            .buttonStyle(.plain)
