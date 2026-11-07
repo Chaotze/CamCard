@@ -1,7 +1,6 @@
 import SwiftUI
 
 enum AppRoute: Hashable {
-    case capture(photo: Bool)
     case detail(UUID)
 }
 
@@ -37,12 +36,6 @@ struct AppRouteDestination: View {
 
     var body: some View {
         switch route {
-        case let .capture(photo):
-            CaptureFlowView(
-                environment: environment,
-                autoStartPhoto: photo,
-                onSaved: onChanged
-            )
         case let .detail(id):
             CardDetailView(
                 cardID: id,

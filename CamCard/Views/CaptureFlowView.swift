@@ -4,22 +4,20 @@ import UIKit
 
 struct CaptureFlowView: View {
     @StateObject private var viewModel: CaptureFlowViewModel
-    let environment: AppEnvironment
-    let autoStartPhoto: Bool
+    let initialImageData: Data
     let onSaved: () -> Void
 
     @Environment(\.dismiss) private var dismiss
-    @State private var photoItem: PhotosPickerItem?
     @State private var reviewModel: ReviewViewModel?
-    @State private var didAutoStart = false
+    @State private var didStart = false
+    @State private var photoItem: PhotosPickerItem?
 
     init(
         environment: AppEnvironment,
-        autoStartPhoto: Bool,
+        initialImageData: Data,
         onSaved: @escaping () -> Void
     ) {
-        self.environment = environment
-        self.autoStartPhoto = autoStartPhoto
+        self.initialImageData = initialImageData
         self.onSaved = onSaved
         _viewModel = StateObject(wrappedValue: CaptureFlowViewModel(environment: environment))
     }
@@ -43,28 +41,20 @@ struct CaptureFlowView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear {
-            guard !didAutoStart, !isRunningInPreview else { return }
-            didAutoStart = true
-            if autoStartPhoto {
-                viewModel.openPhotoPicker()
-            } else {
-                Task { await viewModel.openCamera() }
-            }
-        }
-        .onChange(of: viewModel.isReadyForReview) { _, isReady in
+        .task {
+            guard !didStart else { return }
+            didStart = true
+            await viewModel.start(with: initialImageData)
+        }        .onChange(of: viewModel.isReadyForReview) { _, isReady in
             guard isReady, reviewModel == nil else { return }
             reviewModel = viewModel.makeReviewViewModel()
         }
-        .onChange(of: viewModel.photoPickerPresented) { _, presented in
-            guard !presented, photoItem == nil, viewModel.originalImageData == nil else { return }
-            Task {
-                try? await Task.sleep(for: .milliseconds(500))
-                if photoItem == nil, viewModel.originalImageData == nil, !viewModel.isAwaitingCrop {
-                    viewModel.cancel()
-                    dismiss()
-                }
+        .alert("提示", isPresented: errorAlertBinding) {
+            Button("好", role: .cancel) {
+                viewModel.errorMessage = nil
             }
+        } message: {
+            Text(viewModel.errorMessage ?? "")
         }
         .sheet(isPresented: $viewModel.cameraPickerPresented) {
             CameraPicker(
@@ -97,28 +87,15 @@ struct CaptureFlowView: View {
                 photoItem = nil
             }
         }
-        .alert("需要相机权限", isPresented: permissionAlertBinding) {
-            Button("请求相机权限") {
-                Task { await viewModel.requestCameraAccess() }
+        .onChange(of: viewModel.photoPickerPresented) { _, presented in
+            guard !presented, photoItem == nil, viewModel.originalImageData == nil else { return }
+            Task {
+                try? await Task.sleep(for: .milliseconds(500))
+                if photoItem == nil, viewModel.originalImageData == nil, !viewModel.isAwaitingCrop {
+                    viewModel.cancel()
+                    dismiss()
+                }
             }
-            Button("从相册导入") {
-                viewModel.cameraPermissionMessage = nil
-                viewModel.openPhotoPicker()
-            }
-            Button("取消", role: .cancel) {
-                viewModel.cameraPermissionMessage = nil
-                viewModel.cancel()
-                dismiss()
-            }
-        } message: {
-            Text(viewModel.cameraPermissionMessage ?? "")
-        }
-        .alert("提示", isPresented: errorAlertBinding) {
-            Button("好", role: .cancel) {
-                viewModel.errorMessage = nil
-            }
-        } message: {
-            Text(viewModel.errorMessage ?? "")
         }
     }
 
@@ -158,7 +135,7 @@ struct CaptureFlowView: View {
                         .scaledToFit()
                         .frame(maxHeight: 240)
                         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                        .shadow(color: .black.opacity(0.15), radius: 14, y: 6)
+                        .shadow(color: .black.opacity(0.12), radius: 12, y: 6)
                 }
 
                 Label("无法识别名片", systemImage: "text.viewfinder")
@@ -204,15 +181,6 @@ struct CaptureFlowView: View {
         }
     }
 
-    private var permissionAlertBinding: Binding<Bool> {
-        Binding(
-            get: { viewModel.cameraPermissionMessage != nil },
-            set: { newValue in
-                if !newValue { viewModel.cameraPermissionMessage = nil }
-            }
-        )
-    }
-
     private var errorAlertBinding: Binding<Bool> {
         Binding(
             get: { viewModel.errorMessage != nil },
@@ -221,10 +189,6 @@ struct CaptureFlowView: View {
             }
         )
     }
-
-    private var isRunningInPreview: Bool {
-        ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
-    }
 }
 
 #Preview {
@@ -232,7 +196,7 @@ struct CaptureFlowView: View {
     NavigationStack {
         CaptureFlowView(
             environment: environment,
-            autoStartPhoto: false,
+            initialImageData: ImageProcessing.sampleJPEG(text: "名片"),
             onSaved: {}
         )
     }

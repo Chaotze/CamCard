@@ -120,16 +120,16 @@ struct CardDetailView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     sectionTitle("联系信息")
                     if let department = nonEmpty(card.department) {
-                        fieldRow("部门", department, icon: "person.3.fill", tint: .purple)
+                        fieldRow("部门", department, icon: "person.3.fill")
                     }
                     if !card.mobile.isEmpty {
-                        fieldRow("手机", card.mobile.joined(separator: "\n"), icon: "iphone", tint: .green)
+                        fieldRow("手机", card.mobile.joined(separator: "\n"), icon: "iphone")
                     }
                     if !card.officePhone.isEmpty {
-                        fieldRow("办公电话", card.officePhone.joined(separator: "\n"), icon: "phone.fill", tint: .blue)
+                        fieldRow("办公电话", card.officePhone.joined(separator: "\n"), icon: "phone.fill")
                     }
                     if !card.fax.isEmpty {
-                        fieldRow("传真", card.fax.joined(separator: "\n"), icon: "printer.fill", tint: .teal)
+                        fieldRow("传真", card.fax.joined(separator: "\n"), icon: "printer.fill")
                     }
                     if !card.email.isEmpty {
                         fieldRow(
@@ -137,21 +137,20 @@ struct CardDetailView: View {
                             card.email.enumerated().map { index, value in
                                 index == 0 ? "\(value)（主）" : value
                             }.joined(separator: "\n"),
-                            icon: "envelope.fill",
-                            tint: .orange
+                            icon: "envelope.fill"
                         )
                     }
                     if let website = nonEmpty(card.website) {
-                        fieldRow("网站", website, icon: "globe", tint: .cyan)
+                        fieldRow("网站", website, icon: "globe")
                     }
                     if let address = nonEmpty(card.address) {
-                        fieldRow("地址", address, icon: "mappin.and.ellipse", tint: .pink)
+                        fieldRow("地址", address, icon: "mappin.and.ellipse")
                     }
                     if let postalCode = nonEmpty(card.postalCode) {
-                        fieldRow("邮编", postalCode, icon: "mailbox.fill", tint: .brown)
+                        fieldRow("邮编", postalCode, icon: "mailbox.fill")
                     }
                     if let notes = nonEmpty(card.notes) {
-                        fieldRow("备注", notes, icon: "note.text", tint: .indigo)
+                        fieldRow("备注", notes, icon: "note.text")
                     }
                 }
                 .accessibilityIdentifier("detailFields")
@@ -200,19 +199,11 @@ struct CardDetailView: View {
     private func heroHeader(_ card: BusinessCard) -> some View {
         HStack(alignment: .center, spacing: 16) {
             Text(monogram(for: card.displayName))
-                .font(.system(size: 34, weight: .black, design: .rounded))
-                .foregroundStyle(.white)
+                .font(.system(size: 34, weight: .semibold, design: .rounded))
+                .foregroundStyle(Color.accentColor)
                 .frame(width: 84, height: 84)
-                .background(
-                    LinearGradient(
-                        colors: [.indigo, .blue, .cyan],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    ),
-                    in: Circle()
-                )
-                .overlay(Circle().stroke(Color.white.opacity(0.25), lineWidth: 2))
-                .shadow(color: Color.indigo.opacity(0.35), radius: 14, y: 8)
+                .background(Color.accentColor.opacity(0.12), in: Circle())
+                .overlay(Circle().stroke(Color.accentColor.opacity(0.18), lineWidth: 1))
                 .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 6) {
@@ -284,14 +275,14 @@ struct CardDetailView: View {
             .tracking(1.2)
     }
 
-    private func fieldRow(_ label: String, _ value: String, icon: String, tint: Color) -> some View {
+    private func fieldRow(_ label: String, _ value: String, icon: String) -> some View {
         HStack(alignment: .top, spacing: 14) {
             Image(systemName: icon)
                 .font(.system(size: 15, weight: .semibold))
-                .foregroundStyle(tint)
+                .foregroundStyle(Color.accentColor)
                 .frame(width: 34, height: 34)
                 .background(
-                    tint.opacity(0.12),
+                    Color.accentColor.opacity(0.1),
                     in: RoundedRectangle(cornerRadius: 10, style: .continuous)
                 )
             VStack(alignment: .leading, spacing: 3) {

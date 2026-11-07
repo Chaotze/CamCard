@@ -1,4 +1,5 @@
 import SwiftUI
+import PhotosUI
 
 struct CardHolderView: View {
     @ObservedObject var viewModel: CardHolderViewModel
@@ -6,8 +7,13 @@ struct CardHolderView: View {
 
     @StateObject private var exporter: ExportViewModel
     @State private var shareItem: ShareItem?
-    @State private var activeRoute: AppRoute?
     @State private var cardPendingDeletion: BusinessCard?
+    @State private var cameraPresented = false
+    @State private var photoPickerPresented = false
+    @State private var photoItem: PhotosPickerItem?
+    @State private var pendingCaptureData: Data?
+    @State private var capturedImage: CapturedImage?
+    @State private var cameraPermissionMessage: String?
 
     init(viewModel: CardHolderViewModel, environment: AppEnvironment) {
         self.viewModel = viewModel
@@ -30,17 +36,68 @@ struct CardHolderView: View {
         .safeAreaInset(edge: .bottom, spacing: 0) {
             FloatingSearchBar(
                 text: $viewModel.searchText,
-                onScan: { activeRoute = .capture(photo: false) },
-                onImport: { activeRoute = .capture(photo: true) }
+                onScan: startCamera,
+                onImport: { photoPickerPresented = true }
             )
             .padding(.horizontal, 20)
             .padding(.top, 6)
             .padding(.bottom, 2)
         }
-        .navigationDestination(item: $activeRoute) { route in
-            AppRouteDestination(route: route, environment: environment) {
-                Task { await viewModel.reload() }
+        .navigationDestination(item: $capturedImage) { item in
+            CaptureFlowView(
+                environment: environment,
+                initialImageData: item.data,
+                onSaved: { Task { await viewModel.reload() } }
+            )
+        }
+        .sheet(isPresented: $cameraPresented, onDismiss: {
+            if let data = pendingCaptureData {
+                pendingCaptureData = nil
+                capturedImage = CapturedImage(data: data)
             }
+        }) {
+            CameraPicker(
+                onImage: { data in
+                    pendingCaptureData = data
+                    cameraPresented = false
+                },
+                onCancel: {
+                    pendingCaptureData = nil
+                    cameraPresented = false
+                }
+            )
+            .ignoresSafeArea()
+            .interactiveDismissDisabled()
+        }
+        .photosPicker(
+            isPresented: $photoPickerPresented,
+            selection: $photoItem,
+            matching: .images
+        )
+        .onChange(of: photoItem) { _, item in
+            guard let item else { return }
+            Task {
+                if let data = try? await item.loadTransferable(type: Data.self) {
+                    capturedImage = CapturedImage(data: data)
+                } else {
+                    viewModel.errorMessage = "图片无法读取，请重新选择"
+                }
+                photoItem = nil
+            }
+        }
+        .alert("需要相机权限", isPresented: permissionAlertBinding) {
+            Button("请求相机权限") {
+                Task { await requestCameraAccess() }
+            }
+            Button("从相册导入") {
+                cameraPermissionMessage = nil
+                photoPickerPresented = true
+            }
+            Button("取消", role: .cancel) {
+                cameraPermissionMessage = nil
+            }
+        } message: {
+            Text(cameraPermissionMessage ?? "")
         }
         .alert("提示", isPresented: alertBinding) {
             Button("好", role: .cancel) {
@@ -79,13 +136,15 @@ struct CardHolderView: View {
                 .font(.body)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
-            NavigationLink(value: AppRoute.capture(photo: false)) {
+            Button(action: startCamera) {
                 Label("拍摄名片", systemImage: "camera")
                     .frame(maxWidth: 280)
             }
             .buttonStyle(.borderedProminent)
             .accessibilityIdentifier("captureButton")
-            NavigationLink(value: AppRoute.capture(photo: true)) {
+            Button {
+                photoPickerPresented = true
+            } label: {
                 Label("从相册导入", systemImage: "photo")
                     .frame(maxWidth: 280)
             }
@@ -249,10 +308,49 @@ struct CardHolderView: View {
             }
         )
     }
+
+    private var permissionAlertBinding: Binding<Bool> {
+        Binding(
+            get: { cameraPermissionMessage != nil },
+            set: { newValue in
+                if !newValue { cameraPermissionMessage = nil }
+            }
+        )
+    }
+
+    private func startCamera() {
+        switch environment.cameraPermission.status() {
+        case .authorized:
+            cameraPresented = true
+        case .notDetermined:
+            Task {
+                if await environment.cameraPermission.request() == .authorized {
+                    cameraPresented = true
+                } else {
+                    cameraPermissionMessage = "相机权限已被拒绝，请在系统设置中允许访问相机，或从相册导入。"
+                }
+            }
+        case .denied, .restricted, .unavailable:
+            cameraPermissionMessage = "无法使用相机。请在系统设置中允许相机访问，或从相册导入。"
+        }
+    }
+
+    private func requestCameraAccess() async {
+        cameraPermissionMessage = nil
+        if await environment.cameraPermission.request() == .authorized {
+            cameraPresented = true
+        } else {
+            viewModel.errorMessage = "相机权限未开启，请在系统设置中允许相机访问，或从相册导入。"
+        }
+    }
 }
 
-#Preview("名片夹") {
-    let environment = PreviewData.environment()
+struct CapturedImage: Identifiable, Hashable {
+    let id = UUID()
+    let data: Data
+}
+
+#Preview("名片夹") {    let environment = PreviewData.environment()
     NavigationStack {
         CardHolderView(
             viewModel: CardHolderViewModel(environment: environment),

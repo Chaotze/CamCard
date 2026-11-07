@@ -119,18 +119,6 @@ struct ManualCropView: View {
     // Vision 返回的顺序是 左上、右上、左下、右下；绘制时按顺时针取点。
     private let displayOrder = [0, 1, 3, 2]
 
-    private var accentGradient: LinearGradient {
-        LinearGradient(
-            colors: [
-                Color(red: 0.20, green: 0.85, blue: 1.00),
-                Color(red: 0.55, green: 0.40, blue: 1.00),
-                Color(red: 1.00, green: 0.35, blue: 0.70)
-            ],
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        )
-    }
-
     init(image: UIImage, initialCorners: [CGPoint], onConfirm: @escaping ([CGPoint]) -> Void) {
         self.image = image
         self.initialCorners = initialCorners
@@ -155,10 +143,10 @@ struct ManualCropView: View {
                 dimMask(size: geometry.size, rect: rect)
                 quadPath(in: rect)
                     .stroke(
-                        accentGradient,
-                        style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round)
+                        Color.white.opacity(0.95),
+                        style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round)
                     )
-                    .shadow(color: Color.cyan.opacity(0.55), radius: 10)
+                    .shadow(color: .black.opacity(0.3), radius: 3)
                 ForEach(displayOrder, id: \.self) { index in
                     handle(for: index, in: rect)
                 }
@@ -188,8 +176,8 @@ struct ManualCropView: View {
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
-                    .background(accentGradient, in: Capsule())
-                    .shadow(color: Color.cyan.opacity(0.35), radius: 12, y: 6)
+                    .background(Color.accentColor, in: Capsule())
+                    .shadow(color: Color.black.opacity(0.18), radius: 8, y: 4)
             }
             .buttonStyle(.plain)
             .accessibilityIdentifier("cropConfirmButton")
@@ -220,15 +208,12 @@ struct ManualCropView: View {
         ZStack {
             Circle()
                 .fill(Color.white)
-                .frame(width: 26, height: 26)
+                .frame(width: 24, height: 24)
             Circle()
-                .stroke(accentGradient, lineWidth: 3)
-                .frame(width: 26, height: 26)
-            Circle()
-                .fill(Color.black.opacity(0.2))
-                .frame(width: 6, height: 6)
+                .stroke(Color.accentColor, lineWidth: 2.5)
+                .frame(width: 24, height: 24)
         }
-        .shadow(color: Color.black.opacity(0.35), radius: 5, y: 2)
+        .shadow(color: Color.black.opacity(0.28), radius: 4, y: 2)
         .position(screenPoint(for: corners[index], in: rect))
         .gesture(
             DragGesture(minimumDistance: 0, coordinateSpace: .named("cropSpace"))
@@ -269,13 +254,12 @@ struct CardDeleteConfirmationModifier: ViewModifier {
     let onDelete: (BusinessCard) -> Void
 
     func body(content: Content) -> some View {
-        content.confirmationDialog(
+        content.alert(
             "删除名片",
             isPresented: Binding(
                 get: { card != nil },
                 set: { if !$0 { card = nil } }
             ),
-            titleVisibility: .visible,
             presenting: card
         ) { target in
             Button("删除", role: .destructive) {
@@ -286,20 +270,8 @@ struct CardDeleteConfirmationModifier: ViewModifier {
                 card = nil
             }
         } message: { target in
-            Text(Self.message(for: target))
+            Text("「\(target.displayName)」的名片、图像与识别记录将被永久删除，且无法恢复。")
         }
-    }
-
-    private static func message(for card: BusinessCard) -> String {
-        var detail = card.displayName
-        if let company = card.company?.trimmingCharacters(in: .whitespacesAndNewlines),
-           !company.isEmpty {
-            detail += " · \(company)"
-        }
-        if let phone = card.summary {
-            detail += "\n\(phone)"
-        }
-        return "将永久删除「\(detail)」的名片，图像与识别记录也会一并移除，此操作无法撤销。"
     }
 }
 
