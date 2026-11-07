@@ -19,23 +19,8 @@ struct RootView: View {
         NavigationStack {
             CardHolderView(viewModel: holder, environment: environment)
                 .navigationDestination(for: AppRoute.self) { route in
-                    switch route {
-                    case let .capture(photo):
-                        CaptureFlowView(
-                            environment: environment,
-                            autoStartPhoto: photo,
-                            onSaved: {
-                                Task { await holder.reload() }
-                            }
-                        )
-                    case let .detail(id):
-                        CardDetailView(
-                            cardID: id,
-                            environment: environment,
-                            onChanged: {
-                                Task { await holder.reload() }
-                            }
-                        )
+                    AppRouteDestination(route: route, environment: environment) {
+                        Task { await holder.reload() }
                     }
                 }
         }
@@ -43,4 +28,31 @@ struct RootView: View {
             await holder.bootstrap()
         }
     }
+}
+
+struct AppRouteDestination: View {
+    let route: AppRoute
+    let environment: AppEnvironment
+    let onChanged: () -> Void
+
+    var body: some View {
+        switch route {
+        case let .capture(photo):
+            CaptureFlowView(
+                environment: environment,
+                autoStartPhoto: photo,
+                onSaved: onChanged
+            )
+        case let .detail(id):
+            CardDetailView(
+                cardID: id,
+                environment: environment,
+                onChanged: onChanged
+            )
+        }
+    }
+}
+
+#Preview {
+    RootView(environment: PreviewData.environment())
 }

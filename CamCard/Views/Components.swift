@@ -209,3 +209,28 @@ struct ShareItem: Identifiable {
     let id = UUID()
     let url: URL
 }
+
+#Preview("检测框") {
+    ZStack {
+        Image(uiImage: UIImage(data: ImageProcessing.sampleJPEG(text: "名片"))!)
+            .resizable()
+            .scaledToFit()
+        DetectionOverlay(corners: MockCardDetectionService.defaultCorners)
+    }
+    .padding()
+}
+
+#Preview("名片缩略图") {
+    StoredThumbnail(card: PreviewData.cards[0]) {
+        ImageProcessing.sampleJPEG(text: "名片")
+    }
+    .padding()
+}
+
+#Preview("手动框选") {
+    ManualCropView(
+        image: UIImage(data: ImageProcessing.sampleJPEG(text: "名片原图"))!,
+        initialCorners: MockCardDetectionService.defaultCorners,
+        onConfirm: { _ in }
+    )
+}

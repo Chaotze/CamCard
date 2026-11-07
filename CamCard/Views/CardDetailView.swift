@@ -267,3 +267,10 @@ struct CardDetailView: View {
         )
     }
 }
+
+#Preview {
+    let environment = PreviewData.environment()
+    NavigationStack {
+        CardDetailView(cardID: PreviewData.cards[0].id, environment: environment)
+    }
+}

@@ -6,6 +6,7 @@ struct CardHolderView: View {
 
     @StateObject private var exporter: ExportViewModel
     @State private var shareItem: ShareItem?
+    @State private var activeRoute: AppRoute?
 
     init(viewModel: CardHolderViewModel, environment: AppEnvironment) {
         self.viewModel = viewModel
@@ -24,8 +25,22 @@ struct CardHolderView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(uiColor: .systemBackground))
         .navigationTitle("名片夹")
-        .searchable(text: $viewModel.searchText, prompt: "搜索姓名、公司、电话或标签")
         .toolbar { toolbarContent }
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            FloatingSearchBar(
+                text: $viewModel.searchText,
+                onScan: { activeRoute = .capture(photo: false) },
+                onImport: { activeRoute = .capture(photo: true) }
+            )
+            .padding(.horizontal, 20)
+            .padding(.top, 6)
+            .padding(.bottom, 2)
+        }
+        .navigationDestination(item: $activeRoute) { route in
+            AppRouteDestination(route: route, environment: environment) {
+                Task { await viewModel.reload() }
+            }
+        }
         .alert("提示", isPresented: alertBinding) {
             Button("好", role: .cancel) {
                 viewModel.errorMessage = nil
@@ -111,6 +126,7 @@ struct CardHolderView: View {
             }
         }
         .listStyle(.plain)
+        .contentMargins(.bottom, 60, for: .scrollContent)
     }
 
     private func cardRow(_ card: BusinessCard) -> some View {
@@ -218,6 +234,26 @@ struct CardHolderView: View {
                     exporter.errorMessage = nil
                 }
             }
+        )
+    }
+}
+
+#Preview("名片夹") {
+    let environment = PreviewData.environment()
+    NavigationStack {
+        CardHolderView(
+            viewModel: CardHolderViewModel(environment: environment),
+            environment: environment
+        )
+    }
+}
+
+#Preview("空名片夹") {
+    let environment = PreviewData.emptyEnvironment()
+    NavigationStack {
+        CardHolderView(
+            viewModel: CardHolderViewModel(environment: environment),
+            environment: environment
         )
     }
 }

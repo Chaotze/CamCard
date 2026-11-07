@@ -44,7 +44,7 @@ final class CamCardUITests: XCTestCase {
         let alert = app.alerts["需要相机权限"]
         XCTAssertTrue(alert.waitForExistence(timeout: 10))
         XCTAssertTrue(alert.buttons["从相册导入"].exists)
-        XCTAssertTrue(alert.buttons["打开设置"].exists)
+        XCTAssertTrue(alert.buttons["请求相机权限"].exists)
     }
 
     @MainActor
@@ -138,7 +138,7 @@ final class CamCardUITests: XCTestCase {
         let app = launchSeeded()
         XCTAssertTrue(app.staticTexts["张三"].waitForExistence(timeout: 10))
 
-        let search = app.searchFields.firstMatch
+        let search = app.textFields["bottomSearchField"]
         XCTAssertTrue(search.waitForExistence(timeout: 10))
         search.tap()
         search.typeText("云")

@@ -298,3 +298,13 @@ struct ReviewView: View {
         )
     }
 }
+
+#Preview {
+    NavigationStack {
+        ReviewView(
+            viewModel: PreviewData.reviewViewModel(),
+            onSaved: {},
+            onCancel: {}
+        )
+    }
+}

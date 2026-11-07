@@ -51,6 +51,16 @@ final class CaptureFlowViewModel: ObservableObject {
         photoPickerPresented = true
     }
 
+    func requestCameraAccess() async {
+        cameraPermissionMessage = nil
+        let updated = await environment.cameraPermission.request()
+        if updated == .authorized {
+            cameraPickerPresented = true
+        } else {
+            errorMessage = "相机权限未开启，请在系统设置中允许相机访问，或从相册导入。"
+        }
+    }
+
     func start(with imageData: Data) async {
         guard let prepared = ImageProcessing.preparedJPEG(imageData) else {
             errorMessage = "图片无法读取，请重新选择"
@@ -212,7 +222,6 @@ final class CaptureFlowViewModel: ObservableObject {
             current.state = .unrecognizable
             draft = current
             state = .unrecognizable
-            errorMessage = "未识别到名片文字，请重拍或手动填写"
         }
     }
 }

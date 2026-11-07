@@ -56,7 +56,7 @@ struct CaptureFlowView: View {
             }
         }
         .onAppear {
-            guard !didAutoStart else { return }
+            guard !didAutoStart, !isRunningInPreview else { return }
             didAutoStart = true
             if autoStartPhoto {
                 viewModel.openPhotoPicker()
@@ -108,7 +108,9 @@ struct CaptureFlowView: View {
             }
         }
         .alert("需要相机权限", isPresented: permissionAlertBinding) {
-            Button("打开设置") { openSettings() }
+            Button("请求相机权限") {
+                Task { await viewModel.requestCameraAccess() }
+            }
             Button("从相册导入") {
                 viewModel.cameraPermissionMessage = nil
                 viewModel.openPhotoPicker()
@@ -176,38 +178,49 @@ struct CaptureFlowView: View {
                     }
                     .accessibilityIdentifier("captureIdleState")
                 case .detectionFailed:
-                    VStack(spacing: 12) {
+                    VStack(spacing: 14) {
                         Label("未能检测到名片区域", systemImage: "exclamationmark.triangle")
                             .font(.headline)
                             .foregroundStyle(.orange)
-                        Text(viewModel.detectionMessage ?? "可以重试检测、手动框选，或使用原图继续。")
+                        Text(detectionHint)
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
                             .accessibilityIdentifier("detectionFailureMessage")
-                        Button("重试检测") {
+                        Button {
                             Task { await viewModel.retryDetection() }
+                        } label: {
+                            Label("重试检测", systemImage: "arrow.clockwise")
+                                .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(.borderedProminent)
                         .accessibilityIdentifier("retryDetectionButton")
-                        Button("手动框选") {
-                            showManualCrop = true
+                        HStack(spacing: 8) {
+                            Button {
+                                showManualCrop = true
+                            } label: {
+                                Text("手动框选")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .accessibilityIdentifier("manualCropButton")
+                            Button {
+                                Task { await viewModel.continueWithOriginal() }
+                            } label: {
+                                Text("使用原图")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .accessibilityIdentifier("continueOriginalButton")
+                            Button {
+                                viewModel.retake()
+                            } label: {
+                                Text("重拍")
+                                    .frame(maxWidth: .infinity)
+                            }
                         }
                         .buttonStyle(.bordered)
-                        .accessibilityIdentifier("manualCropButton")
-                        Button("使用原图继续") {
-                            Task { await viewModel.continueWithOriginal() }
-                        }
-                        .buttonStyle(.bordered)
-                        .accessibilityIdentifier("continueOriginalButton")
-                        Button("重拍") { viewModel.retake() }
-                        Button("取消", role: .cancel) {
-                            viewModel.cancel()
-                            dismiss()
-                        }
                     }
                 case .unrecognizable:
-                    VStack(spacing: 12) {
+                    VStack(spacing: 14) {
                         Label("无法识别名片", systemImage: "text.viewfinder")
                             .font(.headline)
                             .foregroundStyle(.orange)
@@ -215,18 +228,22 @@ struct CaptureFlowView: View {
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
-                        Button("重拍") { viewModel.retake() }
-                            .buttonStyle(.borderedProminent)
-                            .accessibilityIdentifier("retakeButton")
-                        Button("手动填写") {
+                        Button {
+                            viewModel.retake()
+                        } label: {
+                            Label("重拍", systemImage: "camera.rotate")
+                                .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .accessibilityIdentifier("retakeButton")
+                        Button {
                             Task { await viewModel.proceedToManualEntry() }
+                        } label: {
+                            Label("手动填写", systemImage: "square.and.pencil")
+                                .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(.bordered)
                         .accessibilityIdentifier("manualEntryButton")
-                        Button("取消", role: .cancel) {
-                            viewModel.cancel()
-                            dismiss()
-                        }
                     }
                     .accessibilityIdentifier("unrecognizableState")
                 case .detected, .ocrRunning, .ocrFinished, .parsing:
@@ -268,6 +285,13 @@ struct CaptureFlowView: View {
         }
     }
 
+    private var detectionHint: String {
+        guard let message = viewModel.detectionMessage, message != DetectionFailure.noCard.message else {
+            return "请调整光线与角度后重试，也可以手动框选名片区域。"
+        }
+        return message
+    }
+
     private var permissionAlertBinding: Binding<Bool> {
         Binding(
             get: { viewModel.cameraPermissionMessage != nil },
@@ -286,8 +310,18 @@ struct CaptureFlowView: View {
         )
     }
 
-    private func openSettings() {
-        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-        UIApplication.shared.open(url)
+    private var isRunningInPreview: Bool {
+        ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
+    }
+}
+
+#Preview {
+    let environment = PreviewData.environment()
+    NavigationStack {
+        CaptureFlowView(
+            environment: environment,
+            autoStartPhoto: false,
+            onSaved: {}
+        )
     }
 }
