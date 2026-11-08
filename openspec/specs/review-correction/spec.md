@@ -8,7 +8,7 @@
 
 ### Requirement: Review shows all twelve fields
 
-人工校正界面 SHALL 展示十二个字段（`name`、`company`、`jobTitle`、`mobile`、`officePhone`、`email`、`website`、`address`、`department`、`fax`、`postalCode`、`notes`）的当前值、对应的原始图像与处理后图像、以及 OCR Raw Text；空字段显示"未识别"状态，不得显示占位猜测值。
+人工校正界面 SHALL 展示十二个字段（`name`、`company`、`jobTitle`、`mobile`、`officePhone`、`email`、`website`、`address`、`department`、`fax`、`postalCode`、`notes`）的当前值、该名片唯一持久化的图像与 OCR Raw Text；空字段显示"未识别"占位状态，不得显示占位猜测值。
 
 #### Scenario: Empty fields show unidentified state
 
@@ -18,12 +18,17 @@
 #### Scenario: Raw text and images reachable
 
 - **WHEN** 用户进入人工校正界面
-- **THEN** 可查看原始图像、处理后图像与该次 OCR 的原始文本
+- **THEN** 可查看该名片的单张图像与该次 OCR 的原始文本
 
 #### Scenario: Long address stays fully editable
 
 - **WHEN** 解析出的地址包含多行文本
 - **THEN** 地址字段以多行可编辑形式展示完整内容
+
+#### Scenario: Notes uses the same single-line row
+
+- **WHEN** 用户查看备注字段
+- **THEN** 备注与部门、邮编一样使用单行输入行，占位提示为"未识别"，内外边距与其余字段一致
 
 #### Scenario: Optional fields do not block the form
 

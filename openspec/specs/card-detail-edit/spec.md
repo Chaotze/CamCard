@@ -35,19 +35,33 @@
 - **WHEN** 名片填写了部门与邮编，但没有传真与备注
 - **THEN** 详情页显示部门与邮编，不显示传真与备注条目
 
-### Requirement: Detail shows card images
+### Requirement: Detail shows a single card image
 
-详情页 SHALL 提供该名片的原始图像与处理后图像，并标明当前查看的是哪一张；仅有一张可用时只展示可用的那张。
+详情页 SHALL 只展示该名片唯一持久化的图像（优先校正图，缺失时使用原图），不提供原始图与校正图之间的切换控件。
 
-#### Scenario: Switch between original and processed
+#### Scenario: One image is shown
 
-- **WHEN** 名片同时有原始图像与处理后图像
-- **THEN** 用户可在两者之间切换查看，且界面标明当前图像类型
+- **WHEN** 用户打开任意已保存名片的详情
+- **THEN** 页面展示一张名片图像，且不出现"原始图像/处理后图像"分段切换控件
 
-#### Scenario: Processed image unavailable
+#### Scenario: Image unavailable
 
-- **WHEN** 该名片在采集时检测失败、只保留原始图像
-- **THEN** 详情页只展示原始图像，并说明未生成校正图像
+- **WHEN** 该名片的图像文件缺失或无法解码
+- **THEN** 页面显示图像不可用占位，并保留全部文字字段
+
+### Requirement: Detail follows the native iOS form style
+
+详情页 SHALL 使用与人工校正页一致的 `Form` 分组列表风格，字段行展示轻量线形图标，图标在"字段标题 + 值"整体垂直居中，操作按钮使用系统默认样式且分隔线从行首开始。
+
+#### Scenario: Field icons align with the whole row
+
+- **WHEN** 详情页展示一个带标题和值的字段
+- **THEN** 字段图标位于标题与值组成的整体高度中间，而不是只与标题对齐
+
+#### Scenario: Native grouped list styling
+
+- **WHEN** 用户浏览详情页
+- **THEN** 内容以系统分组表单呈现，字段图标为线形 SF Symbol，导出与查看 OCR 文本按钮之间的分隔线从行首开始
 
 ### Requirement: Detail exposes the processing chain
 
@@ -65,25 +79,30 @@
 
 ### Requirement: Detail provides edit entry
 
-详情页 SHALL 提供进入编辑的操作，编辑使用与人工校正相同的字段界面。
+详情页 SHALL 在右上角以图标按钮提供进入编辑的操作，编辑使用与人工校正相同的字段界面。
 
 #### Scenario: Enter edit mode
 
-- **WHEN** 用户在详情页点击编辑
+- **WHEN** 用户在详情页点击右上角的编辑图标
 - **THEN** 打开校正界面并预填该名片当前的最终值
+
+#### Scenario: Edit from the card holder context menu
+
+- **WHEN** 用户在名片夹长按某张名片并选择"编辑"
+- **THEN** 直接进入该名片的详情并自动打开编辑界面
 
 ### Requirement: Delete a card from detail
 
-详情页 SHALL 提供删除操作，删除前要求用户确认；确认后删除该名片并返回名片夹。
+详情页 SHALL 提供删除操作，删除前以系统 Alert 风格弹窗说明风险并展示被删除名片的人名，同时提供"删除"与"取消"；确认后删除该名片并返回名片夹。
 
 #### Scenario: Confirm deletion
 
-- **WHEN** 用户在详情页点击删除并在确认提示中选择确认
-- **THEN** 名片被删除，界面返回名片夹，该名片不再出现在列表中
+- **WHEN** 用户在详情页点击删除并在确认提示中选择"删除"
+- **THEN** 弹窗文案包含该名片的人名与不可恢复说明，名片被删除，界面返回名片夹，该名片不再出现在列表中
 
 #### Scenario: Cancel deletion
 
-- **WHEN** 用户在删除确认提示中选择取消
+- **WHEN** 用户在删除确认提示中选择"取消"
 - **THEN** 名片保留，用户停留在详情页，名片夹内容不变
 
 #### Scenario: Deleting the open card returns to holder

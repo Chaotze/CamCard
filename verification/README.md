@@ -37,10 +37,20 @@ Field parser tests assert missing `website`/`company`/`jobTitle`/`email`/`addres
 
 52 accessibility identifiers/labels are present across views. Detail values, review fields (label + value), image type, tags, and delete/edit/export controls expose Chinese labels. UI tests assert real field values for editing (`姓名` → `张三` → `张三丰`) and visible detail values.
 
+## README screenshots
+
+The README uses real simulator screenshots framed inside a device mockup:
+
+- Capture: `xcodebuild test ... -only-testing:CamCardUITests/ScreenshotCaptureTests -resultBundlePath /tmp/camcard-screens.xcresult` (1 test, 0 failures, iPhone 17 Pro / iOS 26.0).
+- Export: `xcrun xcresulttool export attachments` produced 4 screenshots.
+- Frame: `swift docs/assets/scripts/frame_screenshots.swift` composited each screenshot into the transparent screen cutout of `docs/assets/mockups/iphone-17-pro-silver-portrait.png`.
+- Output: `docs/assets/framed/01-card-holder.png`, `02-card-detail.png`, `03-review.png`, `04-empty.png`.
+- Alignment verified numerically: 2544 of 2584 sampled pixels in the framed output match the source screenshot at the expected offset (1206 × 2622 inside a 1350 × 2760 canvas).
+
 ## Not verified
 
 - Real-device camera capture, real PhotosPicker selection, camera permission recovery on device, and real-device orientation: not executed. Simulator camera paths are unit-tested; UI covers the denial/cancel paths only.
-- UI scenarios R02, R05, R06, R07: not executed as UI tests. Capture/retake/unrecognizable branching is covered by unit tests; detection-failure and OCR-empty UI paths remain unverified end to end.
+- UI scenarios R02, R05, R06, R07: not executed as UI tests. Capture/retake/unrecognizable branching is covered by unit tests; the detection-failure choice screen no longer exists (every capture opens the crop page), and the OCR-empty path remains unverified end to end.
 - Full R01–R20 UI suite and evidence aggregation (tasks 10.1–10.4): not completed.
 - Probabilistic accuracy: course fixtures and `ground-truth.json` are absent, so `accuracy-report.json` was not generated and no field-level accuracy or CamCard character-level comparison is claimed (tasks 11.1–11.5 remain unchecked).
 - Field-layout coordinate assertions, Locale switching, draft-ID change assertion, and six-stage diff export report: not verified as specified.

@@ -8,12 +8,17 @@
 
 ### Requirement: Camera capture entry
 
-名片夹 SHALL 允许用户通过"拍摄名片"入口打开系统相机界面，拍摄一张名片照片并交给后续处理流程。
+名片夹 SHALL 允许用户通过"拍摄名片"入口直接打开系统相机界面，拍摄一张名片照片并交给后续处理流程。
 
 #### Scenario: Capture a card with the camera
 
 - **WHEN** 用户点击"拍摄名片"，授予相机权限并完成一次拍摄
 - **THEN** 系统以该拍摄图像作为本次采集结果，进入名片处理流程
+
+#### Scenario: Camera opens directly without an intermediate page
+
+- **WHEN** 用户点击"拍摄名片"或底部搜索栏的"扫描名片"
+- **THEN** 系统相机界面直接弹出，不出现独立的拍摄选择页面；只有取得图像后才进入框选与校正流程
 
 #### Scenario: Capture opens the camera only once per tap
 
@@ -22,12 +27,17 @@
 
 ### Requirement: Photo library import entry
 
-名片夹 SHALL 允许用户通过"从相册导入"入口从系统相册选择一张图片作为采集结果。
+名片夹 SHALL 允许用户通过"从相册导入"入口直接从系统相册选择一张图片作为采集结果。
 
 #### Scenario: Import a photo from the library
 
 - **WHEN** 用户在相册中选择一张图片并确认
 - **THEN** 系统以该图片作为本次采集结果，进入名片处理流程
+
+#### Scenario: Photo picker opens directly without an intermediate page
+
+- **WHEN** 用户点击"从相册导入"或底部搜索栏的"从相册导入"
+- **THEN** 系统相册选择器直接弹出；取得图片后才进入框选与校正流程
 
 #### Scenario: Single image per import
 
@@ -36,12 +46,17 @@
 
 ### Requirement: Camera permission denial
 
-当相机权限被拒绝或受限时，系统 SHALL 显示可解释的提示，并提供前往系统设置的入口，同时保持相册导入入口可用。
+当相机权限被拒绝或受限时，系统 SHALL 显示可解释的提示，并提供"请求相机权限"、"从相册导入"与"取消"三个操作；请求权限 SHALL 直接调用系统相机授权，而不是替用户打开系统设置。
 
 #### Scenario: Denied camera permission
 
 - **WHEN** 用户在权限弹窗中拒绝相机访问，或此前已关闭相机权限
-- **THEN** 用户看到说明文案与"打开设置"入口，且"从相册导入"仍然可用
+- **THEN** 用户看到说明文案，以及"请求相机权限""从相册导入""取消"三个操作，且"从相册导入"仍然可用
+
+#### Scenario: Request permission from the alert
+
+- **WHEN** 用户在权限提示中点击"请求相机权限"
+- **THEN** 系统直接发起相机授权请求；授权成功后打开相机，失败时说明原因且不跳转系统设置
 
 #### Scenario: Limited camera access on first use
 
@@ -92,7 +107,7 @@
 
 ### Requirement: Retake from the processing flow
 
-处理或校正流程 SHALL 提供重拍入口；重拍 SHALL 开启新的采集会话并丢弃当前草稿，不把旧草稿并入新名片。
+无法识别页面 SHALL 提供重新拍摄入口；重拍 SHALL 开启新的采集会话并丢弃当前草稿，不把旧草稿并入新名片。
 
 #### Scenario: Retake replaces the draft
 
@@ -106,12 +121,12 @@
 
 ### Requirement: Unrecognizable image handling
 
-当采集图像无法识别为名片（无文本、无法检测到名片区域或解码后内容为空白）时，系统 SHALL 明确提示无法识别，并只提供重拍、从相册重新导入或取消三条路径，不得以空字段静默进入保存。
+当采集图像经用户确认框选后仍无法识别出名片文本时，系统 SHALL 明确提示无法识别，并只提供重新拍摄与手动填写两条路径，不得以空字段静默进入保存。
 
 #### Scenario: No text recognized
 
-- **WHEN** 采集图像经检测与 OCR 后没有任何可识别文本
-- **THEN** 界面提示无法识别，并提供重拍与取消，不提供直接保存
+- **WHEN** 采集图像经框选与 OCR 后没有任何可识别文本
+- **THEN** 界面提示无法识别，并提供"重新拍摄"与"手动填写"，不提供直接保存
 
 #### Scenario: User proceeds with empty fields
 

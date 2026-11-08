@@ -6,6 +6,30 @@
 
 ## Requirements
 
+### Requirement: Floating bottom search bar
+
+名片夹 SHALL 在列表底部以悬浮搜索栏提供搜索输入，搜索栏包含 44pt 胶囊输入框与右侧圆形按钮；未搜索时按钮为加号并弹出"扫描名片 / 从相册导入"菜单，聚焦或输入文字后切换为关闭按钮以退出搜索。
+
+#### Scenario: Search from the bottom bar
+
+- **WHEN** 用户点击底部搜索框并输入文字
+- **THEN** 列表实时过滤，右侧按钮变为关闭图标
+
+#### Scenario: Exit search
+
+- **WHEN** 用户点击右侧关闭按钮
+- **THEN** 搜索词被清空、键盘收起，列表恢复完整内容
+
+#### Scenario: Add actions from the bar
+
+- **WHEN** 搜索未激活时用户点击右侧加号
+- **THEN** 弹出包含"扫描名片"与"从相册导入"的菜单
+
+#### Scenario: List content clears the bar
+
+- **WHEN** 用户滚动到列表底部
+- **THEN** 最后一行可以完整滚动到搜索栏上方，不被遮挡
+
 ### Requirement: Search across contact fields
 
 搜索 SHALL 在所有名片上匹配姓名、公司、职位、部门、全部电话号码（Mobile / Office / Fax）、全部 Email、网站、地址、邮编、备注与标签，采用不区分大小写的子串匹配。

@@ -18,7 +18,7 @@
 #### Scenario: Empty state hides list chrome
 
 - **WHEN** 名片数量为 0
-- **THEN** 不出现名片行、分组标题、计数标签或批量操作栏
+- **THEN** 不出现名片行、分组标题、计数标签、批量操作栏、底部搜索栏与右上角工具栏
 
 #### Scenario: Last card deleted returns to empty state
 
@@ -72,6 +72,11 @@
 - **WHEN** 名片夹为空或已存在名片
 - **THEN** 拍摄与相册导入入口在两种状态下都可用
 
+#### Scenario: Entry actions launch the system UI directly
+
+- **WHEN** 用户点击"拍摄名片"或"从相册导入"
+- **THEN** 系统相机或系统相册选择器直接弹出，不先进入独立的拍摄/导入页面
+
 ### Requirement: Open a saved card from the card holder
 
 名片夹 SHALL 允许用户点击任一名片行进入该名片的详情页面。
@@ -85,3 +90,64 @@
 
 - **WHEN** 用户从详情页面返回名片夹
 - **THEN** 返回名片夹列表，且列表内容与刚才进入前一致
+
+### Requirement: Long-press card actions
+
+名片夹 SHALL 在长按名片行时提供上下文菜单，包含"查看""编辑""删除"。
+
+#### Scenario: Long-press opens the context menu
+
+- **WHEN** 用户长按列表中的某张名片
+- **THEN** 显示包含查看、编辑、删除的菜单
+
+#### Scenario: Edit from the context menu
+
+- **WHEN** 用户长按名片并选择"编辑"
+- **THEN** 打开该名片详情并自动进入编辑界面
+
+#### Scenario: Delete from the context menu
+
+- **WHEN** 用户长按名片并选择"删除"
+- **THEN** 显示删除确认弹窗，包含该名片人名、删除与取消
+
+### Requirement: Swipe to delete with confirmation
+
+名片夹 SHALL 支持左滑删除，但左滑只显示删除按钮，不在用户确认前移除或删除名片行。
+
+#### Scenario: Swipe shows a delete action
+
+- **WHEN** 用户在名片行上向左滑动
+- **THEN** 显示红色删除按钮，名片行保持可见
+
+#### Scenario: Confirmation before removal
+
+- **WHEN** 用户点击左滑出现的删除按钮
+- **THEN** 名片行保持存在，同时弹出包含人名、删除与取消的确认弹窗；只有点击删除后才移除该行
+
+### Requirement: Multi-select management
+
+名片夹 SHALL 支持进入多选模式；多选时工具栏只保留完成、导出与删除，隐藏标签筛选与排序，删除按钮标红并位于最右侧。
+
+#### Scenario: Enter multi-select mode
+
+- **WHEN** 用户点击工具栏的选择图标
+- **THEN** 每行显示选择圈，工具栏切换为完成、导出、删除
+
+#### Scenario: Bulk delete
+
+- **WHEN** 用户选中一张或多张名片并点击工具栏删除
+- **THEN** 显示确认弹窗，确认后批量删除所选名片并退出多选
+
+#### Scenario: Empty selection disables actions
+
+- **WHEN** 多选模式下未选中任何名片
+- **THEN** 导出与删除按钮不可用
+
+### Requirement: Toolbar actions use icons
+
+名片夹与详情页的右上角操作 SHALL 使用图标按钮并提供无障碍文字标签，包括选择、导出、删除、标签、排序、编辑、保存与完成。
+
+#### Scenario: Icon toolbar buttons
+
+- **WHEN** 用户查看名片夹或详情页的工具栏
+- **THEN** 操作以图标呈现，标签筛选与排序在多选模式下隐藏

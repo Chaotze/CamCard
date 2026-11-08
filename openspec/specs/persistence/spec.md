@@ -111,7 +111,7 @@
 
 ### Requirement: Audit chain persisted with the card
 
-持久化 SHALL 为每张名片保存 originalImage、processedImage、OCR Raw Text、Structured Fields、Manual Correction 与 Final Contact，并在重启后分别可读，供差异分析使用。
+持久化 SHALL 为每张名片保存 OCR Raw Text、Structured Fields、Manual Correction 与 Final Contact，并在重启后分别可读；审计记录 MAY 保留草稿阶段的原始与校正图像引用，但名片本身只引用一张最终图像。
 
 #### Scenario: Six-stage chain readable after relaunch
 

@@ -51,7 +51,7 @@ The app shell SHALL provide navigation limited to the card slice: the card holde
 #### Scenario: Capture flow is reachable from Home
 
 - **WHEN** the user triggers capture or photo import from the Home surface
-- **THEN** the processing then verification flow is presented as a navigation destination over the card holder, and the user returns to the card holder after save or abandon
+- **THEN** the system camera or photo picker opens directly, and after an image is obtained the crop then verification flow is pushed over the card holder; the user returns to the card holder after save or abandon
 
 #### Scenario: Detail opens over the card holder
 

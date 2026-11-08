@@ -67,35 +67,49 @@
 - **WHEN** 名片相对正向旋转 90 度或 270 度
 - **THEN** 处理后图像被旋转回正向，文字从左到右可读
 
-### Requirement: Original and processed images are both retained
+### Requirement: Only the final image is persisted
 
-系统 SHALL 同时保留采集的原始图像与处理后图像，并在后续流程中允许两者分别访问；处理后图像不得替换原始图像。
+系统 SHALL 只持久化一张名片图像：校正成功时保存校正后的图像，校正失败或用户未执行区域校正时保存原始图像；草稿阶段可以同时持有原始图像与临时校正图像，但保存后不得同时保留两张。
 
-#### Scenario: Both images available after detection
+#### Scenario: Rectified image is the saved image
 
-- **WHEN** 检测与校正完成
-- **THEN** 该草稿同时可访问原始图像与处理后图像，且原始图像未被修改
+- **WHEN** 检测与透视校正成功且用户保存名片
+- **THEN** 名片只引用校正后的图像，不再单独持久化原始图像
 
-#### Scenario: Detection failure keeps original only
+#### Scenario: Correction failure saves the original
 
-- **WHEN** 检测失败
-- **THEN** 草稿仍保留原始图像，并将处理后图像标记为不可用
+- **WHEN** 透视校正失败或用户以原图继续
+- **THEN** 名片只引用原始图像，不产生第二张图像文件
 
-### Requirement: Detection failure fallback
+### Requirement: Crop confirmation is always the first post-capture step
 
-检测失败时，系统 SHALL 标记该草稿为检测失败，允许用户重试检测或手动框选名片区域，并允许以原始图像继续 OCR。
+无论自动检测是否成功，采集图像 SHALL 先进入标题为"框选名片"的框选页面；自动检测成功时预填自动检测的四角，检测失败时预填默认四边形，用户确认后才执行校正与 OCR。
 
-#### Scenario: Continue with original image
+#### Scenario: Auto-detected corners are prefilled
 
-- **WHEN** 检测失败且用户选择继续
-- **THEN** OCR 使用原始图像作为输入，界面明确提示未执行区域校正
+- **WHEN** 采集图像后自动检测到名片区域
+- **THEN** 系统直接打开"框选名片"页面，并以检测到的四角作为初始框选结果
 
-#### Scenario: Retry detection
+#### Scenario: Detection failure still opens crop
 
-- **WHEN** 检测失败后用户选择重试
-- **THEN** 系统对同一原始图像重新执行检测，且不覆盖先前的失败记录
+- **WHEN** 采集图像后未能检测到名片区域
+- **THEN** 系统仍打开"框选名片"页面，并以默认四边形作为初始框选结果，不显示多按钮的检测失败选择页
 
-#### Scenario: Manual crop
+#### Scenario: Confirmed crop drives OCR
 
-- **WHEN** 检测失败后用户手动框选名片区域
-- **THEN** 系统以用户框选的四角作为检测结果，并产出对应的处理后图像
+- **WHEN** 用户在"框选名片"页面调整四角并点击"下一步"
+- **THEN** 系统以用户确认的四角执行透视校正，校正失败时回退为原图继续 OCR
+
+### Requirement: Crop overlay uses a quadrilateral
+
+框选页面 SHALL 使用按顺时针连接四个角点的四边形边框，不得出现交叉连线；边框与角点使用系统强调色，角点可拖动调整。
+
+#### Scenario: Corners are drawn clockwise
+
+- **WHEN** 框选页面显示自动检测或默认的四角
+- **THEN** 四个角点按左上、右上、右下、左下顺序连接成闭合四边形，不出现对角线交叉
+
+#### Scenario: Drag a corner
+
+- **WHEN** 用户拖动任一角点
+- **THEN** 该角点跟随手指移动，四边形实时更新，且坐标被限制在名片图像范围内
