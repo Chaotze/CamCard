@@ -11,8 +11,8 @@
 | 项目 | 锁定值 | 依据 / 状态 |
 | --- | --- | --- |
 | 参考应用 | CamCard（名片全能王），仅对照名片数字化与联系人管理主链路 | 课程指定；**参考版本号/构建号待确认** |
-| iOS 部署目标 | iOS 26.0 | [project.pbxproj](file:///Users/chaotze/Downloads/Mobile%20Application%20Development/CamCard/CamCard.xcodeproj/project.pbxproj#L324) `IPHONEOS_DEPLOYMENT_TARGET = 26.0` |
-| 工具链 | Xcode 26.0 (17A324)，Swift 5.0，SwiftUI 生命周期 | 本机 `xcodebuild -version`；pbxproj `SWIFT_VERSION = 5.0` |
+| iOS 部署目标 | iOS 17.0 | [project.pbxproj](file:///Users/chaotze/Downloads/Mobile%20Application%20Development/CamCard/CamCard.xcodeproj/project.pbxproj#L324) `IPHONEOS_DEPLOYMENT_TARGET = 17.0` |
+| 工具链 | Xcode 26.0 (17A324)，Swift 6.2，SwiftUI 生命周期 | 本机 `xcodebuild -version`；pbxproj `SWIFT_VERSION = 6.2` |
 | 运行设备 | iPhone 17 Pro 模拟器（iOS 26.0） | `xcrun simctl list devices available`；**具体真机规格待确认** |
 | Bundle ID | `cn.chaotze.CamCard` | pbxproj `PRODUCT_BUNDLE_IDENTIFIER` |
 | 界面语言 | 简体中文；日期与数字按系统区域格式 | 课程默认；**如要求英文需确认** |

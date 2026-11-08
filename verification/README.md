@@ -1,6 +1,6 @@
 # Verification Record
 
-Environment: Xcode 26.0 (17A324), iOS Simulator 26.0.1, Swift 5 language mode, iPhone 17 simulator (`0984D61E-4372-429E-A653-9819870261FF`). The proposal recorded iOS 26.0; the installed runtime reports 26.0.1.
+Environment: Xcode 26.0 (17A324), iOS Simulator 26.0.1, Swift 6 language mode, iPhone 17 simulator (`0984D61E-4372-429E-A653-9819870261FF`). The proposal recorded iOS 26.0; the installed runtime reports 26.0.1.
 
 ## Commands and exit codes
 

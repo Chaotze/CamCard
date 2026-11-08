@@ -1,24 +1,19 @@
-# CamCard 工程的唯一来源。
-# 生成 Xcode 工程：xcodegen generate
-# CamCard.xcodeproj 是生成产物，不纳入版本控制。
-
 name: CamCard
 
 options:
   minimumXcodeGenVersion: "2.46.0"
-  projectFormat: xcode16_0        # objectVersion 77，启用 synchronized folders
-  xcodeVersion: "26.0"            # LastUpgradeCheck / scheme LastUpgradeVersion
+  projectFormat: xcode16_0
+  xcodeVersion: "26.0"
   developmentLanguage: en
   settingPresets: all
   defaultSourceDirectoryType: syncedFolder
   deploymentTarget:
-    iOS: "26.0"
+    iOS: "17.0"
 
 configs:
   Debug: debug
   Release: release
 
-# XcodeGen 的预设基于较旧的 Xcode，这里补齐 Xcode 26 的工程级默认值
 settings:
   ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS: YES
   CLANG_CXX_LANGUAGE_STANDARD: "gnu++20"
@@ -42,6 +37,7 @@ targets:
         CURRENT_PROJECT_VERSION: "1"
         ENABLE_PREVIEWS: YES
         GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_LSApplicationCategoryType: "public.app-category.business"
         INFOPLIST_KEY_NSCameraUsageDescription: "用于拍摄名片并以本地方式识别联系人信息。"
         INFOPLIST_KEY_NSPhotoLibraryUsageDescription: "用于从相册导入名片图片并以本地方式识别联系人信息。"
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
@@ -60,7 +56,7 @@ targets:
         SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
         SWIFT_EMIT_LOC_STRINGS: YES
         SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY: YES
-        SWIFT_VERSION: "5.0"
+        SWIFT_VERSION: "6.0"
         TARGETED_DEVICE_FAMILY: "1,2"
 
   CamCardTests:
@@ -84,7 +80,7 @@ targets:
         SWIFT_APPROACHABLE_CONCURRENCY: YES
         SWIFT_EMIT_LOC_STRINGS: NO
         SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY: YES
-        SWIFT_VERSION: "5.0"
+        SWIFT_VERSION: "6.0"
         TARGETED_DEVICE_FAMILY: "1,2"
         TEST_HOST: "$(BUILT_PRODUCTS_DIR)/CamCard.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CamCard"
 
@@ -108,7 +104,7 @@ targets:
         SWIFT_APPROACHABLE_CONCURRENCY: YES
         SWIFT_EMIT_LOC_STRINGS: NO
         SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY: YES
-        SWIFT_VERSION: "5.0"
+        SWIFT_VERSION: "6.0"
         TARGETED_DEVICE_FAMILY: "1,2"
         TEST_TARGET_NAME: CamCard
 

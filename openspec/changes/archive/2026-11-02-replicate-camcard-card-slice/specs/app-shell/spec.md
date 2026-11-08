@@ -4,66 +4,66 @@
 
 ### Requirement: App launches into the Home surface
 
-The app SHALL launch into a single Home surface that occupies the whole app window and presents the card holder.
+应用 SHALL 启动进入单一 Home 界面，该界面占据整个应用窗口并展示名片夹。
 
 #### Scenario: Cold launch
 
-- **WHEN** the app is launched on a fresh install with no saved cards
-- **THEN** the Home surface is the card holder showing its empty state, with no modal, sheet, onboarding, or permission prompt presented
+- **WHEN** 应用在全新安装且没有已保存名片的情况下启动
+- **THEN** Home 界面为名片夹并显示其空状态，不呈现任何模态、sheet、引导或权限提示
 
 #### Scenario: Relaunch
 
-- **WHEN** the app is terminated and launched again after cards were saved
-- **THEN** the Home surface shows the card holder with those saved cards in the same order as before termination
+- **WHEN** 应用在名片已保存后被终止并再次启动
+- **THEN** Home 界面显示名片夹，其中包含这些已保存名片，顺序与终止前相同
 
 ### Requirement: Home surface content
 
-The Home surface SHALL present the card holder: a card list when cards exist, and an empty state with a title, explanation, "拍摄名片" and "从相册导入" actions when no cards exist. The placeholder globe and "Hello, world!" text SHALL no longer appear.
+Home 界面 SHALL 展示名片夹：有名片时展示名片列表；没有名片时展示空状态，包含标题、说明以及“拍摄名片”和“从相册导入”操作。占位地球图标和“Hello, world!”文本 SHALL 不再出现。
 
 #### Scenario: Welcome content
 
-- **WHEN** the user opens the Home surface with no saved cards
-- **THEN** the empty card holder is shown, and neither the globe icon nor the text "Hello, world!" is displayed
+- **WHEN** 用户在没有已保存名片时打开 Home 界面
+- **THEN** 显示空名片夹，且不显示地球图标或文本“Hello, world!”
 
 #### Scenario: Welcome content with saved cards
 
-- **WHEN** the user opens the Home surface with saved cards
-- **THEN** the card list is shown instead of the empty state, with no placeholder content mixed into the list
+- **WHEN** 用户在已有已保存名片时打开 Home 界面
+- **THEN** 显示名片列表而非空状态，列表中没有混入占位内容
 
 ### Requirement: App shell navigation scope
 
-The app shell SHALL provide navigation limited to the card slice: the card holder, the capture entry, the processing and verification flow, and the card detail and edit surfaces. It SHALL NOT expose tabs, panels, or routes for registration, membership, subscription, ads, cloud sync, team library, CRM sync, digital business card design, QR exchange, email signature, AI company intelligence, or meeting recording.
+应用外壳 SHALL 提供仅限于名片切片的导航：名片夹、拍摄入口、处理与校正流程，以及名片详情与编辑界面。它 SHALL NOT 暴露用于注册、会员、订阅、广告、云同步、团队库、CRM 同步、数字名片设计、二维码交换、电子邮件签名、AI 公司情报或会议录制的标签页、面板或路由。
 
 #### Scenario: Navigation affordances
 
-- **WHEN** the user interacts with the Home surface
-- **THEN** search, tag filtering, sort, capture, and photo import are reachable, while no out-of-scope feature entry is available
+- **WHEN** 用户与 Home 界面交互
+- **THEN** 搜索、标签筛选、排序、拍摄和照片导入均可到达，同时没有范围外功能入口可用
 
 #### Scenario: Slice-only navigation
 
-- **WHEN** the user navigates the app from launch to export
-- **THEN** every reachable surface belongs to the ten-feature card slice
+- **WHEN** 用户从启动导航到导出
+- **THEN** 每个可到达界面都属于十项功能的名片切片
 
 #### Scenario: Capture flow is reachable from Home
 
-- **WHEN** the user triggers capture or photo import from the Home surface
-- **THEN** the processing then verification flow is presented as a navigation destination over the card holder, and the user returns to the card holder after save or abandon
+- **WHEN** 用户从 Home 界面触发拍摄或照片导入
+- **THEN** 处理再校正流程作为导航目标呈现在名片夹之上，用户在保存或放弃后返回名片夹
 
 #### Scenario: Detail opens over the card holder
 
-- **WHEN** the user taps a card row
-- **THEN** the detail surface is pushed over the card holder, and back navigation returns to the same list state
+- **WHEN** 用户点击名片行
+- **THEN** 详情界面被推入覆盖在名片夹之上，返回导航回到同一列表状态
 
 ### Requirement: Supported orientations
 
-The app SHALL support portrait, landscape left, and landscape right on iPhone, and all four orientations on iPad, including during capture, verification, detail, and card holder use.
+应用 SHALL 支持 iPhone 上的竖屏、左横屏和右横屏，以及 iPad 上的全部四种方向，包括在拍摄、校正、详情和名片夹使用期间。
 
 #### Scenario: Rotation keeps content visible
 
-- **WHEN** the device rotates to a supported orientation while the card holder, verification, or detail surface is open
-- **THEN** the current surface remains visible with its content laid out within the screen
+- **WHEN** 设备在名片夹、校正或详情界面打开时旋转到受支持方向
+- **THEN** 当前界面保持可见，其内容在屏幕内布局
 
 #### Scenario: Capture uses the camera orientation
 
-- **WHEN** the user captures a card in a supported landscape orientation
-- **THEN** the resulting image is processed without orientation loss and the detail surface remains usable after rotation
+- **WHEN** 用户在受支持的横屏方向拍摄名片
+- **THEN** 生成的图像处理时不会丢失方向，且详情界面在旋转后仍可用

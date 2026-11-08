@@ -14,7 +14,6 @@ struct FloatingSearchBar: View {
 
    var body: some View {
        HStack(spacing: 10) {
-           // --- 搜索输入框 ---
            HStack(spacing: 10) {
                Image(systemName: "magnifyingglass")
                    .foregroundStyle(.secondary)
@@ -49,7 +48,6 @@ struct FloatingSearchBar: View {
                Capsule().stroke(Color.white.opacity(0.4), lineWidth: 1)
            }
 
-           // --- 右侧按钮 ---
            Button {
                if isSearchActive {
                    text = ""

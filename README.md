@@ -1,17 +1,17 @@
 # CamCard
 
 <p align="center">
-  <img src="docs/assets/framed/01-card-holder.png" width="260" alt="CamCard card holder" />
-</p>
-
-<p align="center">
   <strong>A local-first business card scanner and contact manager for iOS.</strong><br />
   Capture or import a card, confirm the crop, review the extracted fields, and keep a clean, searchable card holder — all on device.
 </p>
 
 <p align="center">
-  <img alt="Platform" src="https://img.shields.io/badge/platform-iOS%2026.0%2B-lightgrey" />
-  <img alt="Swift" src="https://img.shields.io/badge/Swift-5-orange" />
+  English · <a href="./README.zh-CN.md">简体中文</a>
+</p>
+
+<p align="center">
+  <img alt="Platform" src="https://img.shields.io/badge/platform-iOS%2017.0%2B-lightgrey" />
+  <img alt="Swift" src="https://img.shields.io/badge/Swift-6-orange" />
   <img alt="SwiftUI" src="https://img.shields.io/badge/UI-SwiftUI-blue" />
 </p>
 
@@ -42,22 +42,20 @@ Everything — images, metadata, OCR text, and corrections — stays in the app'
 
 ## Screenshots
 
-| Card holder | Card detail | Review | Empty state |
+| Hero welcoming | Card holder | Card detail | Card editing |
 | --- | --- | --- | --- |
-| <img src="docs/assets/framed/01-card-holder.png" width="200" /> | <img src="docs/assets/framed/02-card-detail.png" width="200" /> | <img src="docs/assets/framed/03-review.png" width="200" /> | <img src="docs/assets/framed/04-empty.png" width="200" /> |
-
-The raw simulator captures live in [`docs/assets/screenshots`](docs/assets/screenshots), the device mockup in [`docs/assets/mockups`](docs/assets/mockups), and the framing output in [`docs/assets/framed`](docs/assets/framed).
+| <img src="docs/assets/framed/04-empty.png" width="200" /> | <img src="docs/assets/framed/01-card-holder.png" width="200" /> | <img src="docs/assets/framed/02-card-detail.png" width="200" /> | <img src="docs/assets/framed/03-review.png" width="200" /> |
 
 ## Requirements
 
 - Xcode 26 or later
-- iOS 26.0 simulator or device
+- iOS 17.0+ simulator or device
 - [XcodeGen](https://github.com/yonaskolb/XcodeGen) 2.46+
 
 ## Getting started
 
 ```bash
-# Generate the Xcode project (CamCard.xcodeproj is not checked in)
+# Generate the Xcode project
 xcodegen generate
 
 # Build
@@ -111,24 +109,20 @@ swift docs/assets/scripts/frame_screenshots.swift
 
 The latest verification record is in [`verification/README.md`](verification/README.md).
 
-## Screenshot framing
-
-`docs/assets/scripts/frame_screenshots.swift` places each simulator screenshot into the transparent screen cutout of the iPhone mockup. The screen rect is detected automatically by flood-filling the transparent region from the image centre; pass `--screen x,y,w,h` to override it.
-
-```bash
-swift docs/assets/scripts/frame_screenshots.swift \
-  --mockup docs/assets/mockups/iphone-17-pro-silver-portrait.png \
-  --screenshots docs/assets/screenshots \
-  --out docs/assets/framed
-```
-
 ## Specification-driven development
 
-This repository uses [OpenSpec](https://github.com/Fission-AI/OpenSpec). Capability specs live in [`openspec/specs`](openspec/specs) and are validated with:
+This repository uses [OpenSpec](https://github.com/Fission-AI/OpenSpec) for Spec-Driven Development (SDD). Capability specs live in [`openspec/specs`](openspec/specs); proposals, Deltas, designs, and tasks live in `openspec/changes`. They can be validated with:
 
 ```bash
 openspec validate --all --strict
 ```
+
+The workflow follows these conventions:
+
+1. **Lock the reference environment before entering the proposal phase.** Before generating the proposal, Delta, design, and tasks for this slice, the current main spec must first be established.
+2. **Use ADDED for new capabilities, MODIFIED for existing behavior.** New capabilities always use ADDED Requirements; existing behavior uses MODIFIED with complete scenarios.
+3. **Keep the main spec and Delta separate.** Before archiving, the main spec may only represent what has already been implemented; the active Delta defines the contract for the slice to be delivered.
+4. **An end-to-end closed loop is a delivery prerequisite.** The slice must cover: enter the card holder → capture/import → region detection and correction → OCR → field structuring → manual correction → save → detail → search/management → reopen → export.
 
 ## Scope
 

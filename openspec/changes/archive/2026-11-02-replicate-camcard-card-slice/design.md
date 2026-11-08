@@ -4,7 +4,7 @@
 
 当前工程只有骨架：`CamCardApp` 进入 `ContentView`，后者显示 globe 与 "Hello, world!"；两个测试 target 只有模板用例。三个 target 均为 `PBXFileSystemSynchronizedRootGroup`（[project.pbxproj](file:///Users/chaotze/Downloads/Mobile%20Application%20Development/CamCard/CamCard.xcodeproj/project.pbxproj#L32-L48)），新增 `CamCard/` 与 `CamCardTests/` 下的文件会自动纳入 target，只有 Info.plist 使用说明需要改 build settings。
 
-约束（见 proposal 的 Reference Environment）：iOS 26.0、Xcode 26.0 (17A324)、Swift 5.0、SwiftUI 生命周期、离线、无第三方库。行为契约见 `specs/`，本文件只讲实现选择。
+约束（见 proposal 的 Reference Environment）：iOS 17.0、Xcode 26.0 (17A324)、Swift 6.2、SwiftUI 生命周期、离线、无第三方库。行为契约见 `specs/`，本文件只讲实现选择。
 
 ## Goals / Non-Goals
 
@@ -240,4 +240,4 @@ protocol ImageStore {
 
 - 课程测试集目录结构与 `ground-truth.json` schema 未提供：`AccuracyHarness` 需按实际格式适配，不影响契约与任务拆分。
 - 参考 CamCard 版本号/构建号未确认：仅影响人工对照记录。
-- 真机型号与 iOS 26 真机可用性未确认：影响相机相关验收，模拟器分支可先行。
+- 真机型号与 iOS 17 真机可用性未确认：影响相机相关验收，模拟器分支可先行。

@@ -1,17 +1,17 @@
 # CamCard
 
 <p align="center">
-  <img src="docs/assets/framed/01-card-holder.png" width="260" alt="CamCard 名片夹" />
-</p>
-
-<p align="center">
   <strong>一款本地优先的 iOS 名片扫描与联系人管理应用。</strong><br />
   拍摄或导入名片、确认框选、核对识别结果，并维护一个干净、可搜索的名片夹——全部在设备本地完成。
 </p>
 
 <p align="center">
-  <img alt="平台" src="https://img.shields.io/badge/platform-iOS%2026.0%2B-lightgrey" />
-  <img alt="Swift" src="https://img.shields.io/badge/Swift-5-orange" />
+  <a href="./README.md">English</a> · 简体中文
+</p>
+
+<p align="center">
+  <img alt="平台" src="https://img.shields.io/badge/platform-iOS%2017.0%2B-lightgrey" />
+  <img alt="Swift" src="https://img.shields.io/badge/Swift-6-orange" />
   <img alt="SwiftUI" src="https://img.shields.io/badge/UI-SwiftUI-blue" />
 </p>
 
@@ -40,24 +40,22 @@ CamCard 是一款小而专注的 iOS 应用，把一张纸质名片变成结构�
 - **vCard 导出**——通过系统分享面板导出一张或多张名片的 `.vcf` 文件。
 - **本地持久化**——原子写入的 JSON 索引加独立图像文件，已验证进程终止与重启后数据一致。
 
-## 截图
+## 屏幕截图
 
-| 名片夹 | 名片详情 | 校正页 | 空状态 |
+| 欢迎页 | 名片夹 | 名片详情 | 名片编辑 |
 | --- | --- | --- | --- |
-| <img src="docs/assets/framed/01-card-holder.png" width="200" /> | <img src="docs/assets/framed/02-card-detail.png" width="200" /> | <img src="docs/assets/framed/03-review.png" width="200" /> | <img src="docs/assets/framed/04-empty.png" width="200" /> |
-
-模拟器原始截图位于 [`docs/assets/screenshots`](docs/assets/screenshots)，设备样机位于 [`docs/assets/mockups`](docs/assets/mockups)，套好样机的成品位于 [`docs/assets/framed`](docs/assets/framed)。
+| <img src="docs/assets/framed/04-empty.png" width="200" /> | <img src="docs/assets/framed/01-card-holder.png" width="200" /> | <img src="docs/assets/framed/02-card-detail.png" width="200" /> | <img src="docs/assets/framed/03-review.png" width="200" />  |
 
 ## 环境要求
 
 - Xcode 26 或更高版本
-- iOS 26.0 模拟器或真机
+- iOS 17.0+ 模拟器或真机
 - [XcodeGen](https://github.com/yonaskolb/XcodeGen) 2.46+
 
 ## 快速开始
 
 ```bash
-# 生成 Xcode 工程（CamCard.xcodeproj 不纳入版本控制）
+# 生成 Xcode 工程
 xcodegen generate
 
 # 构建
@@ -111,24 +109,20 @@ swift docs/assets/scripts/frame_screenshots.swift
 
 最新验证记录见 [`verification/README.md`](verification/README.md)。
 
-## 截图套样机
-
-`docs/assets/scripts/frame_screenshots.swift` 会把每张模拟器截图放入 iPhone 样机的透明屏幕区域。屏幕矩形通过从图片中心对透明区域做洪泛填充自动检测，也可以用 `--screen x,y,w,h` 手动指定。
-
-```bash
-swift docs/assets/scripts/frame_screenshots.swift \
-  --mockup docs/assets/mockups/iphone-17-pro-silver-portrait.png \
-  --screenshots docs/assets/screenshots \
-  --out docs/assets/framed
-```
-
 ## 规格驱动开发
 
-本仓库使用 [OpenSpec](https://github.com/Fission-AI/OpenSpec)。能力规格位于 [`openspec/specs`](openspec/specs)，可通过以下命令校验：
+本仓库使用 [OpenSpec](https://github.com/Fission-AI/OpenSpec) 进行规格驱动开发（Spec-Driven Development）。能力规格位于 [`openspec/specs`](openspec/specs)，提案、Delta、设计与任务位于 `openspec/changes`，可通过以下命令校验：
 
 ```bash
 openspec validate --all --strict
 ```
+
+工作流遵循以下约定：
+
+1. **先锁定参考环境，再进入提案。** 在为本切片生成提案、Delta、设计和任务之前，必须先明确现行主规格。
+2. **新能力用 ADDED，现有行为用 MODIFIED。** 新增 capability 一律写 ADDED Requirements；现有行为写 MODIFIED，并携带完整场景。
+3. **主规格与 Delta 分离。** 归档前，主规格只能代表现有已实现的规格；活动 Delta 给出待交付切片的契约。
+4. **端到端闭环是交付前提。** 切片必须覆盖：进入名片夹 → 拍摄/导入 → 区域识别与校正 → OCR → 字段结构化 → 人工校正 → 保存 → 详情 → 搜索/管理 → 重新打开 → 导出。
 
 ## 范围
 
